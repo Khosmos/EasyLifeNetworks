@@ -1,8 +1,7 @@
 # EasyLifeNetworks
 ===================
 
-EasyLife for Networks is an idea about create a set of of network tools with easy instalation and configuration
-
+EasyLife for Networks is an idea about to create a set of network tools with easy instalation and configuration.
 
 Offer a simple configuration and installation for a very complex enviroment.
 It defines a gateway/server with a lot of features for a medium/big wireless network.
@@ -31,8 +30,5 @@ Automatic configuration with several modules:
     Postfix
     PostgreSQL
     JavaJDK
+    JavaOracle
     JBossAS
-    SCIFIDatabase
-    SCIFIAPI
-    SCIFIWeb
-    SCIFICore
