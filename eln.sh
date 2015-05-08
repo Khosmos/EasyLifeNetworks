@@ -1,8 +1,8 @@
 #!/bin/bash
-# Easy Life SCIFI
+# Easy Life Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130820
+# Version 20150508
 #
 # Cosme Faria Corrêa
 # Caio Gagliano Vieira
@@ -10,10 +10,10 @@
 #
 #set -xv
 locat=$(pwd)
-locid="/usr/share/EasyLifeNetworks/install"
+locid="/usr/share/EasyLifeNetworks"
 # Start Variables
 if [ $locat = $locid ]; then
-	CurDir='/usr/share/EasyLifeNetworks/install'
+	CurDir='/usr/share/EasyLifeNetworks'
 	#ModDir=$CurDir'/modules/'
 	CFGFile=$CurDir'/confs/variables.sh'
 	Start=`date +%Y%m%d-%H%M%S`
@@ -43,8 +43,5 @@ if [ $locat = $locid ]; then
 	   esac
 	done
 else
-	mkdir /usr/share/EasyLifeNetworks 2> /dev/null
-	cp -rf ../* /usr/share/EasyLifeNetworks/
-        cd /usr/share/EasyLifeNetworks/install/
-	./install.sh
+	./installeln.sh
 fi
