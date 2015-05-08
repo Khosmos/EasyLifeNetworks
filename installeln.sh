@@ -17,6 +17,8 @@ if [ $locat = $locid ]; then
 else
 	whiptail --title "EasyLife Networks" --msgbox "Wrong place. I will transferr myself from this installation directory:\n `pwd`\n to my default directory:\n $locid" 10 78
 	mkdir /usr/share/EasyLifeNetworks 2> /dev/null
-	cp -rf ../* /usr/share/EasyLifeNetworks/
+#	cp -rf ../* /usr/share/EasyLifeNetworks/
+	mv -rf * /usr/share/EasyLifeNetworks/
         cd /usr/share/EasyLifeNetworks/
+        ./eln.sh
 fi
