@@ -10,8 +10,6 @@
 #
 set -xv
 
-VERSION="20150508"
-LOGFILE="/var/log/eln.log"
 locat=$(pwd)
 locid="/usr/share/EasyLifeNetworks"
 
@@ -19,6 +17,12 @@ touch $LOGFILE
 
 # Source all scripts, functions etc.
 for src in $locid/lib/common/*.sh; do source "$src"; done
+
+# Source variables
+source $locid/confs/variables.sh
+echo $OSNAME
+echo $OSVERSION
+read
 
 IsRoot || return 1
 

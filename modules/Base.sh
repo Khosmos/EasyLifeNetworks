@@ -32,7 +32,7 @@ read
 
 # 1) EPEL
 echo Installing EPEL
-if [ $SOVERSION -eq 7 ] 
+if [ $OSVERSION -eq 7 ] 
 	then
 	EPEL='epel-release-7-0.2.noarch.rpm'
 	else

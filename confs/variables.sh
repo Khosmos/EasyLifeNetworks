@@ -1,6 +1,10 @@
 #!/bin/bash
+# Initial information
+VERSION="20150508"
+LOGFILE="/var/log/eln.log"
 # Linux
-SOVERSION=`cut -d' ' -f3 /etc/redhat-release | cut -d'.' -f1`
+OSNAME=`cut -d' ' -f1 /etc/redhat-release`
+OSVERSION=`cut -d' ' -f3 /etc/redhat-release | cut -d'.' -f1`
 
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
