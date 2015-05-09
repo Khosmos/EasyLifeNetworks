@@ -1,6 +1,6 @@
 #!/bin/bash
 # Linux
-SOVERSION=`cut -d' ' -f4 /etc/redhat-release | cut -d'.' -f1`
+SOVERSION=`cut -d' ' -f3 /etc/redhat-release | cut -d'.' -f1`
 
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
