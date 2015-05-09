@@ -24,13 +24,8 @@ whiptail --title "EasyLife Networks - NetDot" --msgbox \
  6) Configure the SNMP Service
  7) Copy Scripts " 13 78
 
-#1 Install EPEL
-rpm -q epel > /dev/null
-if [[ $? != 0 ]]; then
-	wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-	yum localinstall epel-release-7-5.noarch.rpm -y
-	[[ $? != 0 ]] && ErrMsg "Could not install package" && return 1
-fi
+#1 Install/Check EPEL
+EPELOn || return 1
 read
 
 #2 Install necessary packages
