@@ -8,9 +8,20 @@
 # Caio Gagliano Vieira
 # ...
 #
-#set -xv
+set -xv
+
+VERSION="20150508"
+LOGFILE="/var/log/eln.log"
 locat=$(pwd)
 locid="/usr/share/EasyLifeNetworks"
+
+touch $LOGFILE
+
+# Source all scripts, functions etc.
+for src in $locid/lib/common/*.sh; do source "$src"; done
+
+IsRoot || return 1
+
 # Start Variables
 if [ $locat = $locid ]; then
 	CurDir='/usr/share/EasyLifeNetworks'
@@ -39,6 +50,8 @@ if [ $locat = $locid ]; then
 	      ;;
 	    *)
 	      . $ModDir$Step.sh
+		[[ $? != 0 ]] && return 1
+
 	      ;;
 	   esac
 	done

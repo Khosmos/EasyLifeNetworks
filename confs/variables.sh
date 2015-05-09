@@ -3,7 +3,7 @@
 SOVERSION=`cut -d' ' -f4 /etc/redhat-release | cut -d'.' -f1`
 
 # SCIFI
-DIRELSCIFI=/usr/share/EasyLifeNetworks/install/ # Where ELSCIFI stay
+DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
 ModDir=$DIRELSCIFI'modules/' # Where are modules
 SCRIPTDIR=/usr/share/EasyLifeNetworks/scripts/ # Where are scripts
 SCIFIVERION=12
