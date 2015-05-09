@@ -8,5 +8,5 @@ yum install git -y
 
 To download:
 cd /tmp
-git https://github.com/Khosmos/EasyLifeNetworks.git
+git clone https://github.com/Khosmos/EasyLifeNetworks.git
 cd EasyLifeNetworks
