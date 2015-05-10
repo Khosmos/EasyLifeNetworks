@@ -9,10 +9,8 @@
 # ...
 #
 set -xv
-
 locat=$(pwd)
 locid="/usr/share/EasyLifeNetworks"
-
 touch $LOGFILE
 
 # Source all scripts, functions etc.
@@ -20,21 +18,21 @@ for src in $locid/lib/common/*.sh; do source "$src"; done
 
 # Source variables
 source $locid/confs/variables.sh
-echo $OSNAME
-echo $OSVERSION
-read
 
 IsRoot || return 1
+IsGoodOS || return 1
+source $locid/modules/Base.sh
+
 
 # Start Variables
 if [ $locat = $locid ]; then
 	CurDir='/usr/share/EasyLifeNetworks'
 	CFGFile=$CurDir'/confs/variables.sh'
 	Start=`date +%Y%m%d-%H%M%S`
-	    Steps='Variables Base SELinux Network SNMPD Logs LDAP Apache Monitorix DNSMasq MRTG Nagios RADIUS RadSecProxy Firewall Conntrack SSHD DenyHosts NTPD Postfix PostgreSQL JavaJDK NetDot JavaOracle JBossAS NetDot Exit' 
+	    Steps='Variables SELinux Network SNMPD Logs LDAP Apache Monitorix DNSMasq MRTG Nagios RADIUS RadSecProxy Firewall Conntrack SSHD DenyHosts NTPD Postfix PostgreSQL JavaJDK NetDot JavaOracle JBossAS NetDot Exit' 
 	while true ; do
-	  clear
-	  . $CFGFile
+		clear
+	source $locid/confs/variables.sh
 	  cat <<-EOF
 	  =========================================
 	  |         Easy Life for Networks        |
