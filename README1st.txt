@@ -8,4 +8,4 @@ To download:
 cd /tmp
 git clone https://github.com/Khosmos/EasyLifeNetworks.git
 cd EasyLifeNetworks
-./
+./installeln.sh
