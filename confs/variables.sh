@@ -2,9 +2,13 @@
 # Initial information
 VERSION="20150508"
 LOGFILE="/var/log/eln.log"
-# Linux
-OSNAME=`cut -d' ' -f1 /etc/redhat-release`
-OSVERSION=`cut -d' ' -f3 /etc/redhat-release | cut -d'.' -f1`
+
+# [Linux]
+OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
+OSVERSION=`cut -d' ' -f3 /etc/redhat-release | cut -d'.' -f1` # Version
+
+# [NetDot]
+NETDOTDB=Pg # Pg | Mysql
 
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
@@ -29,9 +33,6 @@ SCIFIDBPASSWD='EasyLifeNetworks' # password for default database user "EasyLifeN
 
 # JBossAS
 JBOSSPASSWD='JBAs_711.' # password for default user "jboss" to access jboss administrative interface and linux user "jboss".
-
-# SELinux
-SELPOL=permissive # enforcing | permissive | disabled
 
 # Network
 MACHINE=wifi # Machine name 

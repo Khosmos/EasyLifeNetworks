@@ -35,10 +35,13 @@
 # 1) EPEL
 EPELOn || return 1
 
-# 2) Utilities
+# 2) Selinux
+SelinuxOff
+
+# 3) Utilities
 yum install git screen vim htop tree coreutils setuptool authconfig glibc-common openssl nmap unzip -y
 
-# 3) Create directories
+# 4) Create directories
 mkdir -p $SCRIPTDIR
 mkdir /etc/EasyLifeNetworks
 
