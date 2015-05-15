@@ -85,7 +85,7 @@ case "$OSVERSION" in
 		#yum install  perl-NetAddr-IP
 		yum install graphviz-devel graphviz-gd libapreq2-devel libpng-devel openssl-devel -y
 		cd /usr/local/src/netdot-1.0.7/
-		#make installdeps
+		echo Pg | make installdeps
 		#wget http://pkgs.repoforge.org/perl-Net-DNS-ZoneFile-Fast/perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm
 		#yum localinstall perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm -y
 		#For Mysql
@@ -96,15 +96,27 @@ case "$OSVERSION" in
 		#max_allowed_packet = 16M
 		#For Postgresql
 		#service postgresql initdb
-		#sed -i 's/host    all         all         127.0.0.1\/32          ident/host    all         all         127.0.0.1\/32          ident/g' /var/lib/pgsql/data/pg_hba.conf
+		#sed -i 's/host    all         all         127.0.0.1\/32          ident/host    all         all         127.0.0.1\/32          md5/g' /var/lib/pgsql/data/pg_hba.conf
 		#service postgresql start
 		#sudo -u postgres psql postgres
 		#\password postgres
 		#123456
 		#^D
+		##echo -e "$POSTGRESPASSWD\n$POSTGRESPASSWD" | passwd postgres
+		#echo -e "123456\n123456" | passwd postgres
+		##su - postgres -c "psql postgres -c \"ALTER USER postgres WITH PASSWORD '$POSTGRESPASSWD'\""
+		#su - postgres -c "psql postgres -c \"ALTER USER postgres WITH PASSWORD '123456'\""
 		#cp etc/Default.conf etc/Site.conf
 		#vim etc/Site.conf
 		#	Pay attention here
+		#	Change NETDOTNAME
+		#	Change DB_TYPE		mysql|Pg
+		#	Change DB_DBA
+		#		mysql	->	root
+		#		Pg	->	postgres
+		#	Change DB_DBA_PASSWORD
+		#	Change DB_PORT, if Pg to 5432
+		#	Change DB_NETDOT_PASS	123456
 		#make rpm-install
 		#make installdb
 		#make install
