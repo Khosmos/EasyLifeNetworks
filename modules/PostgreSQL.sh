@@ -40,8 +40,8 @@ chkconfig postgresql on
 service postgresql restart
 
 #3) Configure password for admin user postgres
-echo -e "$POSTGRESQLPASSWD\n$POSTGRESQLPASSWD" | passwd $POSTGRESQLADMIN
-su - postgres -c "psql postgres -c \"ALTER USER $POSTGRESQLADMIN WITH PASSWORD '$POSTGRESQLPASSWD'\""
+echo -e "$DBADMINPASSWD\n$DBADMINPASSWD" | passwd $DBADMIN
+su - postgres -c "psql postgres -c \"ALTER USER $DBADMIN WITH PASSWORD '$DBADMINPASSWD'\""
 
 #4) Configure pg_hba.conf
 su - postgres -c "cp /var/lib/pgsql/data/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf.old.$(date +%Y%m%d-%H%M%S)"
