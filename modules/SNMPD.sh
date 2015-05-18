@@ -25,11 +25,8 @@ cat <<-EOF
   *) Install SNMPD
   *) Copy Template
   *) Setup SNMPD
-  *) Star processes
-  *) Scripts
-  *) Some subs
-  *) Accesss rights
-
+  *) Start processes
+  
   Press <Enter> to continue
   
 EOF
@@ -51,21 +48,6 @@ sed -i s/SYSLOCATION/"$SYSLOCATION"/g /etc/snmp/snmpd.conf
 #4 Star processes
 chkconfig snmpd on
 service snmpd start
-
-#5 Scripts
-cp -f  $ModDir/SNMPD/*.sh $SCRIPTDIR
-ln -s $SCRIPTDIR/*.sh /usr/bin/
-
-#6 Some subs
-echo $IGNAME > /etc/EasyLifeNetworks/EasyLifeNetworks-connected2.txt
-echo CONTROLLER > /etc/EasyLifeNetworks/EasyLifeNetworks-type.txt
-echo $IGNAME > /etc/EasyLifeNetworks/EasyLifeNetworks-neighborhood.txt
-echo $SCIFIVERION > /etc/EasyLifeNetworks/EasyLifeNetworks-version.txt
-echo $SCIFISUBVERION > /etc/EasyLifeNetworks/EasyLifeNetworks-subversion.txt
-
-#7 Access rights
-chmod 755 /etc/EasyLifeNetworks -R
-
 
 echo SNMPD module finished
 echo 'Press <Enter> to exit'

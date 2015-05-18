@@ -5,18 +5,17 @@ LOGFILE="/var/log/eln.log"
 
 # [Linux]
 OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
-OSVERSION=`cut -d' ' -f3 /etc/redhat-release | cut -d'.' -f1` # Version
+OSVERSION=`cut -d' ' -f4 /etc/redhat-release | cut -d'.' -f1` # Version
 
 # [NetDot]
 NETDOTDB=Pg # Pg | mysql
-NETDOTDBNAME=Pg # NetDot database name
-NETDOTDBUSER=Pg # NetDot database user name
-NETDOTDBPASSWD=Pg # NetDot database user password
-
+NETDOTDBNAME=netdot # NetDot database name
+NETDOTDBUSER=netdot_user # NetDot database user name
+NETDOTDBPASSWD=123456 # NetDot database user password
 
 # [PostgreSQL]
-POSTGRESQLADMIN=postgres # PostgreSQL admin account
-POSTGRESQLPASSWD=123456 # PostgreSQL admin account password
+DBADMIN=postgres # PostgreSQL admin account
+DBADMINPASSWD=123456 # PostgreSQL admin account password
 
 
 # SCIFI

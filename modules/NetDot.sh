@@ -35,7 +35,7 @@ read
 
 
 
-case "$OSVERSION" in
+case $OSVERSION in
 	7)
 	#2 Install prerequisite packages
 	yum install make gcc gcc-c++ autoconf automake rpm-build openssl-devel git perl perl-CPAN perl-Inline -y
@@ -51,18 +51,22 @@ case "$OSVERSION" in
 	#4 Download NetDot
 	cd /usr/local/src/
 	git clone https://github.com/cvicente/Netdot.git netdot
+	read
 	
 	#5 Install Dependencies
 	cd netdot/
-	echo $NETDOTDB | make rpm-install
-	echo $NETDOTDB\n\n\n\nmake installdeps
+	( echo $NETDOTDB; sleep 5; echo y ) | make rpm-install
+	read
+	( echo $NETDOTDB; echo yes ) | make installdeps
 	read
 	
 	#6 Configure the SNMP Service
+	cd /tmp
 	wget http://downloads.sourceforge.net/project/netdisco/netdisco-mibs/latest-snapshot/netdisco-mibs-snapshot.tar.gz -P /tmp
 	tar -zxf /tmp/netdisco-mibs-snapshot.tar.gz -C /usr/local/src
 	mkdir /usr/local/netdisco
 	mv /usr/local/src/netdisco-mibs /usr/local/netdisco/mibs
+	cp -p $ModDir/NetDot/snmp.conf /etc/snmp/
 #	cp /usr/local/netdisco/mibs/snmp.conf /etc/snmp/ # No way
 	service snmpd restart
 	read
@@ -70,19 +74,38 @@ case "$OSVERSION" in
 	#7 Configure Database Settings for Netdot
 	cd /usr/local/src/netdot
 	cp etc/Default.conf etc/Site.conf
-	vim etc/Site.conf
-		#	Pay attention here
+#	vim etc/Site.conf
+		cd etc
 		#	Change NETDOTNAME
+		sed -i "s/NETDOTNAME  => 'netdot.localdomain'/NETDOTNAME  => '$MACHINE.$DOMAINWIFI'/g Site.conf
+		
 		#	Change DB_TYPE		mysql|Pg
+		sed -i "s/DB_TYPE =>  'mysql'/DB_TYPE =>  '$NETDOTDB'/g" Site.conf
+		
 		#	Change DB_DBA
 		#		mysql	->	root
 		#		Pg	->	postgres
+		sed -i "s/DB_DBA          =>  'root'/DB_DBA          =>  '$DBADMIN'/g" Site.conf
+
 		#	Change DB_DBA_PASSWORD
+		sed -i "s/DB_DBA_PASSWORD =>  ''/DB_DBA_PASSWORD =>  '$DBADMINPASSWD'/g" Site.conf
+		
 		#	Change DB_PORT, if Pg to 5432
+		sed -i "s/DB_PORT => ''/DB_PORT => '5432'/g" Site.conf
+		
+		# 	Change DB_DATABASE =>  'netdot'
+		sed -i "s/DB_DATABASE =>  'netdot'/DB_DATABASE =>  '$NETDOTDBNAME'/g" Site.conf
+			
+		#	Change DB_NETDOT_USER =>  'netdot_user'
+		sed -i "s/DB_NETDOT_USER =>  'netdot_user'/DB_NETDOT_USER =>  '$NETDOTDBUSER'/g" Site.conf
+			
 		#	Change DB_NETDOT_PASS	123456
+		sed -i "s/DB_NETDOT_PASS =>  ''/DB_NETDOT_PASS =>  '$NETDOTDBPASSWD'/g" Site.conf
+	read
 
 	#8 Install Netdot
-#	make installdb
+		cd /usr/local/src/netdot
+		#	make installdb
 #	make install
 
 	#9 Finish the Installation
