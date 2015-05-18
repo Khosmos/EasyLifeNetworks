@@ -29,7 +29,7 @@ if [ $locat = $locid ]; then
 	CurDir='/usr/share/EasyLifeNetworks'
 	CFGFile=$CurDir'/confs/variables.sh'
 	Start=`date +%Y%m%d-%H%M%S`
-	    Steps='Variables Network SNMPD Logs LDAP Apache Monitorix DNSMasq MRTG Nagios RADIUS RadSecProxy Firewall Conntrack SSHD DenyHosts NTPD Postfix PostgreSQL JavaJDK NetDot JavaOracle JBossAS NetDot Exit' 
+	    Steps='Variables Network SNMPD Logs LDAP Apache Monitorix DNSMasq MRTG Nagios RADIUS RadSecProxy Firewall Conntrack SSHD DenyHosts NTPD Postfix PostgreSQL PostgreSQLUp JavaJDK NetDot JavaOracle JBossAS NetDot Exit' 
 	while true ; do
 		clear
 	source $locid/confs/variables.sh

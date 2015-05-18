@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150515
+# Version 20150517
 #
 # NetDot module
 #
@@ -25,7 +25,7 @@ whiptail --title "EasyLife Networks - NetDot" --msgbox \
  6) Configure the SNMP Service
  7) Copy Scripts " 13 78
 
-#1 Install/Check EPEL
+#1) Install/Check EPEL
 EPELOn || return 1
 read
 
@@ -33,15 +33,11 @@ read
 SelinuxOff
 read
 
-#4 Download NetDot
-cd /tmp
-wget http://netdot.uoregon.edu/pub/dists/netdot-1.0.7.tar.gz
-tar xzvf netdot-1.0.7.tar.gz -C /usr/local/src/
-read
+
 
 case "$OSVERSION" in
 	7)
-	#2 Install necessary packages
+	#2 Install prerequisite packages
 	yum install make gcc gcc-c++ autoconf automake rpm-build openssl-devel git perl perl-CPAN perl-Inline -y
 	read
 
@@ -49,25 +45,62 @@ case "$OSVERSION" in
 	wget --no-check-certificate https://www.dnssec-tools.org/download/dnssec-tools-2.1-1.fc22.src.rpm -O /tmp/dnssec-tools.src.rpm
 	rpmbuild --rebuild /tmp/dnssec-tools.src.rpm
 	cd ~/rpmbuild/RPMS/x86_64/
-	yum localinstall --nodeps dnssec-tools-*
-	read
-	#Try from FC21 or FC20
-	#5 Install Dependencies
-	yum install perl perl-CPAN graphviz-perl perl-Module-Build perl-CGI perl-DBI perl-NetAddr-IP freeradius-perl perl-Time-Local perl-Net-DNS perl-Text-ParseWords perl-Digest-SHA perl-Socket6 perl-DBD-MySQL
-	read
-	#6) Configure the SNMP Service
-	yum install net-snmp net-snmp-utils -y
+	rpm -ivh --nodeps dnssec-tools-*
 	read
 	
+	#4 Download NetDot
+	cd /usr/local/src/
+	git clone https://github.com/cvicente/Netdot.git netdot
+	
+	#5 Install Dependencies
+	cd netdot/
+	echo $NETDOTDB | make rpm-install
+	echo $NETDOTDB\n\n\n\nmake installdeps
+	read
+	
+	#6 Configure the SNMP Service
 	wget http://downloads.sourceforge.net/project/netdisco/netdisco-mibs/latest-snapshot/netdisco-mibs-snapshot.tar.gz -P /tmp
 	tar -zxf /tmp/netdisco-mibs-snapshot.tar.gz -C /usr/local/src
-	read
 	mkdir /usr/local/netdisco
 	mv /usr/local/src/netdisco-mibs /usr/local/netdisco/mibs
-	cp /usr/local/netdisco/mibs/snmp.conf /etc/snmp/
+#	cp /usr/local/netdisco/mibs/snmp.conf /etc/snmp/ # No way
+	service snmpd restart
+	read
+	
+	#7 Configure Database Settings for Netdot
+	cd /usr/local/src/netdot
+	cp etc/Default.conf etc/Site.conf
+	vim etc/Site.conf
+		#	Pay attention here
+		#	Change NETDOTNAME
+		#	Change DB_TYPE		mysql|Pg
+		#	Change DB_DBA
+		#		mysql	->	root
+		#		Pg	->	postgres
+		#	Change DB_DBA_PASSWORD
+		#	Change DB_PORT, if Pg to 5432
+		#	Change DB_NETDOT_PASS	123456
+
+	#8 Install Netdot
+#	make installdb
+#	make install
+
+	#9 Finish the Installation
+	cp /usr/local/netdot/etc/netdot_apache24_ldap.conf /etc/httpd/conf.d/netdot.conf 
+	vim /etc/httpd/conf.d/netdot.conf
+	service httpd restart
+	
+	#10 Set Up Cron Jobs
+	cp /usr/local/src/netdot/netdot.cron /etc/cron.d/netdot
 	read
 	;;
 	6)
+		#4 Download NetDot
+		cd /tmp
+		wget http://netdot.uoregon.edu/pub/dists/netdot-1.0.7.tar.gz
+		tar xzvf netdot-1.0.7.tar.gz -C /usr/local/src/
+		read
+		
 		#3) Download Netdisco mibs
 		wget http://ufpr.dl.sourceforge.net/project/netdisco/netdisco-mibs/1.5/netdisco-mibs-1.5.tar.gz
 		tar -xvf netdisco-mibs-1.5.tar.gz
