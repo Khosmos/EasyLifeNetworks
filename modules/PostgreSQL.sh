@@ -45,6 +45,9 @@ su - postgres -c "psql postgres -c \"ALTER USER $DBADMIN WITH PASSWORD '$DBADMIN
 
 #4) Configure pg_hba.conf
 su - postgres -c "cp /var/lib/pgsql/data/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf.old.$(date +%Y%m%d-%H%M%S)"
+# CentOs 6
+sed -i 's/host    all         all         127.0.0.1\/32          ident/host    all         all         127.0.0.1\/32          md5/g' /var/lib/pgsql/data/pg_hba.conf
+# CentOs 7
 sed -i 's/host    all             all             127.0.0.1\/32            ident/host    all         all 127.0.0.1\/32          md5/g' /var/lib/pgsql/data/pg_hba.conf
 service postgresql restart
 

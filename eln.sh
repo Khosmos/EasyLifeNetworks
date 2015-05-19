@@ -32,7 +32,7 @@ if [ $locat = $locid ]; then
 	    Steps='Variables Network SNMPD Logs LDAP Apache Monitorix DNSMasq MRTG Nagios RADIUS RadSecProxy Firewall Conntrack SSHD DenyHosts NTPD Postfix PostgreSQL PostgreSQLUp JavaJDK NetDot JavaOracle JBossAS NetDot Exit' 
 	while true ; do
 		clear
-	source $locid/confs/variables.sh
+#	source $locid/confs/variables.sh
 	  cat <<-EOF
 	  =========================================
 	  |         Easy Life for Networks        |

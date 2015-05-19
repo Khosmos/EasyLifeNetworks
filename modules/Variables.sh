@@ -33,6 +33,8 @@ read
 #vim $CFGFile
 #vim $1
 vim $CFGFile
+source $locid/confs/variables.sh
+
 
 echo Variables module finished
 echo 'Press <Enter> to exit'

@@ -12,6 +12,37 @@
 #
 #set -xv
 
+SetUpDB() { 
+	cd /usr/local/src/netdot
+	cp etc/Default.conf etc/Site.conf
+#	vim etc/Site.conf
+		cd etc
+		#	Change NETDOTNAME
+		sed -i "s/NETDOTNAME  => 'netdot.localdomain'/NETDOTNAME  => '$MACHINE.$DOMAINWIFI'/g" Site.conf	
+		#	Change DB_TYPE		mysql|Pg
+		sed -i "s/DB_TYPE =>  'mysql'/DB_TYPE =>  '$NETDOTDB'/g" Site.conf
+		#	Change DB_DBA
+		#		mysql	->	root
+		#		Pg	->	postgres
+		sed -i "s/DB_DBA          =>  'root'/DB_DBA          =>  '$DBADMIN'/g" Site.conf
+		#	Change DB_DBA_PASSWORD
+		sed -i "s/DB_DBA_PASSWORD =>  ''/DB_DBA_PASSWORD =>  '$DBADMINPASSWD'/g" Site.conf
+		#	Change DB_PORT, if Pg to 5432
+		sed -i "s/DB_PORT => ''/DB_PORT => '5432'/g" Site.conf
+		# 	Change DB_DATABASE =>  'netdot'
+		sed -i "s/DB_DATABASE =>  'netdot'/DB_DATABASE =>  '$NETDOTDBNAME'/g" Site.conf	
+		#	Change DB_NETDOT_USER =>  'netdot_user'
+		sed -i "s/DB_NETDOT_USER =>  'netdot_user'/DB_NETDOT_USER =>  '$NETDOTDBUSER'/g" Site.conf
+		#	Change DB_NETDOT_PASS	123456
+		sed -i "s/DB_NETDOT_PASS =>  'netdot_pass'/DB_NETDOT_PASS =>  '$NETDOTDBPASSWD'/g" Site.conf
+}
+
+InstallNetdot() {
+	cd /usr/local/src/netdot
+	make installdb
+	make install
+}
+
 cd /tmp
 clear
 
@@ -62,33 +93,11 @@ case $OSVERSION in
 	service snmpd restart
 	
 	#7 Configure Database Settings for Netdot
-	cd /usr/local/src/netdot
-	cp etc/Default.conf etc/Site.conf
-#	vim etc/Site.conf
-		cd etc
-		#	Change NETDOTNAME
-		sed -i "s/NETDOTNAME  => 'netdot.localdomain'/NETDOTNAME  => '$MACHINE.$DOMAINWIFI'/g" Site.conf	
-		#	Change DB_TYPE		mysql|Pg
-		sed -i "s/DB_TYPE =>  'mysql'/DB_TYPE =>  '$NETDOTDB'/g" Site.conf
-		#	Change DB_DBA
-		#		mysql	->	root
-		#		Pg	->	postgres
-		sed -i "s/DB_DBA          =>  'root'/DB_DBA          =>  '$DBADMIN'/g" Site.conf
-		#	Change DB_DBA_PASSWORD
-		sed -i "s/DB_DBA_PASSWORD =>  ''/DB_DBA_PASSWORD =>  '$DBADMINPASSWD'/g" Site.conf
-		#	Change DB_PORT, if Pg to 5432
-		sed -i "s/DB_PORT => ''/DB_PORT => '5432'/g" Site.conf
-		# 	Change DB_DATABASE =>  'netdot'
-		sed -i "s/DB_DATABASE =>  'netdot'/DB_DATABASE =>  '$NETDOTDBNAME'/g" Site.conf	
-		#	Change DB_NETDOT_USER =>  'netdot_user'
-		sed -i "s/DB_NETDOT_USER =>  'netdot_user'/DB_NETDOT_USER =>  '$NETDOTDBUSER'/g" Site.conf
-		#	Change DB_NETDOT_PASS	123456
-		sed -i "s/DB_NETDOT_PASS =>  'netdot_pass'/DB_NETDOT_PASS =>  '$NETDOTDBPASSWD'/g" Site.conf
+	SetUpDB
 
-		#8 Install Netdot
-		cd /usr/local/src/netdot
-		make installdb
-		make install
+	#8 Install Netdot
+	InstallNetdot
+
 
 	#9 Finish the Installation
 #	cp /usr/local/netdot/etc/netdot_apache2_ldap.conf /etc/httpd/conf.d/netdot.conf 
@@ -113,19 +122,42 @@ case $OSVERSION in
 		tar -xvf netdisco-mibs-1.5.tar.gz
 		mkdir /usr/share/netdisco/
 		mv netdisco-mibs-1.5/ /usr/share/netdisco/mibs
+		cp -p $ModDir/NetDot/snmp.conf /etc/snmp/
+		service snmpd restart
 		read
-		yum install httpd httpd-devel mod_perl mod_perl-devel perl-LDAP rrdtool gcc -y
+		
+		yum install perl perl-CPAN -y
+		wget http://pkgs.repoforge.org/perl-Net-DNS-ZoneFile-Fast/perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm
+		yum localinstall perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm -y
+		( echo $NETDOTDB; sleep 5; echo y ) | make rpm-install
+		read
+		#yum install perl-Net-Appliance-Session perl-Net-Patricia -y
+		read
+		yum install graphviz-devel graphviz-gd libapreq2-devel libpng-devel openssl-devel -y
+		( echo $NETDOTDB; echo yes ) | make installdeps
+		read
+		
+	#7 Configure Database Settings for Netdot
+	SetUpDB
+
+	#8 Install Netdot
+	InstallNetdot
+	read
+		
+		
+		
+#		yum install httpd httpd-devel mod_perl mod_perl-devel perl-LDAP rrdtool gcc -y
 		# DB-MYSQL or
 		#yum install mysql-client mysql-server -y
 		#DB-PG
-		yum install postgresql-server postgresql perl-DBD-Pg -y
+#		yum install postgresql-server postgresql perl-DBD-Pg -y
 		
-		yum install graphviz make  perl-CPAN  -y
-		yum install perl-CGI perl-Digest-SHA1 perl-GraphViz perl-Log-Dispatch perl-Log-Log4perl perl-Module-Build  perl-Net-DNS perl-Parallel-ForkManager perl-SNMP-Info perl-Socket6 perl-XML-Simple perl-Module-Build perl-Class-DBÂ  perl-Class-DBI-AbstractSearch perl-libapreq2 perl-HTML-Mason perl-Apache-Session perl-SQL-Translator perl-NetAddr-IP perl-Net-Patricia perl-Net-Appliance-Session  perl-Carp-Assert -y
+#		yum install graphviz make  perl-CPAN  -y
+#		yum install perl-CGI perl-Digest-SHA1 perl-GraphViz perl-Log-Dispatch perl-Log-Log4perl perl-Module-Build  perl-Net-DNS perl-Parallel-ForkManager perl-SNMP-Info perl-Socket6 perl-XML-Simple perl-Module-Build perl-Class-DBÂ  perl-Class-DBI-AbstractSearch perl-libapreq2 perl-HTML-Mason perl-Apache-Session perl-SQL-Translator perl-NetAddr-IP perl-Net-Patricia perl-Net-Appliance-Session  perl-Carp-Assert -y
 		#yum install  perl-NetAddr-IP
-		yum install graphviz-devel graphviz-gd libapreq2-devel libpng-devel openssl-devel -y
-		cd /usr/local/src/netdot-1.0.7/
-		echo Pg | make installdeps
+#		yum install graphviz-devel graphviz-gd libapreq2-devel libpng-devel openssl-devel -y
+#		cd /usr/local/src/netdot-1.0.7/
+#		echo Pg | make installdeps
 		#wget http://pkgs.repoforge.org/perl-Net-DNS-ZoneFile-Fast/perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm
 		#yum localinstall perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm -y
 		#For Mysql

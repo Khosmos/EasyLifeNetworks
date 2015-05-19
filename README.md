@@ -29,6 +29,7 @@ Automatic configuration with several modules:
     NTPD
     Postfix
     PostgreSQL
+    PostgreSQLUP - from developers repo
     JavaJDK
     JavaOracle
     JBossAS
