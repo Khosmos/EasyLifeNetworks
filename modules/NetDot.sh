@@ -71,6 +71,7 @@ case $OSVERSION in
 	wget --no-check-certificate https://www.dnssec-tools.org/download/dnssec-tools-2.1-1.fc22.src.rpm -O /tmp/dnssec-tools.src.rpm
 	rpmbuild --rebuild /tmp/dnssec-tools.src.rpm
 	cd ~/rpmbuild/RPMS/x86_64/
+
 	rpm -ivh --nodeps dnssec-tools-*
 	
 	#4 Download NetDot
@@ -129,6 +130,7 @@ case $OSVERSION in
 		yum install perl perl-CPAN -y
 		wget http://pkgs.repoforge.org/perl-Net-DNS-ZoneFile-Fast/perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm
 		yum localinstall perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm -y
+		cd /usr/local/src/netdot-1.0.7/
 		( echo $NETDOTDB; sleep 5; echo y ) | make rpm-install
 		read
 		#yum install perl-Net-Appliance-Session perl-Net-Patricia -y
