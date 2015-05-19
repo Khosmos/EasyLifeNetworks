@@ -5,7 +5,7 @@ LOGFILE="/var/log/eln.log"
 
 # [Linux]
 OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
-OSVERSION=`cut -d' ' -f4 /etc/redhat-release | cut -d'.' -f1` # Version
+OSVERSION=`cut -d' ' -f$(( \`cat /etc/redhat-release | wc -w\`-1 ))  /etc/redhat-release | cut -d. -f1`
 
 # [NetDot]
 NETDOTDB=Pg # Pg | mysql
