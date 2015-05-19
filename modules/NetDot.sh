@@ -10,7 +10,7 @@
 # John Doe
 # ...
 #
-set -xv
+#set -xv
 
 cd /tmp
 clear
@@ -27,38 +27,29 @@ whiptail --title "EasyLife Networks - NetDot" --msgbox \
 
 #1) Install/Check EPEL
 EPELOn || return 1
-read
 
 #2) Selinux
 SelinuxOff
-read
-
-
 
 case $OSVERSION in
 	7)
 	#2 Install prerequisite packages
 	yum install make gcc gcc-c++ autoconf automake rpm-build openssl-devel git perl perl-CPAN perl-Inline -y
-	read
 
 	#3 Install dnssec-tools
 	wget --no-check-certificate https://www.dnssec-tools.org/download/dnssec-tools-2.1-1.fc22.src.rpm -O /tmp/dnssec-tools.src.rpm
 	rpmbuild --rebuild /tmp/dnssec-tools.src.rpm
 	cd ~/rpmbuild/RPMS/x86_64/
 	rpm -ivh --nodeps dnssec-tools-*
-	read
 	
 	#4 Download NetDot
 	cd /usr/local/src/
 	git clone https://github.com/cvicente/Netdot.git netdot
-	read
 	
 	#5 Install Dependencies
 	cd netdot/
 	( echo $NETDOTDB; sleep 5; echo y ) | make rpm-install
-	read
 	( echo $NETDOTDB; echo yes ) | make installdeps
-	read
 	
 	#6 Configure the SNMP Service
 	cd /tmp
@@ -69,7 +60,6 @@ case $OSVERSION in
 	cp -p $ModDir/NetDot/snmp.conf /etc/snmp/
 #	cp /usr/local/netdisco/mibs/snmp.conf /etc/snmp/ # No way
 	service snmpd restart
-	read
 	
 	#7 Configure Database Settings for Netdot
 	cd /usr/local/src/netdot
@@ -77,46 +67,40 @@ case $OSVERSION in
 #	vim etc/Site.conf
 		cd etc
 		#	Change NETDOTNAME
-		sed -i "s/NETDOTNAME  => 'netdot.localdomain'/NETDOTNAME  => '$MACHINE.$DOMAINWIFI'/g Site.conf
-		
+		sed -i "s/NETDOTNAME  => 'netdot.localdomain'/NETDOTNAME  => '$MACHINE.$DOMAINWIFI'/g" Site.conf	
 		#	Change DB_TYPE		mysql|Pg
 		sed -i "s/DB_TYPE =>  'mysql'/DB_TYPE =>  '$NETDOTDB'/g" Site.conf
-		
 		#	Change DB_DBA
 		#		mysql	->	root
 		#		Pg	->	postgres
 		sed -i "s/DB_DBA          =>  'root'/DB_DBA          =>  '$DBADMIN'/g" Site.conf
-
 		#	Change DB_DBA_PASSWORD
 		sed -i "s/DB_DBA_PASSWORD =>  ''/DB_DBA_PASSWORD =>  '$DBADMINPASSWD'/g" Site.conf
-		
 		#	Change DB_PORT, if Pg to 5432
 		sed -i "s/DB_PORT => ''/DB_PORT => '5432'/g" Site.conf
-		
 		# 	Change DB_DATABASE =>  'netdot'
-		sed -i "s/DB_DATABASE =>  'netdot'/DB_DATABASE =>  '$NETDOTDBNAME'/g" Site.conf
-			
+		sed -i "s/DB_DATABASE =>  'netdot'/DB_DATABASE =>  '$NETDOTDBNAME'/g" Site.conf	
 		#	Change DB_NETDOT_USER =>  'netdot_user'
 		sed -i "s/DB_NETDOT_USER =>  'netdot_user'/DB_NETDOT_USER =>  '$NETDOTDBUSER'/g" Site.conf
-			
 		#	Change DB_NETDOT_PASS	123456
-		sed -i "s/DB_NETDOT_PASS =>  ''/DB_NETDOT_PASS =>  '$NETDOTDBPASSWD'/g" Site.conf
-	read
+		sed -i "s/DB_NETDOT_PASS =>  'netdot_pass'/DB_NETDOT_PASS =>  '$NETDOTDBPASSWD'/g" Site.conf
 
-	#8 Install Netdot
+		#8 Install Netdot
 		cd /usr/local/src/netdot
-		#	make installdb
-#	make install
+		make installdb
+		make install
 
 	#9 Finish the Installation
-	cp /usr/local/netdot/etc/netdot_apache24_ldap.conf /etc/httpd/conf.d/netdot.conf 
-	vim /etc/httpd/conf.d/netdot.conf
+#	cp /usr/local/netdot/etc/netdot_apache2_ldap.conf /etc/httpd/conf.d/netdot.conf 
+	cp /usr/local/netdot/etc/netdot_apache24_local.conf /etc/httpd/conf.d/netdot.conf
+	#vim /etc/httpd/conf.d/netdot.conf
 	service httpd restart
 	
 	#10 Set Up Cron Jobs
 	cp /usr/local/src/netdot/netdot.cron /etc/cron.d/netdot
-	read
 	;;
+	
+	
 	6)
 		#4 Download NetDot
 		cd /tmp
