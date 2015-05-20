@@ -10,9 +10,7 @@
 # John Doe
 # ...
 #
-set -xv
-. /home/cosmefc/EasyLifeNetworks/lib/common/displaymsg.sh
-. /home/cosmefc/EasyLifeNetworks/lib/common/displayyn.sh
+#set -xv
 
 SetUpDB() { 
 	cd /usr/local/src/netdot
@@ -65,12 +63,10 @@ DisplayYN "Requirements" \
 You must choice:
 Continue, if everything is ok, or 
 Cancel, to resolve these itens.' \
-'Continue' 'Cancel'
-[[ $? ]] && return 1
-read
+'Continue' 'Cancel'|| exit 1
 
 #1) Install/Check EPEL
-EPELOn || return 1
+EPELOn || exit 1
 
 #2) Selinux
 SelinuxOff
@@ -163,8 +159,12 @@ case $OSVERSION in
 	
 	#9 SetUp Cron	
 	cp /usr/local/src/netdot/netdot.cron /etc/cron.d/netdot
-
-	read
-
-		;;
+	;;
 esac
+DisplayMsg "EasyLife Networks - NetDot" \
+'Installation finished.
+You can access with http://127.0.0.1/netdot
+
+admin admin
+
+You MUST change the password'

@@ -51,7 +51,7 @@ if [ $locat = $locid ]; then
 	      ;;
 	    *)
 	      source $ModDir$Step.sh
-		[[ $? != 0 ]] && return 1
+		[[ $? != 0 ]] && exit 1
 
 	      ;;
 	   esac
