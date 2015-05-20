@@ -116,6 +116,7 @@ case $OSVERSION in
 		cd /tmp
 		wget http://netdot.uoregon.edu/pub/dists/netdot-1.0.7.tar.gz
 		tar xzvf netdot-1.0.7.tar.gz -C /usr/local/src/
+		mv /usr/local/src/netdot-1.0.7/ /usr/local/src/netdot/
 		read
 		
 		#3) Download Netdisco mibs
@@ -128,12 +129,15 @@ case $OSVERSION in
 		read
 		
 		yum install perl perl-CPAN -y
+		cd /tmp
 		wget http://pkgs.repoforge.org/perl-Net-DNS-ZoneFile-Fast/perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm
 		yum localinstall perl-Net-DNS-ZoneFile-Fast-1.12-1.el6.rf.noarch.rpm -y
-		cd /usr/local/src/netdot-1.0.7/
+		yum install httpd httpd-devel mod_perl mod_perl-devel perl-LDAP rrdtool gcc -y
+		cd /usr/local/src/netdot/
 		( echo $NETDOTDB; sleep 5; echo y ) | make rpm-install
 		read
 		#yum install perl-Net-Appliance-Session perl-Net-Patricia -y
+		
 		read
 		yum install graphviz-devel graphviz-gd libapreq2-devel libpng-devel openssl-devel -y
 		( echo $NETDOTDB; echo yes ) | make installdeps
