@@ -14,24 +14,13 @@
 
 clear
 
-
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-               DenyHosts Module
-
-  This module will:
-  *) Install DenyHosts
-  *) Copy Templates
-  *) Setup Denyhosts
-  *) Setup Logrotate
-  *) Setup Start
-
-  Press <Enter> to continue
-
-EOF
-read
+DisplayMsg "EasyLife Networks - DenyHosts" \
+'This module will:
+ 1) Install DenyHosts
+ 2) Copy Templates
+ 3) Setup Denyhosts
+ 4) Setup Logrotate
+ 5) Setup Start'
 
 #1 Install DenyHosts
 yum install denyhosts -y

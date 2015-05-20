@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130917
+# Version 20150520
 #
 # Apache Module
 #
@@ -14,21 +14,10 @@
 
 clear
 
-
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                Apache Module
-
-  This module will:
-  *) Install Apache
-  *) Start Apache
-
-    Press <Enter> to continue
-
-EOF
-read
+DisplayMsg "EasyLife Networks - Apache" \
+'This module will:
+ 1) Install Apache
+ 2) Start Apache'
 
 #1 Install Apache
 yum install httpd httpd-tools mod_authz_ldap  -y

@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150517
+# Version 20150520
 #
 # NetDot module
 #
@@ -11,11 +11,12 @@
 # ...
 #
 set -xv
+. /home/cosmefc/EasyLifeNetworks/lib/common/displaymsg.sh
+. /home/cosmefc/EasyLifeNetworks/lib/common/displayyn.sh
 
 SetUpDB() { 
 	cd /usr/local/src/netdot
 	cp etc/Default.conf etc/Site.conf
-#	vim etc/Site.conf
 		cd etc
 		#	Change NETDOTNAME
 		sed -i "s/NETDOTNAME  => 'netdot.localdomain'/NETDOTNAME  => '$MACHINE.$DOMAINWIFI'/g" Site.conf	
@@ -45,16 +46,28 @@ InstallNetdot() {
 
 cd /tmp
 clear
-
-whiptail --title "EasyLife Networks - NetDot" --msgbox \
-"This module will:\n\
- 1) Install EPEL\n\
- 2) Install necessary packages\n\
- 3) Install dnssec-tools\n\
- 4) Download NetDot\n\
- 5) Install Dependencies\n
+DisplayMsg "EasyLife Networks - NetDot" \
+'This module will:
+ 1) Install EPEL
+ 2) Install necessary packages
+ 3) Install dnssec-tools
+ 4) Download NetDot
+ 5) Install Dependencies
  6) Configure the SNMP Service
- 7) Copy Scripts " 13 78
+ 7) Copy Scripts'
+ 
+DisplayYN "Requirements" \
+'This module requires:
+- SNMPD
+- Apache
+- PostgreSQL
+
+You must choice:
+Continue, if everything is ok, or 
+Cancel, to resolve these itens.' \
+'Continue' 'Cancel'
+[[ $? ]] && return 1
+read
 
 #1) Install/Check EPEL
 EPELOn || return 1

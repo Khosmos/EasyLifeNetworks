@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130819
+# Version 20150520
 #
 # Variables module
 #
@@ -13,25 +13,10 @@
 #set -xv        
 
 clear
+DisplayMsg "EasyLife Networks - Variables" \
+' There are a lot of necessary information.
+  You must setup the variables by yourself.'
 
-
-cat <<-EOF
-
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                Variables Module
-
-  There are a lot of necessary informations.
-  You must setup the variables by yourself.
-
-  Press <Enter> key
-
-EOF
-
-read
-#vim $CFGFile
-#vim $1
 vim $CFGFile
 source $locid/confs/variables.sh
 

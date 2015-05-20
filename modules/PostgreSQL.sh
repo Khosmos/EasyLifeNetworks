@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150517
+# Version 20150520
 #
 # PostgreSQL module from distribuition
 #
@@ -10,26 +10,14 @@
 # 
 # ...
 #
-set -xv
-
+#set -xv
 clear
-
-cat <<-EOF
-=========================================
-| Easy Life for Networks |
-=========================================
-PostgreSQL Module
-
-This module will:
-1) Install PostgreSQL
-2) Initial setup PostgreSQL
-3) Configure password for user postgres
-4) Configure pg_hba.conf
-
-Press <Enter> to continue
-EOF
-
-read
+DisplayMsg "EasyLife Networks - PostgreSQL" \
+'This module will:
+ 1) Install PostgreSQL
+ 2) Initial setup PostgreSQL
+ 3) Configure password for user postgres
+ 4) Configure pg_hba.conf'
 
 #1) Install PostgreSQL
 yum install postgresql-server postgresql perl-DBD-Pg -y 

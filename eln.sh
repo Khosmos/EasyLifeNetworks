@@ -2,7 +2,7 @@
 # Easy Life Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150508
+# Version 20150520
 #
 # Cosme Faria Corrêa
 # Caio Gagliano Vieira
@@ -23,7 +23,6 @@ source $locid/confs/variables.sh
 IsRoot || return 1
 IsGoodOS || return 1
 source $locid/modules/Base.sh
-
 
 # Start Variables
 if [ $locat = $locid ]; then
@@ -51,7 +50,7 @@ if [ $locat = $locid ]; then
 	      exit
 	      ;;
 	    *)
-	      . $ModDir$Step.sh
+	      source $ModDir$Step.sh
 		[[ $? != 0 ]] && return 1
 
 	      ;;

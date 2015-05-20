@@ -14,21 +14,10 @@
 
 clear
 
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                DNSMasq Module
-
-  This module will:
-  *) Install packets for DNSMasq
-  *) Setup DNSMasq
-
-  Press <Enter> to continue
-
-EOF
-
-read
+DisplayMsg "EasyLife Networks - DNSMasq" \
+'This module will:
+ 1) Install packets for DNSMasq
+ 2) Setup DNSMasq'
 
 # Install DNSMasq
 yum install dnsmasq -y
