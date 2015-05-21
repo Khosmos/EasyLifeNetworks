@@ -165,6 +165,7 @@ DisplayMsg "EasyLife Networks - NetDot" \
 'Installation finished.
 You can access with http://127.0.0.1/netdot
 
+Credentials:
 admin admin
 
 You MUST change the password'
