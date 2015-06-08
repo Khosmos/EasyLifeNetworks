@@ -7,6 +7,26 @@ LOGFILE="/var/log/eln.log"
 OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
 OSVERSION=`cut -d' ' -f$(( \`cat /etc/redhat-release | wc -w\`-1 ))  /etc/redhat-release | cut -d. -f1`
 
+# [Network]
+MACHINE=wifi # Machine name 
+DOMAIN=uff.br # Domain name 
+DOMAINWIFI=wifi.uff.br # Wifi Domain name
+FQDN=$MACHINE'.'$DOMAIN # Machine name + . + Domain name
+EXTINT=eth0 # External Interface
+EXTIP=10.0.0.5 # External IP Address
+EXTMASK=255.255.255.0 # External IP Mask
+EXTMASKB=`echo "obase=2;"${EXTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # External IP Mask bit format
+INTINT=eth1 # Internal Interface
+INTIP=192.168.122.227 # Interface IP Address
+INTMASK=255.255.255.0 # Interface IP Mask
+INTMASKB=`echo "obase=2;"${INTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Internal IP Mask bit format
+MONINT=eth2 # Monitoring interface
+MONIP=172.30.255.22 # Monitoring IP Address
+MONMASK=255.255.0.0 # Monitoring IP Mask
+MONMASKB=`echo "obase=2;"${MONMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Monitoring IP Mask bit format
+NINTERFACES=2 # 2|3 - If 3 we ignore MONINT
+DNSSERVER=10.0.0.1
+
 # [NetDot]
 NETDOTDB=Pg # Pg | mysql
 NETDOTDBNAME=netdot # NetDot database name
@@ -42,15 +62,6 @@ SCIFIDBPASSWD='EasyLifeNetworks' # password for default database user "EasyLifeN
 # JBossAS
 JBOSSPASSWD='JBAs_711.' # password for default user "jboss" to access jboss administrative interface and linux user "jboss".
 
-# Network
-MACHINE=wifi # Machine name 
-DOMAIN=uff.br # Domain name 
-DOMAINWIFI=wifi.uff.br # Wifi Domain name
-FQDN=$MACHINE'.'$DOMAIN # Machine name + . + Domain name
-EXTIP=192.168.122.229 # External IP
-EXTMASK=255.255.255.0 # External IP MASK
-EXTINT=eth0 # External Interface
-INTINT=eth1 # Internal Interface
 IGNAME=InternetGateway # Internet gateway name
 IGIP=10.0.0.1 # Internet gateway IP
 
@@ -117,8 +128,8 @@ SSHDUSERS='cosmefc johndoe' # users list with ssh right
 
 # Denyhosts
 LOCKTIME=4h # Deny Hosts lock time
-# Postfix
 
+# Postfix
 RELAYHOST=mxrelay.uff.br
 RELAYACC=manezinho
 RELAYPASSWD=segredo
