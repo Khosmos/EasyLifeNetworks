@@ -60,19 +60,19 @@ for i in $ETHERINT; do
 IFS=$c
 
 #2 Setup Internal Interface
-nmcli connection modify $INT[1] ipv4.addresses "$INTIP"'/'"$INTMASKB"
-nmcli connection modify $INT[1] ipv4.method "manual"
+nmcli connection modify '$INT[1]' ipv4.addresses "$INTIP"'/'"$INTMASKB"
+nmcli connection modify '$INT[1]' ipv4.method "manual"
 
 #3 Setup External Interface
-nmcli connection modify $INT[2] ipv4.addresses "$EXTIP"'/'"$EXTMASKB"
-nmcli connection modify $INT[2] ipv4.method "manual"
-nmcli connection modify $INT[2] ipv4.gateway "$IGIP"
-nmcli connection modify $INT[2] ipv4.dns "$DNSSERVER"
+nmcli connection modify '$INT[2]' ipv4.addresses "$EXTIP"'/'"$EXTMASKB"
+nmcli connection modify '$INT[2]' ipv4.method "manual"
+nmcli connection modify '$INT[2]' ipv4.gateway "$IGIP"
+nmcli connection modify '$INT[2]' ipv4.dns "$DNSSERVER"
 
 #4 Setup Monitoring Interface
 if [ $NOI -ge 3 ]; then
-    nmcli connection modify $INT[3] ipv4.addresses "$MONIP"'/'"$MONMASKB"
-    nmcli connection modify $INT[3] ipv4.method "manual"
+    nmcli connection modify '$INT[3]' ipv4.addresses "$MONIP"'/'"$MONMASKB"
+    nmcli connection modify '$INT[3]' ipv4.method "manual"
 fi
  
 echo "$INTIP $MACHINE.$DOMAINWIFI" >> /etc/hosts
