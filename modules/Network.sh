@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150607
+# Version 20150608
 #
 # Network module
 #
@@ -10,10 +10,7 @@
 # John Doe
 # ...
 #
-#set -xv        
-
-. ../confs/variables.sh
-for src in ../lib/common/*.sh; do source "$src"; done
+#set -xv
 
 clear
 TAIL=''
@@ -59,25 +56,29 @@ for i in $ETHERINT; do
 done
 IFS=$c
 
-#2 Setup Internal Interface
-nmcli connection modify "${INT[1]}" ipv4.addresses "$INTIP""/""$INTMASKB"
-nmcli connection modify "${INT[1]}" ipv4.method "manual"
+#2 Setup External Interface
+nmcli connection delete "${INT[1]}"
+nmcli connection add type ethernet con-name "${INT[1]}" ifname $EXTINT ip4 "$EXTIP""/""$EXTMASKB" gw4 "$IGIP"
+nmcli connection modify "${INT[1]}" ipv4.dns "$DNSSERVER"
+nmcli connection modify "${INT[1]}" ipv6.method ignore # Turn off ipv6
 
-#3 Setup External Interface
-nmcli connection modify "${INT[2]}" ipv4.addresses "$EXTIP""/""$EXTMASKB"
-nmcli connection modify "${INT[2]}" ipv4.method "manual"
-nmcli connection modify "${INT[2]}" ipv4.gateway "$IGIP"
-nmcli connection modify "${INT[2]}" ipv4.dns "$DNSSERVER"
+#3 Setup Internal Interface
+nmcli connection delete "${INT[2]}"
+nmcli connection add type ethernet con-name "${INT[2]}" ifname $INTINT ip4 "$INTIP""/""$INTMASKB"
+nmcli connection modify "${INT[2]}" ipv6.method ignore # Turn off ipv6
 
 #4 Setup Monitoring Interface
 if [ $NOI -ge 3 ]; then
-    nmcli connection modify "{$INT[3]}" ipv4.addresses "$MONIP""/""$MONMASKB"
-    nmcli connection modify "{$INT[3]}" ipv4.method "manual"
+    nmcli connection delete "${INT[3]}"
+    nmcli connection add type ethernet con-name "${INT[3]}" ifname $MONINT ip4 "$MONIP""/""$MONMASKB"
+    nmcli connection modify "${INT[3]}" ipv6.method ignore # Turn off ipv6
 fi
+
+#5 Setup hostname
+hostnamectl set-hostname $MACHINE.$DOMAINWIFI
+#nmcli general hostname $MACHINE.$DOMAINWIFI
  
 echo "$INTIP $MACHINE.$DOMAINWIFI" >> /etc/hosts
-read
 
 echo  'Press <Enter> key'
 read
-

@@ -8,7 +8,7 @@ OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
 OSVERSION=`cut -d' ' -f$(( \`cat /etc/redhat-release | wc -w\`-1 ))  /etc/redhat-release | cut -d. -f1`
 
 # [Network]
-MACHINE=wifi # Machine name 
+MACHINE=wifi # Machine name
 DOMAIN=uff.br # Domain name 
 DOMAINWIFI=wifi.uff.br # Wifi Domain name
 FQDN=$MACHINE'.'$DOMAIN # Machine name + . + Domain name
