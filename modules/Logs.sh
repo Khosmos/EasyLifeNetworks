@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130913
+# Version 20150608
 #
 # LogRotate module
 #
@@ -13,31 +13,23 @@
 # set -xv        
 
 clear
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                  LogRotate Module
 
-  This module will:
-  *) Setup rsyslog
-  *) Install LogRotate
-  *) Setup LogRotate
+DisplayMsg "EasyLife Networks - LogRotate" \
+'This module will:
+ 1) Setup rsyslog
+ 2) Install LogRotate
+ 3) Setup LogRotate'
 
-  Press <Enter> to continue
-
-EOF
-read
-
-#0 Setup rsyslog
+#1 Setup rsyslog
+yum install rsyslog -y
 mv /etc/rsyslog.conf /etc/rsyslog.conf.`date +%Y%m%d-%H%M%S`
-cp -p "$ModDir"Logs/rsyslog.conf /etc/
+cp -p "$ModDir"Logs/rsyslog$OSVERSION.conf /etc/rsyslog.conf
 
-#1 Install LogRotate
+#2 Install LogRotate
 echo Installing LogRotate
 yum install logrotate -y 
 
-#2 Setup LogRotate
+#3 Setup LogRotate
 mv /etc/logrotate.conf /etc/logrotate.conf.`date +%Y%m%d-%H%M%S`
 cp $ModDir/Logs/logrotate.conf /etc/
 sed -i s/DURATION/$DURATION/g /etc/logrotate.conf

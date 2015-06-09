@@ -1,6 +1,6 @@
 #!/bin/bash
 # Initial information
-VERSION="20150508"
+VERSION="20150608"
 LOGFILE="/var/log/eln.log"
 
 # [Linux]
@@ -25,7 +25,9 @@ MONIP=172.30.255.22 # Monitoring IP Address
 MONMASK=255.255.0.0 # Monitoring IP Mask
 MONMASKB=`echo "obase=2;"${MONMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Monitoring IP Mask bit format
 NINTERFACES=2 # 2|3 - If 3 we ignore MONINT
-DNSSERVER=10.0.0.1
+DNSSERVER=75.75.75.75
+IGNAME=InternetGateway # Internet gateway name
+IGIP=10.0.0.1 # Internet gateway IP
 
 # [NetDot]
 NETDOTDB=Pg # Pg | mysql
@@ -37,6 +39,11 @@ NETDOTDBPASSWD=123456 # NetDot database user password
 DBADMIN=postgres # PostgreSQL admin account
 DBADMINPASSWD=123456 # PostgreSQL admin account password
 
+# [SNMPD]
+SYSLOCATION='Data Center'
+
+# [LOG]
+DURATION=104 # Weeks to retain logs. Two years.
 
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
@@ -61,12 +68,6 @@ SCIFIDBPASSWD='EasyLifeNetworks' # password for default database user "EasyLifeN
 
 # JBossAS
 JBOSSPASSWD='JBAs_711.' # password for default user "jboss" to access jboss administrative interface and linux user "jboss".
-
-IGNAME=InternetGateway # Internet gateway name
-IGIP=10.0.0.1 # Internet gateway IP
-
-# SNMPD
-SYSLOCATION='Data Center'
 
 # LDAP
 LDAPSERVER=127.0.0.1 # LDAP server
@@ -117,9 +118,6 @@ RADIUSPASS=Taioba # Radius password
 
 # Shibboleth
 SHIBPASS=BeterrabaDoce # Shib password
-
-# LOG
-DURATION=104 # Weeks to retain logs. Two years.
 
 # SSH
 SSHDAUTH=u # SSHD authenticated - If you have right to use (u)sers or (g)roup you must belong a group
