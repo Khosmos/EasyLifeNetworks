@@ -1,0 +1,16 @@
+dn: olcOverlay={0}memberof
+objectClass: olcOverlayConfig
+objectClass: olcMemberOf
+olcOverlay: {0}memberof
+olcMemberOfDangling: ignore
+olcMemberOfRefInt: TRUE
+olcMemberOfGroupOC: groupOfNames
+olcMemberOfMemberAD: member
+olcMemberOfMemberOfAD: memberOf
+structuralObjectClass: olcMemberOf
+entryUUID: 543ecaee-a4a3-1034-8b5c-0d74bb5afa2c
+creatorsName: cn=config
+createTimestamp: 20150611163326Z
+entryCSN: 20150611163326.393327Z#000000#001#000000
+modifiersName: cn=config
+modifyTimestamp: 20150611163326Z

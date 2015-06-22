@@ -1,0 +1,80 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 1a9081a1
+dn: cn={14}breduperson
+objectClass: olcSchemaConfig
+cn: {14}breduperson
+olcAttributeTypes: {0}( 1.3.6.1.4.1.15996.100.1.1.1.1 NAME ( 'brPersonCPF' 'br
+ cpf' ) DESC 'Cadastro Pessoa Fisica' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {1}( 1.3.6.1.4.1.15996.100.1.1.1.2 NAME ( 'brPersonPassport
+ ' 'brpassport' ) DESC 'Numero do passaporte' EQUALITY caseIgnoreMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {2}( 1.3.6.1.4.1.15996.100.1.1.2.1 NAME ( 'brEduAffiliation
+ Type' 'brafftype' ) DESC 'Tipo de vinculo com a instituicao' EQUALITY caseIgn
+ oreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {3}( 1.3.6.1.4.1.15996.100.1.1.2.2 NAME ( 'brEntranceDate' 
+ 'brentr' ) DESC 'Data de inicio do vinculo com a instituicao' SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: {4}( 1.3.6.1.4.1.15996.100.1.1.2.3 NAME ( 'brExitDate' 'bre
+ xit' ) DESC 'Data de fim do vinculo com a instituicao' SYNTAX 1.3.6.1.4.1.146
+ 6.115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: {5}( 1.3.6.1.4.1.15996.100.1.1.2.4 NAME ( 'brEduAffiliation
+ ' 'braff' ) DESC 'Identificador unico de um vinculo com a instituicao' EQUALI
+ TY IntegerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {6}( 1.3.6.1.4.1.15996.100.1.1.3.1 NAME ( 'brCaptureDate' '
+ brcapt' ) DESC 'Data de captura do dado biometrico da pessoa' SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: {7}( 1.3.6.1.4.1.15996.100.1.1.3.2 NAME ( 'brBiometricSourc
+ e' 'brbiosrc' ) DESC 'Fonte biometrica da pessoa' EQUALITY caseIgnoreMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {8}( 1.3.6.1.4.1.15996.100.1.1.3.3 NAME ( 'brBiometricData'
+  'brbiodata' ) DESC 'Dado capturado de uma fonte biometrica da pessoa' SYNTAX
+  1.3.6.1.4.1.1466.115.121.1.5 )
+olcAttributeTypes: {9}( 1.3.6.1.4.1.15996.100.1.1.4.1 NAME ( 'brEduVoIPalias' 
+ 'brvoipalias' ) DESC 'Numero do telefone IP' EQUALITY numericStringMatch SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: {10}( 1.3.6.1.4.1.15996.100.1.1.4.2 NAME ( 'brEduVoIPtype' 
+ 'brvoiptype' ) DESC 'Tipo do telefone IP' EQUALITY caseIgnoreMatch SYNTAX 1.3
+ .6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {11}( 1.3.6.1.4.1.15996.100.1.1.4.3 NAME ( 'brEduVoIPadmin'
+  'brvoipadmin' ) DESC 'Administrador responsavel por telefone VoIP' EQUALITY 
+ distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 )
+olcAttributeTypes: {12}( 1.3.6.1.4.1.15996.100.1.1.4.4 NAME ( 'brEduVoIPcallfo
+ rward' 'brvoipfwr' ) DESC 'Numero do telefone comum para redirecao de chamada
+ ' SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 )
+olcAttributeTypes: {13}( 1.3.6.1.4.1.15996.100.1.1.4.5 NAME ( 'brEduVoIPaddres
+ s' 'brvoipaddr' ) DESC 'Endereco IP do telefone' SYNTAX 1.3.6.1.4.1.1466.115.
+ 121.1.26{128} )
+olcAttributeTypes: {14}( 1.3.6.1.4.1.15996.100.1.1.4.6 NAME ( 'brEduVoIPexpiry
+ Date' 'brvoipexpiry' ) DESC 'Data de expiracao do telefone IP' SYNTAX 1.3.6.1
+ .4.1.1466.115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: {15}( 1.3.6.1.4.1.15996.100.1.1.4.7 NAME ( 'brEduVoIPbalanc
+ e' 'brvoipbalance' ) DESC 'Creditos restantes em um telefone IP (em segundos)
+ ' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {16}( 1.3.6.1.4.1.15996.100.1.1.4.8 NAME ( 'brEduVoIPcredit
+ ' 'brvoipcredit' ) DESC 'Total de creditos do usuario (em segundos)' SYNTAX 1
+ .3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {17}( 1.3.6.1.4.1.15996.100.1.1.4.9 NAME ( 'brEduVoIPPhone'
+  'brvoipphone' ) DESC 'Identificador unico de telefone' EQUALITY IntegerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcObjectClasses: {0}( 1.3.6.1.4.1.15996.100.1.2.1 NAME 'brPerson' DESC 'Atrib
+ utos sobre pessoas nascidas ou residentes no Brasil, nao se restringe somente
+  ao ambito educacional' SUP top AUXILIARY MAY ( brcpf $ brpassport ) )
+olcObjectClasses: {1}( 1.3.6.1.4.1.15996.100.1.2.2 NAME 'brEduPerson' DESC 'At
+ ributos referentes a uma pessoa com insercao em instituicao brasileira de ens
+ ino ou pesquisa' SUP top STRUCTURAL MUST ( braff $ brafftype ) MAY ( brentr $
+  brexit ) )
+olcObjectClasses: {2}( 1.3.6.1.4.1.15996.100.1.2.3 NAME 'brBiometricData' DESC
+  'Atributos sobre dados biometricos das pessoas' SUP top STRUCTURAL MUST ( br
+ biosrc $ brbiodata ) MAY brcapt )
+olcObjectClasses: {3}( 1.3.6.1.4.1.15996.100.1.2.4 NAME 'brEduVoIP' DESC 'Atri
+ butos com dados relativos a um telefone IP' SUP top STRUCTURAL MUST ( brvoipp
+ hone $ brvoipalias $ brvoiptype $ brvoipadmin ) MAY ( brvoipfwr $ brvoipaddr 
+ $ brvoipexpiry $ brvoipbalance $ brvoipcredit ) )
+structuralObjectClass: olcSchemaConfig
+entryUUID: 543ea582-a4a3-1034-8b54-0d74bb5afa2c
+creatorsName: cn=config
+createTimestamp: 20150611163326Z
+entryCSN: 20150611163326.393327Z#000000#001#000000
+modifiersName: cn=config
+modifyTimestamp: 20150611163326Z

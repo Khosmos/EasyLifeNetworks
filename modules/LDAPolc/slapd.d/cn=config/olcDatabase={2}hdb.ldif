@@ -1,0 +1,102 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 f0f42a0c
+dn: olcDatabase={2}hdb
+objectClass: olcDatabaseConfig
+objectClass: olcHdbConfig
+olcDatabase: {2}hdb
+olcSuffix: dc=uff,dc=br
+olcAccess: {0}to attrs=userPassword,shadowFlag,shadowMax,shadowExpire,shadowIn
+ active,shadowLastChange,shadowMin,shadowWarning,sambaLMPassword,sambaNTPasswo
+ rd  by dn.base="cn=Manager,dc=uff,dc=br" write  by dn.base="cn=leitor-shib,dc
+ =uff,dc=br" read  by self write  by anonymous auth  by * none
+olcAccess: {1}to dn.base=""  by * read
+olcAccess: {2}to *  by dn.base="cn=manager,dc=uff,dc=br" write  by dn.base="cn
+ =eid-user,dc=uff,dc=br" write  by * read
+olcAddContentAcl: FALSE
+olcLastMod: TRUE
+olcMaxDerefDepth: 15
+olcReadOnly: FALSE
+olcRootDN: cn=Manager,dc=uff,dc=br
+olcRootPW:: QmF0YXRh
+olcSyncUseSubentry: FALSE
+olcSyncrepl: rid=001 provider=ldap://xldap1.uff.br:389/ bindmethod=simple time
+ out=0 network-timeout=0 binddn="cn=manager,dc=uff,dc=br" credentials="Maravil
+ hoza2007." keepalive=0:0:0 starttls=no filter="(objectclass=*)" searchbase="d
+ c=uff,dc=br" scope=sub attrs="*,+" schemachecking=off type=refreshAndPersist 
+ retry="5 5 300 +"
+olcMirrorMode: TRUE
+olcMonitoring: TRUE
+olcDbDirectory: /var/lib/ldap
+olcDbCacheSize: 1000
+olcDbCheckpoint: 1024 15
+olcDbConfig: {0}# $OpenLDAP$
+olcDbConfig: {1}# Example DB_CONFIG file for use with slapd(8) BDB/HDB databas
+ es.
+olcDbConfig: {2}#
+olcDbConfig: {3}# See the Oracle Berkeley DB documentation
+olcDbConfig: {4}#   <http://www.oracle.com/technology/documentation/berkeley-d
+ b/db/ref/env/db_config.html>
+olcDbConfig: {5}# for detail description of DB_CONFIG syntax and semantics.
+olcDbConfig: {6}#
+olcDbConfig: {7}# Hints can also be found in the OpenLDAP Software FAQ
+olcDbConfig:: ezh9Iwk8aHR0cDovL3d3dy5vcGVubGRhcC5vcmcvZmFxL2luZGV4LmNnaT9maWxl
+ PTI+
+olcDbConfig: {9}# in particular:
+olcDbConfig: {10}#   <http://www.openldap.org/faq/index.cgi?file=1075>
+olcDbConfig: {11}
+olcDbConfig: {12}# Note: most DB_CONFIG settings will take effect only upon re
+ building
+olcDbConfig: {13}# the DB environment.
+olcDbConfig: {14}
+olcDbConfig: {15}# one 0.25 GB cache
+olcDbConfig: {16}set_cachesize 0 268435456 1
+olcDbConfig: {17}
+olcDbConfig: {18}# Data Directory
+olcDbConfig: {19}#set_data_dir db
+olcDbConfig: {20}
+olcDbConfig: {21}# Transaction Log settings
+olcDbConfig: {22}set_lg_regionmax 262144
+olcDbConfig: {23}set_lg_bsize 2097152
+olcDbConfig: {24}#set_lg_dir logs
+olcDbConfig: {25}
+olcDbConfig: {26}# Note: special DB_CONFIG flags are no longer needed for "qui
+ ck"
+olcDbConfig:: ezI3fSMgc2xhcGFkZCg4KSBvciBzbGFwaW5kZXgoOCkgYWNjZXNzIChzZWUgdGhl
+ aXIgLXEgb3B0aW9uKS4g
+olcDbNoSync: FALSE
+olcDbDirtyRead: FALSE
+olcDbIDLcacheSize: 0
+olcDbIndex: default sub
+olcDbIndex: objectClass pres,eq
+olcDbIndex: entryUUID eq
+olcDbIndex: entryCSN eq
+olcDbIndex: cn pres,eq,sub
+olcDbIndex: uid pres,eq,sub
+olcDbIndex: uidNumber pres,eq
+olcDbIndex: gidNumber pres,eq
+olcDbIndex: dc eq
+olcDbIndex: loginShell pres,eq
+olcDbIndex: ou pres,eq,sub
+olcDbIndex: sambaDomainName eq
+olcDbIndex: mail pres,eq,sub
+olcDbIndex: sn pres,eq,sub
+olcDbIndex: givenName pres,eq,sub
+olcDbIndex: memberUid pres,eq,sub
+olcDbIndex: nisMapName pres,eq,sub
+olcDbIndex: nisMapEntry pres,eq,sub
+olcDbIndex: sambaPrimaryGroupSID eq
+olcDbIndex: sambaSID eq
+olcDbIndex: displayName pres,eq,sub
+olcDbLinearIndex: FALSE
+olcDbMode: 0600
+olcDbSearchStack: 16
+olcDbShmKey: 0
+olcDbCacheFree: 1
+olcDbDNcacheSize: 0
+structuralObjectClass: olcHdbConfig
+entryUUID: 543ec7ce-a4a3-1034-8b5b-0d74bb5afa2c
+creatorsName: cn=config
+createTimestamp: 20150611163326Z
+entryCSN: 20150611163326.393327Z#000000#001#000000
+modifiersName: cn=config
+modifyTimestamp: 20150611163326Z

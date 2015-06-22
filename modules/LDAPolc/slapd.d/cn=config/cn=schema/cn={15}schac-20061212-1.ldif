@@ -1,0 +1,104 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 df951d9c
+dn: cn={15}schac-20061212-1
+objectClass: olcSchemaConfig
+cn: {15}schac-20061212-1
+olcObjectIdentifier: {0}TERENA 1.3.6.1.4.1.25178
+olcObjectIdentifier: {1}schac TERENA:1
+olcObjectIdentifier: {2}schacObjectClass schac:1
+olcObjectIdentifier: {3}schacAttributeType schac:2
+olcAttributeTypes: {0}( schacAttributeType:1 NAME 'schacMotherTongue' DESC 'RF
+ C 3066 code for prefered language of communication' EQUALITY caseExactMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {1}( schacAttributeType:2 NAME 'schacGender' DESC 'Represen
+ tation of human sex (see ISO 5218)' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.
+ 1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {2}( schacAttributeType:3 NAME 'schacDateOfBirth' DESC 'Dat
+ e of birth (format YYYYMMDD, only numeric chars)' EQUALITY numericStringMatch
+  ORDERING numericStringOrderingMatch SUBSTR numericStringSubstringsMatch SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: {3}( schacAttributeType:4 NAME 'schacPlaceOfBirth' DESC 'Bi
+ rth place of a person' EQUALITY caseIgnoreMatch ORDERING caseIgnoreOrderingMa
+ tch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SIN
+ GLE-VALUE )
+olcAttributeTypes: {4}( schacAttributeType:5 NAME 'schacCountryOfCitizenship' 
+ DESC 'Country of citizenship of a person. Format two-letter acronym according
+  to ISO 3166' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {5}( schacAttributeType:6 NAME 'schacSn1' DESC 'First surna
+ me of a person' EQUALITY caseIgnoreMatch ORDERING caseIgnoreOrderingMatch SUB
+ STR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {6}( schacAttributeType:7 NAME 'schacSn2' DESC 'Second surn
+ ame of a person' EQUALITY caseIgnoreMatch ORDERING caseIgnoreOrderingMatch SU
+ BSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {7}( schacAttributeType:8 NAME 'schacPersonalTitle' DESC 'R
+ FC1274: personal title' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsM
+ atch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {8}( schacAttributeType:9 NAME 'schacHomeOrganization' DESC
+  'Domain name of the home organization' EQUALITY caseIgnoreMatch SUBSTR caseI
+ gnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {9}( schacAttributeType:10 NAME 'schacHomeOrganizationType'
+  DESC 'Type of the home organization' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1
+ .4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {10}( schacAttributeType:11 NAME 'schacCountryOfResidence' 
+ DESC 'Country of citizenship of a person. Format two-letter acronym according
+  to ISO 3166' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {11}( schacAttributeType:12 NAME 'schacUserPresenceID' DESC
+  'Used to store a set of values related to the network presence' EQUALITY cas
+ eExactMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1
+ .15 )
+olcAttributeTypes: {12}( schacAttributeType:13 NAME 'schacPersonalPosition' DE
+ SC 'Position inside an institution' EQUALITY caseIgnoreMatch SUBSTR caseIgnor
+ eSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {13}( schacAttributeType:14 NAME 'schacPersonalUniqueCode' 
+ DESC 'unique code for the subject' EQUALITY caseIgnoreMatch ORDERING caseIgno
+ reOrderingMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.
+ 121.1.15 )
+olcAttributeTypes: {14}( schacAttributeType:15 NAME 'schacPersonalUniqueID' DE
+ SC 'Unique identifier for the subject' EQUALITY caseExactMatch ORDERING caseE
+ xactOrderingMatch SUBSTR caseExactSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115
+ .121.1.15 )
+olcAttributeTypes: {15}( schacAttributeType:17 NAME 'schacExpiryDate' DESC 'Da
+ te from which the set of data is to be considered invalid (format YYYYMMDDhhm
+ mssZ)' EQUALITY generalizedTimeMatch ORDERING generalizedTimeOrderingMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE )
+olcAttributeTypes: {16}( schacAttributeType:18 NAME 'schacUserPrivateAttribute
+ ' DESC 'Set of denied access attributes' EQUALITY caseIgnoreIA5Match SUBSTR c
+ aseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: {17}( schacAttributeType:19 NAME 'schacUserStatus' DESC 'Us
+ ed to store a set of status of a person as user of services' EQUALITY caseIgn
+ oreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.1
+ 5 )
+olcObjectClasses: {0}( schacObjectClass:1 NAME 'schacPersonalCharacteristics' 
+ DESC 'Personal characteristics describe the individual person represented by 
+ the entry' AUXILIARY MAY ( schacMotherTongue $ schacGender $ schacDateOfBirth
+  $ schacPlaceOfBirth $ schacCountryOfCitizenship $ schacSn1 $ schacSn2 $ scha
+ cPersonalTitle ) )
+olcObjectClasses: {1}( schacObjectClass:2 NAME 'schacContactLocation' DESC 'Pr
+ imary means of locating and contacting potential collaborators and other pers
+ ons-of-interest at peer institutions' AUXILIARY MAY ( schacHomeOrganization $
+  schacHomeOrganizationType $ schacCountryOfResidence $ schacUserPresenceID ) 
+ )
+olcObjectClasses: {2}( schacObjectClass:3 NAME 'schacEmployeeInfo' DESC 'Emplo
+ yee information includes attributes that have relevance to the employee role,
+  such as position, office hours, and job title' AUXILIARY MAY schacPersonalPo
+ sition )
+olcObjectClasses: {3}( schacObjectClass:4 NAME 'schacLinkageIdentifiers' DESC 
+ 'Used to link a directory entry with records in external data stores or other
+  directory entries' AUXILIARY MAY ( schacPersonalUniqueCode $ schacPersonalUn
+ iqueID ) )
+olcObjectClasses: {4}( schacObjectClass:5 NAME 'schacEntryMetadata' DESC 'Used
+  to contain information about the entry itself, often its status, birth, and 
+ death' AUXILIARY MAY schacExpiryDate )
+olcObjectClasses: {5}( schacObjectClass:6 NAME 'schacEntryConfidentiality' DES
+ C 'Used to indicate whether an entry is visible publicly, visible only to aff
+ iliates of the institution, or not visible at all' AUXILIARY MAY schacUserPri
+ vateAttribute )
+olcObjectClasses: {6}( schacObjectClass:7 NAME 'schacUserEntitlements' DESC 'A
+ uthorization for services' AUXILIARY MAY schacUserStatus )
+structuralObjectClass: olcSchemaConfig
+entryUUID: 543eaa78-a4a3-1034-8b55-0d74bb5afa2c
+creatorsName: cn=config
+createTimestamp: 20150611163326Z
+entryCSN: 20150611163326.393327Z#000000#001#000000
+modifiersName: cn=config
+modifyTimestamp: 20150611163326Z

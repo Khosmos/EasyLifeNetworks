@@ -39,7 +39,7 @@ EPELOn || return 1
 SelinuxOff
 
 # 3) Utilities
-yum install git screen vim htop tree coreutils setuptool authconfig glibc-common openssl nmap unzip -y
+yum install net-tools git screen vim htop tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core -y
 
 # 4) Create directories
 mkdir -p $SCRIPTDIR

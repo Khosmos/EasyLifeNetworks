@@ -4,8 +4,10 @@ VERSION="20150608"
 LOGFILE="/var/log/eln.log"
 
 # [Linux]
-OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
-OSVERSION=`cut -d' ' -f$(( \`cat /etc/redhat-release | wc -w\`-1 ))  /etc/redhat-release | cut -d. -f1`
+#OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
+OSNAME=`lsb_release -si`
+#OSVERSION=`cut -d' ' -f$(( \`cat /etc/redhat-release | wc -w\`-1 ))  /etc/redhat-release | cut -d. -f1`
+OSVERSION=`lsb_release -sr | cut -d'.' -f1`
 
 # [Network]
 MACHINE=wifi # Machine name

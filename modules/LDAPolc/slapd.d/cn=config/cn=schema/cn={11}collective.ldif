@@ -1,0 +1,33 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 22b5de80
+dn: cn={11}collective
+objectClass: olcSchemaConfig
+cn: {11}collective
+olcAttributeTypes: {0}( 2.5.4.7.1 NAME 'c-l' SUP l COLLECTIVE )
+olcAttributeTypes: {1}( 2.5.4.8.1 NAME 'c-st' SUP st COLLECTIVE )
+olcAttributeTypes: {2}( 2.5.4.9.1 NAME 'c-street' SUP street COLLECTIVE )
+olcAttributeTypes: {3}( 2.5.4.10.1 NAME 'c-o' SUP o COLLECTIVE )
+olcAttributeTypes: {4}( 2.5.4.11.1 NAME 'c-ou' SUP ou COLLECTIVE )
+olcAttributeTypes: {5}( 2.5.4.16.1 NAME 'c-PostalAddress' SUP postalAddress CO
+ LLECTIVE )
+olcAttributeTypes: {6}( 2.5.4.17.1 NAME 'c-PostalCode' SUP postalCode COLLECTI
+ VE )
+olcAttributeTypes: {7}( 2.5.4.18.1 NAME 'c-PostOfficeBox' SUP postOfficeBox CO
+ LLECTIVE )
+olcAttributeTypes: {8}( 2.5.4.19.1 NAME 'c-PhysicalDeliveryOfficeName' SUP phy
+ sicalDeliveryOfficeName COLLECTIVE )
+olcAttributeTypes: {9}( 2.5.4.20.1 NAME 'c-TelephoneNumber' SUP telephoneNumbe
+ r COLLECTIVE )
+olcAttributeTypes: {10}( 2.5.4.21.1 NAME 'c-TelexNumber' SUP telexNumber COLLE
+ CTIVE )
+olcAttributeTypes: {11}( 2.5.4.23.1 NAME 'c-FacsimileTelephoneNumber' SUP facs
+ imileTelephoneNumber COLLECTIVE )
+olcAttributeTypes: {12}( 2.5.4.25.1 NAME 'c-InternationalISDNNumber' SUP inter
+ nationalISDNNumber COLLECTIVE )
+structuralObjectClass: olcSchemaConfig
+entryUUID: 543e9402-a4a3-1034-8b51-0d74bb5afa2c
+creatorsName: cn=config
+createTimestamp: 20150611163326Z
+entryCSN: 20150611163326.393327Z#000000#001#000000
+modifiersName: cn=config
+modifyTimestamp: 20150611163326Z
