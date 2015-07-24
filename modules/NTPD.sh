@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130923
+# Version 20150724
 #
 # NTPD module
 #
@@ -14,25 +14,11 @@
 
 clear
 
-
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                  NTPD Module
-
-  This module will:
-  *) Install NTPD
-  *) Copy Templates
-  *) Setup Cron
-  *) Setup Log
-  *) Setup Apache
-  *) Setup NTPD
-
-  Press <Enter> to continue
-
-EOF
-read
+DisplayMsg "EasyLife Networks - NTPD" \
+'This module will:
+ 1) Install NTPD
+ 2) Copy Templates
+ 3) Start NTPD'
 
 #1 Install NTPD
 #yum install ntp ntpdate -y
@@ -43,7 +29,7 @@ mv /etc/ntp.conf /etc/ntp.conf.`date +%Y%m%d-%H%M%S` 2>/dev/null
 cp -pr $ModDir/NTPD/ntp.conf /etc/
 
 #3 NTPD start
-chkconfig ntpd
+chkconfig ntpd on
 service ntpd restart
 #chkconfig ntpdate
 #service ntpdate restart

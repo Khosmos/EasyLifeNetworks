@@ -11,6 +11,7 @@
 # ...
 #
 #set -xv        
+set -xv        
 
 clear
 
