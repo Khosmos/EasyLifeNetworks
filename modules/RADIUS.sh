@@ -14,24 +14,13 @@
 
 clear
 
-
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                 RADIUS Module
-
-  This module will:
-  *) Install RADIUS
-  *) Compatibility setup
-  *) Copy Templates
-  *) Setup
-  *) Start
-
-  Press <Enter> to continue
-  
-EOF
-read
+DisplayMsg "EasyLife Networks - RADIUS" \
+'This module will:
+ 1) Install RADIUS
+ 2) Make some Compatibility setup
+ 3) Copy Templates
+ 4) Setup
+ 5) Start RADIUS'
 
 #1
 yum install freeradius freeradius-utils freeradius-ldap -y
