@@ -12,7 +12,6 @@
 
 locat=$(pwd)
 locid="/usr/share/EasyLifeNetworks"
-touch $LOGFILE
 
 # Source all scripts, functions etc.
 for src in $locid/lib/common/*.sh; do source "$src"; done
@@ -20,6 +19,7 @@ for src in $locid/lib/common/*.sh; do source "$src"; done
 # Source variables
 source $locid/confs/variables.sh
 
+touch $LOGFILE
 IsRoot || return 1
 IsGoodOS || return 1
 source $locid/modules/Base.sh
