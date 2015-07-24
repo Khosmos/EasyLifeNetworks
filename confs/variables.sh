@@ -124,7 +124,7 @@ SHIBPASS=BeterrabaDoce # Shib password
 # SSH
 SSHDAUTH=u # SSHD authenticated - If you have right to use (u)sers or (g)roup you must belong a group
 SSHDGROUP=NetAdmins # SSHD authenticated group
-SSHDUSERS='cosmefc johndoe' # users list with ssh right
+SSHDUSERS='cosmefc johndoe teste' # users list with ssh right
 
 # Denyhosts
 LOCKTIME=4h # Deny Hosts lock time

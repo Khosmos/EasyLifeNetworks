@@ -2,9 +2,9 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130918
+# Version 20150724
 #
-# LDAP module
+# SSHD module
 #
 # Cosme Faria Corrêa
 # John Doe
@@ -13,24 +13,12 @@
 #set -xv        
 
 clear
-
-
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                 SSHD Module
-
-  This module will:
-  *) Install SSHD
-  *) Copy Template
-  *) Setup
-  *) Start
-
-  Press <Enter> to continue
-
-EOF
-read
+splayMsg "EasyLife Networks - SSHD" \
+'This module will:
+ 1) Install SSHD
+ 2) Copy Template
+ 3) Setup SSHD
+ 4) Start SSHD'
 
 #1
 yum install openssh-server -y
@@ -46,7 +34,7 @@ case "$SSHDAUTH" in
 		ALLOWAUTH="AllowGroups "$SSHDGROUP
 		;;
 	[uU])
-		ALLOWAUTH="AllowUsers "$SSHDUSERSP
+		ALLOWAUTH="AllowUsers "$SSHDUSERS
 		;;
 esac
 sed -i s/ALLOWAUTH/"$ALLOWAUTH"/g /etc/ssh/sshd_config
