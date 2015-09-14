@@ -2,31 +2,27 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130819
+# Version 20150912
 #
 # Monitorix module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 # set -xv        
 
 clear
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                Monitorix Module
 
-  This module will:
-  *) Install Monitorix
-  *) Setup Monitorix
+DisplayYN "EasyLife Networks - Monitorix " \
+ " This module will:
+  1) Install Monitorix
+  2) Setup Monitorix
 
-  Press <Enter> to continue
+$TAIL" "Install" "Cancel" || exit
 
-EOF
-read
+
+
 
 #1 Installing Monitorix
 echo Installing Monitorix
@@ -38,8 +34,8 @@ echo Setup Monitorix
 # Fix a problem
 chown 755 /etc/init.d/monitorix
 # Setup monitorix.conf
-sed -i s/'Place a title here'/$MACHINE' - Monitoring'/g /etc/monitorix/monitorix.conf
-sed -i s/'enabled = y'/'enabled = n'/g /etc/monitorix/monitorix.conf
+sed -i s/'Place a title here'/$MACHINE' - Monitoring'/g /etc/monitorix/monitorix.conf # rename the machine as $MACHINE - Monitoring
+sed -i s/'enabled = y'/'enabled = n'/g /etc/monitorix/monitorix.conf # change the permission to n. Now everyone can access monitorix
 # Setup Monitorix in HTTPD
 case "$MONITORIXAUTH" in
     [nN] )

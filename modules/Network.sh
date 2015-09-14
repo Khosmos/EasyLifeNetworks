@@ -2,12 +2,12 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150608
+# Version 20150907
 #
 # Network module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv
@@ -18,7 +18,7 @@ if [ $OSVERSION -eq 6 ]; then
     TAIL="You must do it manualy"
 fi
 
-DisplayMsg "EasyLife Networks - Network" \
+DisplayYN "EasyLife Networks - Network" \
 "This module will setup:
  1) Machine name and domain
       $MACHINE.$DOMAINWIFI
@@ -35,7 +35,7 @@ DisplayMsg "EasyLife Networks - Network" \
  6) Monitoring Interface
       $MONINT - $MONIP / $MONMASK
       
-$TAIL"
+$TAIL" "Install" "Cancel" || exit
 
 if [ $OSVERSION -eq 6 ]; then
     nm-connection-editor
@@ -43,8 +43,6 @@ if [ $OSVERSION -eq 6 ]; then
     exit 0
 fi
 
-#set -xv
- 
 #1 some analysis
 ETHERINT=`nmcli device status | grep ethernet | tr -s " "| cut -d' ' -f 4-`
 c=$IFS
@@ -57,15 +55,17 @@ done
 IFS=$c
 
 #2 Setup External Interface
-nmcli connection delete "${INT[1]}"
-nmcli connection add type ethernet con-name "${INT[1]}" ifname $EXTINT ip4 "$EXTIP""/""$EXTMASKB" gw4 "$IGIP"
-nmcli connection modify "${INT[1]}" ipv4.dns "$DNSSERVER"
+nmcli connection delete "${INT[1]}" #deletando o nome da INTEXT
+nmcli connection add type ethernet con-name "${INT[1]}" ifname $EXTINT ip4 "$EXTIP""/""$EXTMASKB" gw4 "$IGIP" 
+nmcli connection modify "${INT[1]}" ipv4.dns "$DNSSERVER" #DNS
 nmcli connection modify "${INT[1]}" ipv6.method ignore # Turn off ipv6
 
 #3 Setup Internal Interface
-nmcli connection delete "${INT[2]}"
-nmcli connection add type ethernet con-name "${INT[2]}" ifname $INTINT ip4 "$INTIP""/""$INTMASKB"
-nmcli connection modify "${INT[2]}" ipv6.method ignore # Turn off ipv6
+if [ $NOI -ge 2 ]; then
+	nmcli connection delete "${INT[2]}"
+	nmcli connection add type ethernet con-name "${INT[2]}" ifname $INTINT ip4 "$INTIP""/""$INTMASKB"
+	nmcli connection modify "${INT[2]}" ipv6.method ignore # Turn off ipv6
+fi
 
 #4 Setup Monitoring Interface
 if [ $NOI -ge 3 ]; then
@@ -75,10 +75,10 @@ if [ $NOI -ge 3 ]; then
 fi
 
 #5 Setup hostname
-hostnamectl set-hostname $MACHINE.$DOMAINWIFI
+hostnamectl set-hostname $MACHINE.$DOMAINWIFI 
 #nmcli general hostname $MACHINE.$DOMAINWIFI
  
-echo "$INTIP $MACHINE.$DOMAINWIFI" >> /etc/hosts
+echo "$EXTIP $MACHINE.$DOMAINWIFI" >> /etc/hosts
 
 echo  'Press <Enter> key'
 read

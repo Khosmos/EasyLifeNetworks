@@ -2,35 +2,35 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20140401
+# Version 20150907
 #
 # JavaJDK module
 #
 # Cosme Faria Corrêa
 # helgadb 
-# 
+# Ana Carolina Silvério
 # ...
 #
 #set -xv
 
+
 clear
 
-cat <<-EOF
-=========================================
-| Easy Life for Networks |
-=========================================
-JavaJDK Module
+DisplayYN "EasyLife Networks - JavaJDK  " \
+"This module will :
 
-This module will:
-*) Install Java OpenJdk 1.7.0
+Install Java OpenJdk 1.8.0
 
-Press <Enter> to continue
-EOF
 
-read
+$TAIL" "Install" "Cancel" || exit
 
-# a) Install Java OpenJdk 1.7.0
-yum -y install java-1.7.0-openjdk-devel.x86_64
+
+#echo Install
+#exit
+
+# a) Install Java OpenJdk 1.8.0
+yum -y install java-1.8.0-openjdk-devel.x86_64
+#yum java-1.7.0-openjdk-devel.x86_64 was the last version we were installing
 
 echo JavaJDK module finished
 echo 'Press <Enter> to exit'

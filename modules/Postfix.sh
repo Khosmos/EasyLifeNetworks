@@ -2,35 +2,30 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130918
+# Version 20150904
 #
 # Postfix module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv        
 
 clear
 
+DisplayYN "EasyLife Networks - Postfix " \
 
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                Postfix Module
+"This module will :
+ 1) Install Postfix
+ 2) Copy Templates
+ 3) Setup
+ 4) Start
 
-  This module will:
-  *) Install Postfix
-  *) Copy Templates
-  *) Setup
-  *) Start
 
-  Press <Enter> to continue
 
-EOF
-read
+$TAIL" "Install" "Cancel" || exit
+
 
 #1
 yum install postfix -y

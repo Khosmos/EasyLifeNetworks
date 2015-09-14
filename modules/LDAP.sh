@@ -2,47 +2,43 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130917
+# Version 20150914
 #
 # LDAP module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv        
 
 clear
 
+                
 
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                  LDAP Module
+DisplayYN "EasyLife Networks - LDAP " \
+"This module will :
+ 1) Install LDAP
+ 2) Copy scripts
+ 3) Create BKP structure
+ 4) Insert BKP in cron
+ 5) Copy Schemas
+ 6) Setup slapd.conf
+ 7) Populate LDAP
+ 8) Setup Auth
+ 9) Setup Log
+ 10) Start
 
-  This module will:
-  *) Install LDAP
-  *) Copy scripts
-  *) Create BKP structure
-  *) Insert BKP in cron
-  *) Copy Schemas
-  *) Setup slapd.conf
-  *) Populate LDAP
-  *) Setup Auth
-  *) Setup Log
-  *) Start
 
-  Press <Enter> to continue
 
-EOF
-read
+$TAIL" "Install" "Cancel" || exit
+
 
 #0 Install LDAP
 yum install openldap-clients openldap nss-pam-ldapd openldap-servers  -y
 
 #1 Copy scripts
-cp -p $ModDir/LDAP/ldap.sh $SCRIPTDIR
+cp -p $ModDir/LDAP/ldap.sh $SCRIPTDIR #for simple test - debug
 chmod 700 $SCRIPTDIR'ldap.sh'
 chown root:root $SCRIPTDIR'ldap.sh'
 
@@ -57,7 +53,7 @@ cd /usr/bin
 ln -s $SCRIPTDIR'fazbkp.sh' .
 ln -s $SCRIPTDIR'restauraLDAP.sh' .
 ln -s $SCRIPTDIR'ldap.sh' .
-mv /etc/openldap/DB_CONFIG.example /etc/openldap/DB_CONFIG.example.`date +%Y%m%d-%H%M%S` 2>/dev/null
+mv /etc/openldap/DB_CONFIG.example /etc/openldap/DB_CONFIG.example.`date +%Y%m%d-%H%M%S` 2>/dev/null #template DB_CONFIG
 cp $ModDir/LDAP/DB_CONFIG.example /etc/openldap/
 
 #2 Create BKP structure

@@ -2,24 +2,28 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150520
+# Version 20150911
 #
 # SNMPD module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv        
 
 clear
 
-DisplayMsg "EasyLife Networks - SNMPD" \
-'This module will:
+DisplayYN "EasyLife Networks - SNMPD " \
+"This module will :
  1) Install SNMPD
- 2) Copy Template
+ 2) Copy Templates
  3) Setup SNMPD
- 4) Start processes'
+ 4) Start processes
+
+
+$TAIL" "Install" "Cancel" || exit
+
 
 #1 
 yum install net-snmp net-snmp-utils snmpcheck -y

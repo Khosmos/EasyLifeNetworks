@@ -2,22 +2,26 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130819
+# Version 20150911
 #
 # DNSMasq module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv        
 
 clear
 
-DisplayMsg "EasyLife Networks - DNSMasq" \
-'This module will:
+DisplayYN "EasyLife Networks - DNSMasq " \
+"This module will :
  1) Install packets for DNSMasq
- 2) Setup DNSMasq'
+ 2) Setup DNSMasq
+
+
+$TAIL" "Install" "Cancel" || exit
+
 
 # Install DNSMasq
 yum install dnsmasq -y
