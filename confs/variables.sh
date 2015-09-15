@@ -30,6 +30,7 @@ NINTERFACES=1 # 2|3 - If 3 we ignore MONINT
 DNSSERVER=172.17.0.1 # 75.75.75.75
 IGNAME=wifi # Internet gateway name INternetGateway
 IGIP=172.17.0.1 # Internet gateway IP
+REMOTEADMINPOINTS='172.17.255.0/24'
 
 # [NetDot]
 NETDOTDB=Pg # Pg | mysql
