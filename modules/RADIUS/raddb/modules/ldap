@@ -31,10 +31,10 @@ ldap {
 	#  Note that this needs to match the name in the LDAP
 	#  server certificate, if you're using ldaps.
 	server = "LDAPSERVER"
-#	identity = "cn=RADIUSACCOUNT,LDAPSUFIX"
-	identity = "cn=Manager,LDAPSUFIX"
-#	password = "RADIUSACCPASS"
-	password = "LDAPADMPASSWD"
+	identity = "cn=RADIUSACCOUNT,LDAPSUFIX"
+#	identity = "cn=Manager,LDAPSUFIX"
+	password = "RADIUSACCPASS"
+#	password = "LDAPADMPASSWD"
 	basedn = "LDAPSUFIX"
 	filter = "(uid=%{%{Stripped-User-Name}:-%{User-Name}})"
 	#base_filter = "(objectclass=radiusprofile)"

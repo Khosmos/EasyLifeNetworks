@@ -2,25 +2,30 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130918
+# Version 20150912
 #
 # RADIUS module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv        
 
 clear
 
-DisplayMsg "EasyLife Networks - RADIUS" \
-'This module will:
+DisplayYN "EasyLife Networks - RADIUS" \
+"This module will:
  1) Install RADIUS
  2) Make some Compatibility setup
  3) Copy Templates
  4) Setup
  5) Start RADIUS'
+
+
+$TAIL" "Install" "Cancel" || exit
+
+
 
 #1
 yum install freeradius freeradius-utils freeradius-ldap -y

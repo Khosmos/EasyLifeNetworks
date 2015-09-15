@@ -105,7 +105,7 @@ RADIUSSERVER=127.0.0.1 # Radius server
 RADIUSDOMAIN=uff.br # Radius domain
 RADIUSACCOUNT='reader-radius' # Radius account - without use nowadays
 RADIUSACCPASS=Aspargos # Radius account password
-RADIUSPASS=Taioba # Radius password
+RADIUSPASS=Taioba # Radius password for clients
 
 # RadSecProxy 
 # Get the file packet from rnp. It will be:
