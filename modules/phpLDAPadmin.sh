@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150912
+# Version 20150916
 #
 # phpLDAPadmin Module
 #
