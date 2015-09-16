@@ -10,7 +10,7 @@
 # Ana Carolina Silvério
 # ...
 #
-#set -xv        
+set -xv        
 
 clear
 
@@ -23,12 +23,13 @@ DisplayYN "EasyLife Networks - phpLDAPadmin" \
 
 $TAIL" "Install" "Cancel" || exit
 
-
 #1 Install phpLDAPadmin
 yum install phpldapadmin -y
 
+read
+
 #2 Set up phpLDAPadmin
-rm  /etc/phpldapadmin/config.php
+mv  /etc/phpldapadmin/config.php /etc/phpldapadmin/config.php.`date +%Y%m%d-%H%M%S`
 cp -p $ModDir'phpLDAPadmin/config.php'  /etc/phpldapadmin/
 rm /etc/httpd/conf.d/phpldapadmin.conf
 cp -p $ModDir'phpLDAPadmin/phpldapadmin.conf'  /etc/httpd/conf.d/
@@ -37,11 +38,14 @@ chown root:apache /etc/phpldapadmin/config.php
 chmod 644 /etc/httpd/conf.d/phpldapadmin.conf
 chown root:root /etc/httpd/conf.d/phpldapadmin.conf
 
+read
+
 #3
-sed -i "s/REMOTEADMINPOINTS/'$REMOTEADMINPOINTS'/g" /etc/httpd/conf.d/phpldapadmin.conf
+sed -i "s/REMOTEADMINPOINTS/$REMOTEADMINPOINTS/g" /etc/httpd/conf.d/phpldapadmin.conf
+
+read
 
 #4
-chkconfig httpd on
 service httpd restart
 
 echo phpLDAPadmin module finished
