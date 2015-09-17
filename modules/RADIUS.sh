@@ -31,7 +31,7 @@ $TAIL" "Install" "Cancel" || exit
 yum install freeradius freeradius-utils freeradius-ldap -y
 
 #2
-ln -s /etc/raddb /etc/freeradius
+ln -s /etc/raddb /etc/freeradius 2>> /dev/null
 
 #3
 rm /etc/raddb/modules/ldap /etc/raddb/sites-available/default /etc/raddb/clients.conf /etc/raddb/radiusd.conf /etc/raddb/eap.conf /etc/raddb/sites-available/inner-tunnel

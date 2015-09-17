@@ -10,27 +10,27 @@ OSNAME=`lsb_release -si`
 OSVERSION=`lsb_release -sr | cut -d'.' -f1`
 
 # [Network]
-MACHINE=ana # Machine name wifi
+MACHINE=wifi # Machine name wifi
 DOMAIN=uff.br # Domain name 
 DOMAINWIFI=wifi.uff.br # Wifi Domain name
 FQDN=$MACHINE'.'$DOMAIN # Machine name + . + Domain name
 EXTINT=eth0 # External Interface
-EXTIP=172.17.255.16 # External IP Address- last change (10.0.0.5)
-EXTMASK=255.255.0.0 # External IP Mask-last change 255.255.255.0
+EXTIP=10.0.0.16 # External IP Address- last change (10.0.0.5)
+EXTMASK=255.255.255.0 # External IP Mask-last change 255.255.255.0
 EXTMASKB=`echo "obase=2;"${EXTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # External IP Mask bit format
-#INTINT=eth1 # Internal Interface
-#INTIP=192.168.122.227 # Interface IP Address
-#INTMASK=255.255.255.0 # Interface IP Mask
-#INTMASKB=`echo "obase=2;"${INTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Internal IP Mask bit format
+INTINT=eth1 # Internal Interface
+INTIP=192.168.122.57 # Interface IP Address
+INTMASK=255.255.255.0 # Interface IP Mask
+INTMASKB=`echo "obase=2;"${INTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Internal IP Mask bit format
 #MONINT=eth2 # Monitoring interface
 #MONIP=172.30.255.22 # Monitoring IP Address
 #MONMASK=255.255.0.0 # Monitoring IP Mask
 #MONMASKB=`echo "obase=2;"${MONMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Monitoring IP Mask bit format
-NINTERFACES=1 # 2|3 - If 3 we ignore MONINT
-DNSSERVER=172.17.0.1 # 75.75.75.75
-IGNAME=wifi # Internet gateway name INternetGateway
-IGIP=172.17.0.1 # Internet gateway IP
-REMOTEADMINPOINTS='172.17.0.1' # List of trustable machines for adminstrative purposes
+NINTERFACES=2 # 2|3 - If 3 we ignore MONINT
+DNSSERVER='75.75.75.75'
+IGNAME=xfinity # Internet gateway name INternetGateway
+IGIP=10.0.0.1 # Internet gateway IP
+REMOTEADMINPOINTS='10.0.0.5' # List of trustable machines for adminstrative purposes
 
 # [NetDot]
 NETDOTDB=Pg # Pg | mysql
