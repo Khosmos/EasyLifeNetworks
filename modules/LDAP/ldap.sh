@@ -6,11 +6,11 @@
 # cosmefc@id.uff.br
 #
 # Descomente para debug
-set -xv
+#set -xv
 
 Principal() {
    clear
-   suffix="dc=visitantes"
+   suffix="dc=uff,dc=br"
    people="ou=People",$suffix
    group="ou=Group",$suffix
    rootdn="cn=Manager"
