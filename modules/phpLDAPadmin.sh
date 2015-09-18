@@ -10,7 +10,7 @@
 # Ana Carolina Silvério
 # ...
 #
-set -xv        
+#set -xv        
 
 clear
 
