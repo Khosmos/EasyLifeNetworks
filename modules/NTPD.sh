@@ -2,24 +2,27 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150724
+# Version 20150919
 #
 # NTPD module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv        
 
 clear
 
-DisplayMsg "EasyLife Networks - NTPD" \
-'This module will:
+DisplayYN "EasyLife Networks - NTPD " \
+"This module will:
  1) Install NTPD
  2) Copy Templates
  3) Some subs
- 4) Start NTPD'
+ 4) Start NTPD
+
+$TAIL" "Install" "Cancel" || exit
+
 
 #1 Install NTPD
 #yum install ntp ntpdate -y
@@ -27,10 +30,12 @@ yum install ntp -y
 
 #2 Copy Templates
 mv /etc/ntp.conf /etc/ntp.conf.`date +%Y%m%d-%H%M%S` 2>/dev/null
-cp -pr $ModDir/NTPD/ntp.conf.$OSVERSION /etc/ntp.conf
+cp -pr $ModDir/NTPD/ntp.conf.$OSVERSION /etc/ntp.conf #adds the version of centos machine in the document ntp.conf
 
 #3
-sed -i s/NTPSERVERS//#$NTPSERVERS/g /etc/ntp.conf
+sed -i s/NTPSERVERS//#$NTPSERVERS/g /etc/ntp.conf # add the address of the servers in the document ntp.conf
+# This command it's not correct 
+# should not be sed -i s/NTPSERVERS//#$NTPSERVERS/g /etc/ntp.conf.$OSVERSION ?
 
 
 #4 NTPD start
