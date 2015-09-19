@@ -12,6 +12,7 @@ restrict default nomodify notrap nopeer noquery
 # the administrative functions.
 restrict 127.0.0.1 
 restrict ::1
+restrict NTPNETACCESS mask NTPMASKACCESS
 
 # Hosts on local network are less restricted.
 #restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
