@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150918
+# Version 20150919
 #
 # RADIUS module
 #
@@ -19,8 +19,9 @@ DisplayYN "EasyLife Networks - RADIUS" \
  1) Install RADIUS
  2) Make some Compatibility setup
  3) Copy Templates
- 4) Setup
- 5) Start RADIUS'
+ 4) Setup RADIUS
+ 5) RADIUS log
+ 6) Start RADIUS'
 
 
 $TAIL" "Install" "Cancel" || exit
@@ -32,6 +33,7 @@ if [ $OSVERSION = "7" ]; then
     cd /usr/lib64/
     ln -s libgdbm.so.4 libgdbm.so.2
     ln -s libgdbm.so.4 libgdbm.so.2.0.0
+    ldconfig
     rpm -ivh $ModDir/RADIUS/*.rpm --nodeps
 fi
 
@@ -50,7 +52,10 @@ sed -i s/LDAPSERVER/$LDAPSERVER/g /etc/raddb/modules/ldap
 sed -i s/LDAPSUFIX/$LDAPSUFIX/g /etc/raddb/modules/ldap
 sed -i s/RADIUSPASS/$RADIUSPASS/g /etc/raddb/clients.conf
 
-#4
+#5
+#  need to do
+
+#6
 chkconfig radiusd on
 service radiusd restart
 
