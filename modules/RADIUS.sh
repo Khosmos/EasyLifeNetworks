@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150912
+# Version 20150918
 #
 # RADIUS module
 #
@@ -25,23 +25,19 @@ DisplayYN "EasyLife Networks - RADIUS" \
 
 $TAIL" "Install" "Cancel" || exit
 
-
-
 #1
 yum install freeradius freeradius-utils freeradius-ldap -y
-#
-
+if [ $OSVERSION = "7" ]; then
+    yum remove freeradius freeradius-utils freeradius-ldap -y
+    cd /usr/lib64/
+    ln -s libgdbm.so.4 libgdbm.so.2
+    ln -s libgdbm.so.4 libgdbm.so.2.0.0
+    rpm -ivh $ModDir/RADIUS/*.rpm --nodeps
+fi
 
 #2
-#<<<<<<< HEAD
-#ln -s /etc/raddb /etc/freeradius
-# cd /usr/lib64/
-# ln -s libgdbm.so.4 libgdbm.so.2
-# ln -s libgdbm.so.4 libgdbm.so.2.0.0
-#=======
 ln -s /etc/raddb /etc/freeradius 2>> /dev/null
 
-#>>>>>>> 9d5d9b14a48830e430be18748dee7b549caa48d4
 #3
 rm /etc/raddb/modules/ldap /etc/raddb/sites-available/default /etc/raddb/clients.conf /etc/raddb/radiusd.conf /etc/raddb/eap.conf /etc/raddb/sites-available/inner-tunnel
 cp -rp $ModDir/RADIUS/raddb /etc/
