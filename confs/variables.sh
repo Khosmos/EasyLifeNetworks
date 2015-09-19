@@ -136,15 +136,7 @@ RELAYACC=manezinho
 RELAYPASSWD=segredo
 
 # NTPD
-NTPSERVERS="\n
-server a.st1.ntp.br iburst\n
-server b.st1.ntp.br iburst\n
-server c.st1.ntp.br iburst\n
-server d.st1.ntp.br iburst\n
-server gps.ntp.br iburst\n
-server a.ntp.br iburst\n
-server b.ntp.br iburst\n
-server c.ntp.br iburst\n
-"
+# Brazil's NTP Servers
+NTPSERVERS="pool.ntp.br"
 
 
