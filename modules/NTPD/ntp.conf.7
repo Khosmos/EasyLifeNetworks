@@ -5,14 +5,13 @@ driftfile /var/lib/ntp/drift
 
 # Permit time synchronization with our time source, but do not
 # permit the source to query or modify the service on this system.
-restrict default kod nomodify notrap nopeer noquery
-restrict -6 default kod nomodify notrap nopeer noquery
+restrict default nomodify notrap nopeer noquery
 
 # Permit all access over the loopback interface.  This could
 # be tightened as well, but to do so would effect some of
 # the administrative functions.
 restrict 127.0.0.1 
-restrict -6 ::1
+restrict ::1
 
 # Hosts on local network are less restricted.
 #restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
@@ -22,18 +21,14 @@ restrict -6 ::1
 #server 0.centos.pool.ntp.org iburst
 #server 1.centos.pool.ntp.org iburst
 #server 2.centos.pool.ntp.org iburst
+#server 3.centos.pool.ntp.org iburst
 
-#broadcast 192.168.1.255 autokey        # broadcast server
-#broadcastclient                        # broadcast client
-#broadcast 224.0.1.1 autokey            # multicast server
-#multicastclient 224.0.1.1              # multicast client
-#manycastserver 239.255.254.254         # manycast server
+#broadcast 192.168.1.255 autokey	# broadcast server
+#broadcastclient			# broadcast client
+#broadcast 224.0.1.1 autokey		# multicast server
+#multicastclient 224.0.1.1		# multicast client
+#manycastserver 239.255.254.254		# manycast server
 #manycastclient 239.255.254.254 autokey # manycast client
-
-# Undisciplined Local Clock. This is a fake driver intended for backup
-# and when no outside source of synchronized time is available. 
-server  127.127.1.0     # local clock
-fudge   127.127.1.0 stratum 10
 
 # Enable public key cryptography.
 #crypto
@@ -55,12 +50,11 @@ keys /etc/ntp/keys
 
 # Enable writing of statistics records.
 #statistics clockstats cryptostats loopstats peerstats
-#server 127.127.1.0 iburst
-server a.st1.ntp.br iburst
-server b.st1.ntp.br iburst
-server c.st1.ntp.br iburst
-server d.st1.ntp.br iburst
-server gps.ntp.br iburst
-server a.ntp.br iburst
-server b.ntp.br iburst
-server c.ntp.br iburst
+
+# Disable the monitoring facility to prevent amplification attacks using ntpdc
+# monlist command when default restrict does not include the noquery flag. See
+# CVE-2013-5211 for more details.
+# Note: Monitoring will not be disabled with the limited restriction flag.
+disable monitor
+
+NTPSERVERS
