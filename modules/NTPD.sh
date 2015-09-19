@@ -33,8 +33,7 @@ mv /etc/ntp.conf /etc/ntp.conf.`date +%Y%m%d-%H%M%S` 2>/dev/null
 cp -pr $ModDir/NTPD/ntp.conf.$OSVERSION /etc/ntp.conf #adds the version of centos machine in the document ntp.conf
 
 #3
-sed -i s/NTPSERVERS//$NTPSERVERS/g /etc/ntp.conf # add the address of the servers in the document ntp.conf
-
+sed -i s/NTPSERVERS/$NTPSERVERS/g /etc/ntp.conf # add the address of the servers in the document ntp.conf
 
 #4 NTPD start
 chkconfig ntpd on
