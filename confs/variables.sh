@@ -139,7 +139,7 @@ RELAYPASSWD=segredo
 # Brazil's NTP Servers
 NTPSERVERS="pool.ntp.br"
 # To provide NTP internally. Comment both to disable them
-NTPNETACCESS=$INTIP
+NTPNETACCESS=`sipcalc $INTIP'/'$INTMASK| grep 'Network address'| cut -d'-' -f2
 NTPMASKACCESS=$INTMASK
 
 
