@@ -14,7 +14,7 @@ IPT=`which iptables`
 
 fw_start()
 {
-        sh /etc/init.d/FW-SCIFI.fw
+        sh /etc/init.d/firewall.fw
 }
 
 fw_stop()

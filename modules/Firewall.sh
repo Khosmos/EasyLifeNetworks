@@ -35,15 +35,19 @@ read
 
 #1 Download FirewallB
 cd /tmp
-wget  http://ufpr.dl.sourceforge.net/project/fwbuilder/Current_Packages/5.1.0/fwbuilder-5.1.0.3599-1.el6.x86_64.rpm
+if [ $OSVERSION = "7" ]; then
+    wget ftp://mirror.switch.ch/pool/4/mirror/fedora/linux/releases/22/Everything/x86_64/os/Packages/f/fwbuilder-5.1.0.3599-5.fc20.x86_64.rpm
+else
+    wget  http://ufpr.dl.sourceforge.net/project/fwbuilder/Current_Packages/5.1.0/fwbuilder-5.1.0.3599-1.el6.x86_64.rpm
+fi
 
 #2 Install FirewallB
-yum localinstall fwbuilder-5.1.0.3599-1.el6.x86_64.rpm -y
+yum localinstall fwbuilder-5.1.0.3599*.rpm -y
 
 #3 Setup FirewallB
+service firewalld stop 2>/dev/null
+chkcongig firewalld off 2>/dev/null
 cp -p $ModDir/Firewall/firewall /etc/init.d/
-cp -p $ModDir/Firewall/FW-SCIFI.fw /etc/init.d/
-cp -p $ModDir/Firewall/FW-SCIFI.fwb /usr/share/EasyLifeNetworks/scripts
 
 #4 Setup logrotate
 rm /etc/logrotate.d/iptables 2> /dev/null
@@ -60,12 +64,12 @@ cat <<-EOF
 Firewall module finished
 
 You must:
-- setup network in firewall
-  - fwbuilder /usr/share/EasyLifeNetworks/scripts/FW-SCIFI.fwb
-- save
-- compile
-- overwrite
-  - /etc/init.d/FW-SCIFI.fw
+- chose your firewall in 
+- setup network in firewall /root/FirewallTemplates/
+  - fwbuilder /root/FirewallTemplates/????.fwb
+- save as /root/firewall.fwb
+- study, modify and compile
+- copy firewall.fw to /etc/init.d/
 - restart firewall
   - service firewall restart 
 

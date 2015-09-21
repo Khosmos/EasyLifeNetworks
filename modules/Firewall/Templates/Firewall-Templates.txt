@@ -1,0 +1,36 @@
+# Easy Life for Networks
+#
+# Configuration Tool for an Easy Life
+# Version 20150912
+#
+# Firewall-Templates
+#
+# Cosme Faria Corrêa
+
+Here we have some templates for FirewallBuilder
+
+
+
+-	SimpleServerSCIFI
+	  - no vlans
+	  - with everything
+	  - two interfaces
+	    - eth0 - external network
+	    - eth1 - intenal network
+	  - up to 62 APs
+	  - up to 126 simultaneous users
+	  - create a second machine for contingence is a good idea
+
+-	CentralServerSCIFI
+	  - with vlans
+	  - with 4 interfaces
+	    - eth0 - external
+	    - eth1 - users
+	    - eth2 - network devices
+	    - eth3 - visitors
+
+- 	AreaServer
+	  - without vlans
+	  - with e interfaces
+	    - eth0 - external
+	    - eth1 - users
