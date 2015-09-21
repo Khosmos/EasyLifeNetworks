@@ -64,9 +64,7 @@ cat <<-EOF
 Firewall module finished
 
 You must:
-- chose your firewall in 
-- setup network in firewall /root/FirewallTemplates/
-  - fwbuilder /root/FirewallTemplates/????.fwb
+- choose your firewall in /root/FirewallTemplates/
 - save as /root/firewall.fwb
 - study, modify and compile
 - copy firewall.fw to /etc/init.d/
