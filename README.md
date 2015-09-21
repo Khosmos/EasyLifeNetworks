@@ -27,6 +27,7 @@ Automatic configuration with several modules:
     SSHD
     DenyHosts
     NTPD
+    phpLDAPadmin
     Postfix
     PostgreSQL
     PostgreSQLUP - from developers repo

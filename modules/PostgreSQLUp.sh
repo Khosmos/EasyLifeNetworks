@@ -32,6 +32,11 @@ This module will:
 Press <Enter> to continue
 EOF
 
+if [ $OSVERSION = "7" ]; then
+    DisplayError "Unable to install" "Sorry, this module is only for CentOS 6"
+    exit
+fi
+
 read
 
 # a) Install PostgreSQL PGDG v9.2 Repository
