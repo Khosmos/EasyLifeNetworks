@@ -39,8 +39,8 @@ NETDOTDBUSER=netdot_user # NetDot database user name
 NETDOTDBPASSWD=123456 # NetDot database user password
 
 # [PostgreSQL]
-DBADMIN=postgres # PostgreSQL admin account
-DBADMINPASSWD=123456 # PostgreSQL admin account password
+DBADMIN=postgres # PostgreSQL admin account. Think twice before change it.
+DBADMINPASSWD=12345678 # PostgreSQL admin account password and also for database user "postgres". Use only alphanumeric characters and . and _. Must have 8 or + characters.
 
 # [SNMPD]
 SYSLOCATION='Data Center'
@@ -48,31 +48,7 @@ SYSLOCATION='Data Center'
 # [LOG]
 DURATION=104 # Weeks to retain logs. Two years.
 
-# SCIFI
-DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
-ModDir=$DIRELSCIFI'modules/' # Where are modules
-SCRIPTDIR=/usr/share/EasyLifeNetworks/scripts/ # Where are scripts
-SCIFIVERION=12
-SCIFISUBVERSION=0
-
-# SCIFI Web Interface
-SCIFIWEBUSERNAME='admin' # user name to access EasyLifeNetworks administrative web interface 
-SCIFIWEBPASSWD='admin' # password to access EasyLifeNetworks administrative web interface 
-SSLCERTIFICATEPASSWD='keystore' # keypass and keystore password for HTTPS certificate
-
-# SCIFI Core
-SCIFIPASSWD='sc1f1_206.' # password for linux user "EasyLifeNetworks".
-
-# PostgreSQL
-POSTGRESPASSWD='Sql_926.' # password for linux user "postgres" and also for database user "postgres". Use only alphanumeric characters and . and _.
-
-# SCIFI Database
-SCIFIDBPASSWD='EasyLifeNetworks' # password for default database user "EasyLifeNetworks". Use only alphanumeric characters and . and _.
-
-# JBossAS
-JBOSSPASSWD='JBAs_711.' # password for default user "jboss" to access jboss administrative interface and linux user "jboss".
-
-# LDAP
+# [LDAP]
 LDAPSERVER=127.0.0.1 # LDAP server
 #LDAPSERVER=ldap://127.0.0.1,ldap://200.200.200.200 # LDAP server
 LDAPSUFIX='dc=uff,dc=br' # LDAP sufix
@@ -85,23 +61,15 @@ LDAPPRIMARYSN=`echo $LDAPPRIMARYDISPLAYNAME | cut -d' ' -f$L`
 LDAPPRIMARYPASSWD=Beringela # LDAP primary user password
 LDAPPRIMARYUIDMAIL=$LDAPPRIMARYUID'@'$DOMAIN
 
-# Samba
+# [Samba]
 SAMBASID=S-1-5-21-1014769180-777746548-3660226278 # Samba SID
 SAMBADOMAIN=WIFI # Samba Domain Name
 
-# MRTG
-MRTGAUTH=n # MRTG authenticated - If you have to authenticate to see (y)es, (n)o or (g) you must belong a group
-MRTGGROUP=NetAdmins # MRTG authenticated group
-
-# NAGIOS
-NAGIOSAUTH=g # NAGIOS authenticated - If you have to authenticate to see (y)es or (g) you must belong a group
-NAGIOSGROUP=NetAdmins # NAGIOS authenticated group
-
-# Monitorix
+# [Monitorix]
 MONITORIXAUTH=y # MONITORIX authenticated - If you have to authenticate to see (y)es, (n)o or (g) you must belong a group
 MONITORIXGROUP=NetAdmins # MONITORIX authenticated group
 
-# Radius
+# [Radius]
 RADIUSSERVER=127.0.0.1 # Radius server
 RADIUSDOMAIN=uff.br # Radius domain
 RADIUSACCOUNT='reader-radius' # Radius account - without use nowadays
@@ -119,27 +87,58 @@ RADIUSPASS=Taioba # Radius password for clients
 # - radsecproxy.conf
 # Put them in RadSecProxy/RNP directory
 
-# Shibboleth
+# [Shibboleth]
 SHIBPASS=BeterrabaDoce # Shib password
 
-# SSH
+# [SSH]
 SSHDAUTH=u # SSHD authenticated - If you have right to use (u)sers or (g)roup you must belong a group
 SSHDGROUP=NetAdmins # SSHD authenticated group
 SSHDUSERS='cosmefc johndoe teste' # users list with ssh right
 
-# Denyhosts
-LOCKTIME=4h # Deny Hosts lock time
-
-# Postfix
+# [Postfix]
 RELAYHOST=mxrelay.uff.br
 RELAYACC=manezinho
 RELAYPASSWD=segredo
 
-# NTPD
+# [NTPD]
 # Brazil's NTP Servers
 NTPSERVERS="pool.ntp.br"
 # To provide NTP internally. Comment both to disable them
-NTPNETACCESS=`sipcalc $INTIP'/'$INTMASK| grep 'Network address'| cut -d'-' -f2
+NTPNETACCESS=`sipcalc $INTIP'/'$INTMASKB| grep 'Network address'| cut -d'-' -f2  | cut -c2-`
 NTPMASKACCESS=$INTMASK
+
+# Denyhosts
+LOCKTIME=4h # Deny Hosts lock time
+
+# SCIFI
+DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
+ModDir=$DIRELSCIFI'modules/' # Where are modules
+SCRIPTDIR=/usr/share/EasyLifeNetworks/scripts/ # Where are scripts
+SCIFIVERION=12
+SCIFISUBVERSION=0
+
+# SCIFI Web Interface
+SCIFIWEBUSERNAME='admin' # user name to access EasyLifeNetworks administrative web interface 
+SCIFIWEBPASSWD='admin' # password to access EasyLifeNetworks administrative web interface 
+SSLCERTIFICATEPASSWD='keystore' # keypass and keystore password for HTTPS certificate
+
+# SCIFI Core
+SCIFIPASSWD='sc1f1_206.' # password for linux user "EasyLifeNetworks".
+
+# SCIFI Database
+SCIFIDBPASSWD='EasyLifeNetworks' # password for default database user "EasyLifeNetworks". Use only alphanumeric characters and . and _.
+
+# JBossAS
+JBOSSPASSWD='JBAs_711.' # password for default user "jboss" to access jboss administrative interface and linux user "jboss".
+
+# MRTG
+MRTGAUTH=n # MRTG authenticated - If you have to authenticate to see (y)es, (n)o or (g) you must belong a group
+MRTGGROUP=NetAdmins # MRTG authenticated group
+
+# NAGIOS
+NAGIOSAUTH=g # NAGIOS authenticated - If you have to authenticate to see (y)es or (g) you must belong a group
+NAGIOSGROUP=NetAdmins # NAGIOS authenticated group
+
+
 
 
