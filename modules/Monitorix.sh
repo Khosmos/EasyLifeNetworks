@@ -19,9 +19,7 @@ DisplayYN "EasyLife Networks - Monitorix " \
   1) Install Monitorix
   2) Setup Monitorix
 
-$TAIL" "Install" "Cancel" || exit
-
-
+" "Install" "Cancel" || exit
 
 
 #1 Installing Monitorix
