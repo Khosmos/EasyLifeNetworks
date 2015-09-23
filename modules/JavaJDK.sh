@@ -22,11 +22,9 @@ DisplayYN "EasyLife Networks - JavaJDK  " \
 Install Java OpenJdk 1.8.0
 
 
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 
-#echo Install
-#exit
 
 # a) Install Java OpenJdk 1.8.0
 yum -y install java-1.8.0-openjdk-devel.x86_64
