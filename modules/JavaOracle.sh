@@ -22,7 +22,7 @@ DisplayYN "EasyLife Networks - JavaOracle " \
  3) Define this as default Java
 
 
-$TAIL" "Install" "Cancel" || exit #se ele precionar install entenderá como 0, caso contrário(||) entenderá como 1 e sairá pq foi o comando que colocamos em seguiday if he press "install" , the return will be 0, otherwise (||) the return will be 1 and we back to our machine 'cause was the command that we put next ("exit")
+" "Install" "Cancel" || exit #se ele precionar install entenderá como 0, caso contrário(||) entenderá como 1 e sairá pq foi o comando que colocamos em seguiday if he press "install" , the return will be 0, otherwise (||) the return will be 1 and we back to our machine 'cause was the command that we put next ("exit")
 
 
 #1) Download Java 8
