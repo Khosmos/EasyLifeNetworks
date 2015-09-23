@@ -22,7 +22,7 @@ DisplayYN "EasyLife Networks - SNMPD " \
  4) Start processes
 
 
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 
 #1 
