@@ -20,7 +20,7 @@ DisplayYN "EasyLife Networks - DNSMasq " \
  2) Setup DNSMasq
 
 
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 
 # Install DNSMasq
