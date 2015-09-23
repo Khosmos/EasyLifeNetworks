@@ -23,8 +23,7 @@ DisplayYN "EasyLife Networks - RADIUS" \
  5) RADIUS log
  6) Start RADIUS'
 
-
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 #1
 yum install freeradius freeradius-utils freeradius-ldap -y
