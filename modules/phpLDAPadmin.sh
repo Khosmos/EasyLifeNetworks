@@ -21,7 +21,7 @@ DisplayYN "EasyLife Networks - phpLDAPadmin" \
  3) Some subs
  4) Restart Apache
 
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 #1 Install phpLDAPadmin
 yum install phpldapadmin -y
