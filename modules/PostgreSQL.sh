@@ -22,7 +22,7 @@ DisplayYN "EasyLife Networks - PostgreSQL" \
  4) Configure pg_hba.conf
 
 
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 
 #1) Install PostgreSQL
@@ -32,6 +32,8 @@ yum install postgresql-server postgresql perl-DBD-Pg -y
 service postgresql initdb
 chkconfig postgresql on
 service postgresql restart
+
+read
 
 #3) Configure password for admin user postgres
 echo -e "$DBADMINPASSWD\n$DBADMINPASSWD" | passwd $DBADMIN
@@ -45,6 +47,9 @@ su - postgres -c "cp /var/lib/pgsql/data/pg_hba.conf /var/lib/pgsql/data/pg_hba.
 sed -i 's/host    all         all         127.0.0.1\/32          ident/host    all         all         127.0.0.1\/32          md5/g' /var/lib/pgsql/data/pg_hba.conf #why all this spaces?
 # CentOs 7
 sed -i 's/host    all             all             127.0.0.1\/32            ident/host    all         all 127.0.0.1\/32          md5/g' /var/lib/pgsql/data/pg_hba.conf
+
+read 
+
 service postgresql restart
 
 echo PostgreSQL module finished
