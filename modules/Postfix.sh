@@ -24,7 +24,7 @@ DisplayYN "EasyLife Networks - Postfix " \
 
 
 
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 
 #1

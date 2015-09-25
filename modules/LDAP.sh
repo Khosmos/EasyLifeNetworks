@@ -31,7 +31,7 @@ DisplayYN "EasyLife Networks - LDAP " \
 
 
 
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 
 #0 Install LDAP

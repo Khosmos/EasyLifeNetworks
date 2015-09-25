@@ -2,26 +2,27 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130923
+# Version 2050923
 #
 # DenyHosts module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv        
-set -xv        
 
 clear
 
-DisplayMsg "EasyLife Networks - DenyHosts" \
-'This module will:
+DisplayYN "EasyLife Networks - DenyHosts" \
+"This module will:
  1) Install DenyHosts
  2) Copy Templates
  3) Setup Denyhosts
  4) Setup Logrotate
- 5) Setup Start'
+ 5) Setup Start
+
+" "Install" "Cancel" || exit
 
 #1 Install DenyHosts
 yum install denyhosts -y

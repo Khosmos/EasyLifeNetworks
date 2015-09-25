@@ -23,7 +23,7 @@ DisplayYN "EasyLife Networks - PostgreSQLUp " \
 5) Configure password for user postgres
 6) Configure pg_hba.conf
 
-$TAIL" "Install" "Cancel" || exit
+" "Install" "Cancel" || exit
 
 
 
