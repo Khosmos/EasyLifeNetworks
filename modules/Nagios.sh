@@ -14,28 +14,23 @@
 
 clear
 
+DisplayYN "EasyLife Networks - Nagios " \
+ " This module will:
+  1) Install Nagios
+  2) Copy Templates
+  3) SetUp Templates
+  4) Setup HTTPD
+  5) Setup cron
+  6) setup Start
+  7) Scripts
+  8) Put InternetGateway in /etc/hosts
+  9) Our Icons
 
-cat <<-EOF
-  =========================================
-  |           Easy Life for Networks         |
-  =========================================
-                  Nagios
+" "Install" "Cancel" || exit
 
-  This module will:
-  *) Install Nagios
-  *) Copy Templates
-  *) SetUp Templates
-  *) Setup HTTPD
-  *) Setup cron
-  *) setup Start
-  *) Scripts
-  *) Put InternetGateway in /etc/hosts
-  *) Our Icons
 
-  Press <Enter> to continue
+#read
 
-EOF
-read
 #1 Install Nagios
 yum  install nagios nagios-plugins-all -y
 
@@ -44,8 +39,8 @@ mv /etc/nagios /etc/nagios.`date +%Y%m%d-%H%M%S`
 cp -rp $ModDir/Nagios/nagios /etc/
 
 #3 SetUp Templates
-sed -i s/IGNAME/$IGNAME/g /etc/nagios/routers/InternetGateway.cfg
-sed -i s/IGIP/$IGIP/g /etc/nagios/routers/InternetGateway.cfg
+sed -i s/IGNAME/$IGNAME/g /etc/nagios/routers/InternetGateway.cfg # enter the name seted in variables 
+sed -i s/IGIP/$IGIP/g /etc/nagios/routers/InternetGateway.cfg # enter the default gateway IP
 
 #4 Setup HTTPD
 rm /etc/httpd/conf.d/nagios.conf
@@ -75,7 +70,7 @@ service nagios restart
 service httpd restart
 
 #7 Scripts
-cp -f  $ModDir/Nagios/*.sh $SCRIPTDIR
+cp -f  $ModDir/Nagios/*.sh $SCRIPTDIR # $SCRIPTDIR is a location 
 ln -s $SCRIPTDIR/*.sh /usr/bin/ 2>/dev/null
 
 #8 Put InternetGateway in /etc/hosts
