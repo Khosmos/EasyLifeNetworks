@@ -22,13 +22,19 @@ if [ $exitstatus = 0 ]; then
 #    echo "The chosen mode is:" $DISTROS
     case $DISTROS in
 	Simple )
-	source simple.sh
+	source profiles/simple.sh
 	;;
 	Central )
-	source central.sh
+	source profiles/central.sh
 	;;
 	Master )
-	source master.sh
+	source profiles/master.sh
+	;;
+	Slave )
+	source profiles/slave
+	;;
+	Area )
+	source profiles/area.sh
 	;;
     esac
     
