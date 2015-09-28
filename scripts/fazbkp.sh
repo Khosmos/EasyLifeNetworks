@@ -20,10 +20,10 @@ DIAM=`date +%d`
 DESTINATARIO="suporte@uff.br"
 MENSAGEM="/var/log/backup-erro.log"    
 
-# Atividade 1 - LDAP
+# Activity 1 - LDAP
 echo Atividade 1 - LDAP
-mkdir -p $BKPHOME/LDAP
-/usr/sbin/slapcat -l $BKPHOME/LDAP/LDAP-$CLIENTE-$INICIO.ldif
+mkdir -p $BKPHOME/LDAP #creates a directory for LDAP bkp
+/usr/sbin/slapcat -l $BKPHOME/LDAP/LDAP-$CLIENTE-$INICIO.ldif # epn - era pra compactar o arquivo com o nome da máquina e data de início
 FIM=`date +%Y%m%d-%H%M%S`                                    
 
 # Atividade 2 - Transfere arquivo para o secundário
