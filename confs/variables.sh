@@ -15,7 +15,7 @@ DOMAIN=uff.br # Domain name
 DOMAINWIFI=wifi.uff.br # Wifi Domain name
 FQDN=$MACHINE'.'$DOMAIN # Machine name + . + Domain name
 EXTINT=eth0 # External Interface
-EXTIP=10.0.0.16 # External IP Address- last change (10.0.0.5)
+EXTIP=10.0.0.17 # External IP Address- last change (10.0.0.5)
 EXTMASK=255.255.255.0 # External IP Mask-last change 255.255.255.0
 EXTMASKB=`echo "obase=2;"${EXTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # External IP Mask bit format
 INTINT=eth1 # Internal Interface
@@ -28,8 +28,8 @@ INTMASKB=`echo "obase=2;"${INTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk
 #MONMASKB=`echo "obase=2;"${MONMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Monitoring IP Mask bit format
 NINTERFACES=2 # 2|3 - If 3 we ignore MONINT
 DNSSERVER='75.75.75.75'
-IGNAME=xfinity # Internet gateway name INternetGateway
-IGIP=10.0.0.1 # Internet gateway IP
+IGNAME=xfinity # Internet gateway name InternetGateway - Default Gateway name
+IGIP=10.0.0.1 # Internet gateway IP - Default Gateway IP
 REMOTEADMINPOINTS='10.0.0.5' # List of trustable machines for adminstrative purposes
 
 # [NetDot]
