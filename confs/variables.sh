@@ -28,8 +28,8 @@ INTMASKB=`echo "obase=2;"${INTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk
 #MONMASKB=`echo "obase=2;"${MONMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Monitoring IP Mask bit format
 NINTERFACES=2 # 2|3 - If 3 we ignore MONINT
 DNSSERVER='75.75.75.75'
-IGNAME=xfinity # Internet gateway name INternetGateway
-IGIP=10.0.0.1 # Internet gateway IP
+IGNAME=xfinity # Internet gateway name InternetGateway - Default Gateway name
+IGIP=10.0.0.1 # Internet gateway IP - Default Gateway IP
 REMOTEADMINPOINTS='10.0.0.5' # List of trustable machines for adminstrative purposes
 
 # [NetDot]
