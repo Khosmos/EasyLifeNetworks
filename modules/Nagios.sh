@@ -39,8 +39,8 @@ mv /etc/nagios /etc/nagios.`date +%Y%m%d-%H%M%S`
 cp -rp $ModDir/Nagios/nagios /etc/
 
 #3 SetUp Templates
-sed -i s/IGNAME/$IGNAME/g /etc/nagios/routers/InternetGateway.cfg # enter the name seted in variables 
-sed -i s/IGIP/$IGIP/g /etc/nagios/routers/InternetGateway.cfg # enter the default gateway IP
+sed -i s/IGNAME/$IGNAME/g /etc/nagios/routers/InternetGateway.cfg # Setting the name seted in variables 
+sed -i s/IGIP/$IGIP/g /etc/nagios/routers/InternetGateway.cfg # Setting the default gateway IP
 
 #4 Setup HTTPD
 rm /etc/httpd/conf.d/nagios.conf
