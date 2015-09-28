@@ -20,19 +20,19 @@ DIAM=`date +%d`
 DESTINATARIO="suporte@uff.br"
 MENSAGEM="/var/log/backup-erro.log"    
 
-# Atividade 1 - LDAP
+# Activity 1 - LDAP
 echo Atividade 1 - LDAP
-mkdir -p $BKPHOME/LDAP
-/usr/sbin/slapcat -l $BKPHOME/LDAP/LDAP-$CLIENTE-$INICIO.ldif
+mkdir -p $BKPHOME/LDAP #creates a directory for LDAP bkp
+/usr/sbin/slapcat -l $BKPHOME/LDAP/LDAP-$CLIENTE-$INICIO.ldif #  To  make  a  text  backup  of  your SLAPD(slapcat ldap) database and put it in a file  called ldif $CLIENTE-$INICIO
 FIM=`date +%Y%m%d-%H%M%S`                                    
 
-# Atividade 2 - Transfere arquivo para o secundário
-echo  Atividade 2 - Transfere arquivo para o secundário
+# Activity 2 - Transfers file to the secondary
+echo  Activity 2 - Transfers file to the secondary #epn - secondary ?
 # /usr/bin/scp  $BKPHOME/LDAP/LDAP-$CLIENTE-$INICIO.ldif root@xldap2.uff.br:/home/LDAP
 FIM=`date +%Y%m%d-%H%M%S`                                    
 
-# Atividade 3 - Envia e-mail com log de erros
-echo  Atividade 3 - Envia e-mail com log de erros
+# Activity 3 - Send email with the file that contains the error log
+echo  Activity 3 - Send email with the file that contains the error log
 ASSUNTO="Backup - "$CLIENTE" - "$INICIO
 #/bin/mail -s "$ASSUNTO" "$DESTINATARIO" < $MENSAGEM
 FIM=`date +%Y%m%d-%H%M%S`                                    

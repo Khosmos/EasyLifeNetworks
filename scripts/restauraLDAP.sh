@@ -32,11 +32,11 @@ else
 fi                                           
 echo ""                                      
 echo "######################################"
-echo " Iniciando em $INICIOFORMAT"           
+echo " Itarting on $INICIOFORMAT"           
 echo ""                                      
 if [ -n "$RESTAURA" ]; then                  
         if [ -f "$RESTAURA" ]; then          
-                echo " Arquivo Informado Existe, Continuando..."
+                echo " The file informed exist, continuing..."
                 OK=1                                            
         else                                                    
                 #setterm -store -background black -foreground red
@@ -89,13 +89,13 @@ echo "           ** Conferindo arquivos de configuração       **"
 echo "           ** para slapd: config file testing succeeded **"
 echo "           ***********************************************"
 echo ""
-echo "   apenas os 2 primeiros status podem ter sido [FALHOU]"
+echo "   only the 2 first status may have been [FAILED]
 echo "+--------------------------------------------"
 echo ""
-echo "Caso apos tentativas voce nao consiga restaurar o sistema"
+echo "If after attempts you can not restore the system"
 fi
 echo ""
-echo "    O seu contato e"
+echo "    Your contact is"
 echo "           Cosme Correa - 21-9219-5949"
 echo ""
 echo ""
