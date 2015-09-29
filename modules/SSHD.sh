@@ -13,12 +13,16 @@
 #set -xv        
 
 clear
-DisplayMsg "EasyLife Networks - SSHD" \
-'This module will:
+DisplayYN "EasyLife Networks - SSHD " \
+"This module will:
  1) Install SSHD
  2) Copy Template
  3) Setup SSHD
- 4) Start SSHD'
+ 4) Start SSHD
+
+" "Install" "Cancel" || exit
+
+
 
 #1
 yum install openssh-server -y
