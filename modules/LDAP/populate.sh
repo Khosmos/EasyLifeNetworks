@@ -223,6 +223,19 @@ description: Network Administrators
 sambaGroupType: 2
 structuralObjectClass: posixGroup
 
+dn: cn=NetOperators,ou=Group,$RAIZ_BASE_LDAP
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+cn: NetAdmins
+gidNumber: 1002
+userPassword:: Kg==
+memberUid: $LDAPPRIMARYUID
+sambaSID: $SAMBASID-1002
+displayName: Network Operators
+description: Network Operators
+sambaGroupType: 2
+structuralObjectClass: posixGroup
+
 dn: cn=Manager,$RAIZ_BASE_LDAP
 objectClass: simpleSecurityObject
 objectClass: organizationalRole
@@ -237,11 +250,11 @@ cn: reader-shib
 description: shibboleth reader
 userPassword: $HASH_PASS_READER_SHIB
 
-dn: cn=reader-radius,$RAIZ_BASE_LDAP
+dn: cn=$RADIUSACCOUNT,$RAIZ_BASE_LDAP
 objectClass: simpleSecurityObject
 objectClass: organizationalRole
-cn: reader-radius
-description: radius reader
+cn: $RADIUSACCOUNT
+description: Radius reader
 userPassword: $HASH_PASS_READER_RADIUS
 
 dn: uid=$LDAPPRIMARYUID,ou=People,$RAIZ_BASE_LDAP

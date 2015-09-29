@@ -72,7 +72,7 @@ MONITORIXGROUP=NetAdmins # MONITORIX authenticated group
 # [Radius]
 RADIUSSERVER=127.0.0.1 # Radius server
 RADIUSDOMAIN=uff.br # Radius domain
-RADIUSACCOUNT='reader-radius' # Radius account - without use nowadays
+RADIUSACCOUNT='reader-radius' # Radius account - think twice before change
 RADIUSACCPASS=Aspargos # Radius account password
 RADIUSPASS=Taioba # Radius password for clients
 
@@ -90,7 +90,7 @@ RADIUSPASS=Taioba # Radius password for clients
 # [Shibboleth]
 SHIBPASS=BeterrabaDoce # Shib password
 
-# [SSH]
+# [SSHD]
 SSHDAUTH=u # SSHD authenticated - If you have right to use (u)sers or (g)roup you must belong a group
 SSHDGROUP=NetAdmins # SSHD authenticated group
 SSHDUSERS='cosmefc johndoe teste' # users list with ssh right

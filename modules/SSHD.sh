@@ -13,7 +13,7 @@
 #set -xv        
 
 clear
-splayMsg "EasyLife Networks - SSHD" \
+DisplayMsg "EasyLife Networks - SSHD" \
 'This module will:
  1) Install SSHD
  2) Copy Template

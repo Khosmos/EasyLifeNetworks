@@ -74,11 +74,12 @@ if [ $NOI -ge 3 ]; then
     nmcli connection modify "${INT[3]}" ipv6.method ignore # Turn off ipv6
 fi
 
-#5 Setup hostname
+#5 Setup hostname and default gateway
 hostnamectl set-hostname $MACHINE.$DOMAINWIFI 
-#nmcli general hostname $MACHINE.$DOMAINWIFI
  
-echo "$EXTIP $MACHINE.$DOMAINWIFI" >> /etc/hosts
+echo "$EXTIP $MACHINE.$DOMAINWIFI $MACHINE" >> /etc/hosts
+sed -i s/$IGIP/'#'$IGIP/g /etc/hosts
+echo $IGIP' '$IGNAME' #'" Added by ELN - `date +%Y%m%d-%H%M%S`" >> /etc/hosts #Put default gateway name in hosts
 
 echo  'Press <Enter> key'
 read
