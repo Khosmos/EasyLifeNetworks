@@ -2,12 +2,12 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20130918
+# Version 20150929
 #
 # Nagios module
 #
 # Cosme Faria Corrêa
-# John Doe
+# Ana Carolina Silvério
 # ...
 #
 #set -xv        
@@ -23,8 +23,7 @@ DisplayYN "EasyLife Networks - Nagios " \
   5) Setup cron
   6) setup Start
   7) Scripts
-  8) Put InternetGateway in /etc/hosts
-  9) Our Icons
+  8) Our Icons
 
 " "Install" "Cancel" || exit
 
@@ -73,7 +72,7 @@ service httpd restart
 cp -f  $ModDir/Nagios/*.sh $SCRIPTDIR # $SCRIPTDIR is a location 
 ln -s $SCRIPTDIR/*.sh /usr/bin/ 2>/dev/null
 
-#9 Our icons
+#8 Our icons
 cp -f  $ModDir/Nagios/wifi.png usr/share/nagios/html/images/logos/ 2>/dev/null
 
 echo Nagios module finished
