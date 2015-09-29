@@ -284,10 +284,10 @@ objectClass: sambaSamAccount
 
 EOF
 
-# 4- Ajusta as permissões
+# 4- Adjust permissions
 chown -R ldap:ldap /var/lib/ldap /etc/openldap/slapd.conf
 chmod 600 /etc/openldap/slapd.conf /var/lib/ldap/*
 
-# 5- Reinicia o LDAP
+# 5- Restarts the LDAP
 /sbin/service slapd start
 
