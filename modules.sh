@@ -10,22 +10,7 @@
 #
 #set -xv
 
-locat=$(pwd)
-locid="/usr/share/EasyLifeNetworks"
-
-# Source all scripts, functions etc.
-for src in $locid/lib/common/*.sh; do source "$src"; done
-
-# Source variables
-source $locid/confs/variables.sh
-
-touch $LOGFILE
-IsRoot || return 1
-IsGoodOS || return 1
-source $locid/modules/Base.sh
-
 # Start Variables
-if [ $locat = $locid ]; then
 	CurDir='/usr/share/EasyLifeNetworks'
 	CFGFile=$CurDir'/confs/variables.sh'
 	Start=`date +%Y%m%d-%H%M%S`
@@ -57,6 +42,4 @@ if [ $locat = $locid ]; then
 	      ;;
 	   esac
 	done
-else
-	./installeln.sh
-fi
+
