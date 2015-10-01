@@ -37,7 +37,7 @@ chmod 644 /etc/httpd/conf.d/phpldapadmin.conf
 chown root:root /etc/httpd/conf.d/phpldapadmin.conf
 
 #3
-sed -i s/REMOTEADMINPOINTS//#$REMOTEADMINPOINTS/g /etc/httpd/conf.d/phpldapadmin.conf
+sed -i s/REMOTEADMINPOINTS/$REMOTEADMINPOINTS/g /etc/httpd/conf.d/phpldapadmin.conf
 
 #4
 service httpd restart
