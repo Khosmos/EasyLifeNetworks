@@ -25,7 +25,7 @@ source $locid/modules/Base.sh
 
 
 if [ $locat = $locid ]; then
-    OPTIONS=$(whiptail --title "Easy Life Network" --radiolist \
+    OPTIONS=$(whiptail --title "Easy Life Networks" --radiolist \
     "Modus operandi" 10 78 2 \
     PROFILES "Install complete funcional preformated solutions" OFF \
     MODULES "Install individual Modules" ON 3>&1 1>&2 2>&3)

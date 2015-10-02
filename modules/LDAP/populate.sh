@@ -226,7 +226,7 @@ structuralObjectClass: posixGroup
 dn: cn=NetOperators,ou=Group,$RAIZ_BASE_LDAP
 objectClass: posixGroup
 objectClass: sambaGroupMapping
-cn: NetAdmins
+cn: NetOperators
 gidNumber: 1002
 userPassword:: Kg==
 memberUid: $LDAPPRIMARYUID
