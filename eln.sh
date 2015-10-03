@@ -2,12 +2,12 @@
 # Easy Life Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150923
+# Version 20151003
 #
 # Cosme Faria Corrêa
 # ...
 #
-#set -xv
+set -xv
 
 locat=$(pwd)
 locid="/usr/share/EasyLifeNetworks"
@@ -23,15 +23,12 @@ IsRoot || return 1
 IsGoodOS || return 1
 source $locid/modules/Base.sh
 
-
 if [ $locat = $locid ]; then
-    OPTIONS=$(whiptail --title "Easy Life Networks" --radiolist \
-    "Modus operandi" 10 78 2 \
+    OPTIONS=$(SelectRadio "Easy Life Networks" "Modus operandiI" \
     PROFILES "Install complete funcional preformated solutions" OFF \
-    MODULES "Install individual Modules" ON 3>&1 1>&2 2>&3)
+    MODULES "Install individual Modules" ON)
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
-#    echo "The chosen mode is:" $OPTIONS
 	case $OPTIONS in
 	    PROFILES )
 	    source profiles.sh
@@ -41,7 +38,7 @@ if [ $locat = $locid ]; then
 	    ;;
 	esac
     else
-	echo "You chose Cancel."
+	echo "You choose Cancel."
     fi
 else
 	./installeln.sh

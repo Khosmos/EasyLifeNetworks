@@ -32,6 +32,11 @@
 # 3) Create Directories\n\
 # 4) arp table setup " 9 78
 
+#0
+if [ -d "$ELNCONFDIR" ]; then
+  return
+fi
+
 # 1) EPEL
 EPELOn || return 1
 
@@ -46,7 +51,7 @@ fi
 
 # 4) Create directories
 mkdir -p $SCRIPTDIR
-mkdir /etc/EasyLifeNetworks
+mkdir $ELNCONFDIR
 
 #4) arp table setup
 echo 'net.ipv4.neigh.default.gc_thresh1 = 4096' >> /etc/sysctl.conf

@@ -12,4 +12,4 @@ To download:
   
 To start
   cd EasyLifeNetworks
-  ./installeln.sh
+  . ./installeln.sh

@@ -2,6 +2,7 @@
 # Initial information
 VERSION="20150608"
 LOGFILE="/var/log/eln.log"
+ELNCONFDIR="/etc/EasyLifeNetwork"
 
 # [Linux]
 #OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
