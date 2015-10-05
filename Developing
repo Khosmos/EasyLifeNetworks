@@ -1,0 +1,15 @@
+# EasyLife Network
+#
+# Last modifications:
+# 05/10/2015
+#
+# Author:
+# Ana Carolina Silvério
+#
+# 
+
+Until 05/10/2015
+- establish encrypted connection with LDAP
+- require encrypted connection for access to the LDAP
+- define which processes will have communication with encryption or not
+- 
