@@ -14,7 +14,7 @@
 	CurDir='/usr/share/EasyLifeNetworks'
 	CFGFile=$CurDir'/confs/variables.sh'
 	Start=`date +%Y%m%d-%H%M%S`
-    	Steps='Variables Network SNMPD Logs LDAP LDAPolc phpLDAPadmin Apache Monitorix DNSMasq MRTG Nagios RADIUS RadSecProxy Firewall Conntrack SSHD DenyHosts NTPD Postfix PostgreSQL PostgreSQLUp JavaJDK NetDot JavaOracle JBossAS Exit' 
+    	Steps='Variables Network SNMPD Logs LDAP LDAPolc phpLDAPadmin SSHD NX DenyHosts NTPD Apache Monitorix DNSMasq MRTG Nagios RADIUS RadSecProxy Firewall Conntrack Postfix PostgreSQL PostgreSQLUp JavaJDK NetDot JavaOracle JBossAS Exit' 
 	while true ; do
 		clear
 #	source $locid/confs/variables.sh
