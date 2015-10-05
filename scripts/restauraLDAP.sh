@@ -22,7 +22,7 @@ done
 echo "It will be restored backup $var"     
 RESTAURA=$DIRBKP/$var                    
 
-echo "### LDAP Restoration service - SISTEMA DE RESTAURACAO DE LDAP ###"
+echo "### LDAP Restoration service ###"
 echo ""                                      
 echo "###   It will be restored the file    ###"
 if [ -n "$RESTAURA" ]; then                  
@@ -32,63 +32,63 @@ else
 fi                                           
 echo ""                                      
 echo "######################################"
-echo " Iniciando em $INICIOFORMAT"           
+echo " Starting on $INICIOFORMAT"           
 echo ""                                      
 if [ -n "$RESTAURA" ]; then                  
         if [ -f "$RESTAURA" ]; then          
-                echo " Arquivo Informado Existe, Continuando..."
+                echo " Informed file exist, Continuing..."
                 OK=1                                            
         else                                                    
                 #setterm -store -background black -foreground red
-                echo " >>> O arquivo informado nao existe ! <<<" 
-                echo " >>> Verifique o nome corretamente !  <<<" 
+                echo " >>> The specified file does not exist ! <<<" 
+                echo " >>> Check the name correctly !  <<<" 
                 #setterm -store -background black -foreground white
         fi                                                         
 else                                                               
-        echo " >>> Informe um arquivo a ser importado ! <<<"       
+        echo " >>> Enter a file to be imported ! <<<"       
 fi                                                                 
 
 if [ -n "$OK" ]; then
-echo "Finalizando o LDAP ..."
+echo "Finishing the LDAP ..."
 service slapd stop            
 
-echo "Movendo o diretorio do /var/lib/ldap"
+echo "Moving the directory of /var/lib/ldap"
 mv /var/lib/ldap /var/lib/ldap.$INICIO
 
-echo "Criando novo diretorio"
+echo "Creating new directory"
 mkdir /var/lib/ldap
-echo "Copiando DB_CONFIG..."
+echo "Copying DB_CONFIG..."
 cp /etc/openldap/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
-echo "Checando permissoes..."
+echo "Checking permissions..."
 chown ldap:ldap /var/lib/ldap/ -Rf
 
-echo "Reiniciando servico / Parando servico"
+echo "Restarting service / Stopping service"
 service slapd start
 service slapd stop
 
-echo "Carregando base $RESTAURA"
-echo " isto pode demorar alguns segundos..."
+echo "Loading base $RESTAURA"
+echo " This may take a few seconds..."
 slapadd -vl $RESTAURA
 
-echo "Adicao finalizada"
+echo "Addition completed"
 
-echo "Ajustando permissoes"
+echo "Setting permissions"
 chown ldap:ldap /var/lib/ldap/ -Rf
 
-echo "Reiniciando Servico.."
+echo "Restarting service..."
 service slapd start
 service slapd restart
 
 read
 
 echo "+--------------------------------------------"
-echo " A restauracao foi efetuada, caso tenha verificado"
-echo "      algum erro, por favor, tente novamente ou corrija-os"
+echo " The restoration was made, if you have checked "
+echo "      an error, please try again or correct them"
 echo ""
-echo "  Deve ter aparecido a seguinte mensagem acima:"
+echo "  You must have shown the following message above:"
 echo "           ***********************************************"
-echo "           ** Conferindo arquivos de configuração       **"
-echo "           ** para slapd: config file testing succeeded **"
+echo "           ** Checking configuration files              **"
+echo "           **  for slapd: config file testing succeeded **"
 echo "           ***********************************************"
 echo ""
 <<<<<<< HEAD
@@ -103,10 +103,10 @@ echo "    Your contact is"
 echo "   apenas os 2 primeiros status podem ter sido [FALHOU]"
 echo "+--------------------------------------------"
 echo ""
-echo "Caso apos tentativas voce nao consiga restaurar o sistema"
+echo "If after some attempts you can not restore the system"
 fi
 echo ""
-echo "    O seu contato e"
+echo "    Your contact is"
 >>>>>>> 26f3563c45d5dcc1e8a1597fa3238b306b8c06cd
 echo "           Cosme Correa - 21-9219-5949"
 echo ""
