@@ -10,7 +10,7 @@
 # Ana Carolina Silvério
 # ...
 #
-#set -xv        
+set -xv        
 
 clear
 
@@ -41,6 +41,8 @@ cp -rp $ModDir/Nagios/nagios /etc/
 sed -i s/IGNAME/$IGNAME/g /etc/nagios/routers/InternetGateway.cfg # Setting the name seted in variables 
 sed -i s/IGIP/$IGIP/g /etc/nagios/routers/InternetGateway.cfg # Setting the default gateway IP
 
+read
+
 #4 Setup HTTPD
 rm /etc/httpd/conf.d/nagios.conf
 case "$NAGIOSAUTH" in
@@ -54,6 +56,8 @@ esac
 sed -i s/LDAPSERVER/$LDAPSERVER/g /etc/httpd/conf.d/nagios.conf
 sed -i s/LDAPSUFIX/$LDAPSUFIX/g /etc/httpd/conf.d/nagios.conf
 sed -i s/NAGIOSGROUP/$NAGIOSGROUP/g /etc/httpd/conf.d/nagios.conf
+
+read
 
 #5 Setup Cron
 rm /etc/cron.d/mrtg 2> /dev/null

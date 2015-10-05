@@ -32,65 +32,66 @@ else
 fi                                           
 echo ""                                      
 echo "######################################"
-echo " Itarting on $INICIOFORMAT"           
+echo " Iniciando em $INICIOFORMAT"           
 echo ""                                      
 if [ -n "$RESTAURA" ]; then                  
         if [ -f "$RESTAURA" ]; then          
-                echo " The file informed exist, continuing..."
+                echo " Arquivo Informado Existe, Continuando..."
                 OK=1                                            
         else                                                    
                 #setterm -store -background black -foreground red
-                echo " >>> The file informed does not exist ! <<<" 
-                echo " >>> Check the name correctly !  <<<" 
+                echo " >>> O arquivo informado nao existe ! <<<" 
+                echo " >>> Verifique o nome corretamente !  <<<" 
                 #setterm -store -background black -foreground white
         fi                                                         
 else                                                               
-        echo " >>> Enter a file to be imported ! <<<"       
+        echo " >>> Informe um arquivo a ser importado ! <<<"       
 fi                                                                 
 
 if [ -n "$OK" ]; then
-echo "Finishing the LDAP ..."
+echo "Finalizando o LDAP ..."
 service slapd stop            
 
-echo "Moving the directory from /var/lib/ldap"
+echo "Movendo o diretorio do /var/lib/ldap"
 mv /var/lib/ldap /var/lib/ldap.$INICIO
 
-echo "Creating new directory"
+echo "Criando novo diretorio"
 mkdir /var/lib/ldap
-echo "Copying DB_CONFIG..."
+echo "Copiando DB_CONFIG..."
 cp /etc/openldap/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
-echo "Checking permissions..."
+echo "Checando permissoes..."
 chown ldap:ldap /var/lib/ldap/ -Rf
 
-echo "Restarting service / Stopping service"
+echo "Reiniciando servico / Parando servico"
 service slapd start
 service slapd stop
 
-echo "Loading base $RESTAURA"
-echo " this may take a few seconds..."
+echo "Carregando base $RESTAURA"
+echo " isto pode demorar alguns segundos..."
 slapadd -vl $RESTAURA
 
-echo "Adding completed"
+echo "Adicao finalizada"
 
-echo "Setting permissions"
+echo "Ajustando permissoes"
 chown ldap:ldap /var/lib/ldap/ -Rf
 
-echo "Restarting service..."
+echo "Reiniciando Servico.."
 service slapd start
 service slapd restart
 
 read
 
 echo "+--------------------------------------------"
-echo " The restoration was made, if you have checked"
-echo "      any error, please try again or correct them"
+echo " A restauracao foi efetuada, caso tenha verificado"
+echo "      algum erro, por favor, tente novamente ou corrija-os"
 echo ""
-echo "  Must have appeared the following message above:"
+echo "  Deve ter aparecido a seguinte mensagem acima:"
 echo "           ***********************************************"
-echo "           ** Checking configuration files       **"
-echo "           ** for slapd: config file testing succeeded **"
+echo "           ** Conferindo arquivos de configuração       **"
+echo "           ** para slapd: config file testing succeeded **"
 echo "           ***********************************************"
 echo ""
+<<<<<<< HEAD
 echo "   only the 2 first status may have been [FAILED]"
 echo "+--------------------------------------------"
 echo ""
@@ -98,6 +99,15 @@ echo "If after attempts you can not restore the system"
 echo ""
 fi
 echo "    Your contact is"
+=======
+echo "   apenas os 2 primeiros status podem ter sido [FALHOU]"
+echo "+--------------------------------------------"
+echo ""
+echo "Caso apos tentativas voce nao consiga restaurar o sistema"
+fi
+echo ""
+echo "    O seu contato e"
+>>>>>>> 26f3563c45d5dcc1e8a1597fa3238b306b8c06cd
 echo "           Cosme Correa - 21-9219-5949"
 echo ""
 echo ""

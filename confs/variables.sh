@@ -2,6 +2,7 @@
 # Initial information
 VERSION="20150608"
 LOGFILE="/var/log/eln.log"
+ELNCONFDIR="/etc/EasyLifeNetwork"
 
 # [Linux]
 #OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
@@ -15,11 +16,11 @@ DOMAIN=uff.br # Domain name
 DOMAINWIFI=wifi.uff.br # Wifi Domain name
 FQDN=$MACHINE'.'$DOMAIN # Machine name + . + Domain name
 EXTINT=eth0 # External Interface
-EXTIP=10.0.0.17 # External IP Address- last change (10.0.0.5)
+EXTIP=10.0.0.11 # External IP Address- last change (10.0.0.5)
 EXTMASK=255.255.255.0 # External IP Mask-last change 255.255.255.0
 EXTMASKB=`echo "obase=2;"${EXTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # External IP Mask bit format
 INTINT=eth1 # Internal Interface
-INTIP=192.168.122.57 # Interface IP Address
+INTIP=192.168.122.53 # Interface IP Address
 INTMASK=255.255.255.0 # Interface IP Mask
 INTMASKB=`echo "obase=2;"${INTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Internal IP Mask bit format
 #MONINT=eth2 # Monitoring interface

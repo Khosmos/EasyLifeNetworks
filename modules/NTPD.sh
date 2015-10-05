@@ -32,21 +32,15 @@ yum install ntp -y
 mv /etc/ntp.conf /etc/ntp.conf.`date +%Y%m%d-%H%M%S` 2>/dev/null
 cp -pr $ModDir/NTPD/ntp.conf.$OSVERSION /etc/ntp.conf #adds the version of centos machine in the document ntp.conf
 
-read
-
 #3
 sed -i s/NTPSERVERS/$NTPSERVERS/g /etc/ntp.conf # add the address of the servers in the document ntp.conf
-
 echo '$NTPNETACCESS='$NTPNETACCESS
-
 if [ -z $NTPNETACCESS ]; then
     sed -i s/'restrict NTPNETACCESS mask NTPMASKACCESS'//g /etc/ntp.conf
 else
     sed -i s/NTPNETACCESS/$NTPNETACCESS/g /etc/ntp.conf
     sed -i s/NTPMASKACCESS/$NTPMASKACCESS/g /etc/ntp.conf
 fi
-
-read
 
 #4 NTPD start
 chkconfig ntpd on

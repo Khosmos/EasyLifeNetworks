@@ -19,7 +19,7 @@ DisplayYN "EasyLife Networks - Apache" \
  1) Install Apache
  2) Start Apache
 
-" "Install" "Cancel" || exit
+" "Install" "Cancel" || return
 
 
 

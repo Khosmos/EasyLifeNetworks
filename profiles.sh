@@ -39,5 +39,5 @@ if [ $exitstatus = 0 ]; then
     esac
     
 else
-    echo "You chose Cancel."
+    echo "You choose Cancel."
 fi
