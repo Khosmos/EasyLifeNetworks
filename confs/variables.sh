@@ -94,7 +94,7 @@ SHIBPASS=BeterrabaDoce # Shib password
 # [SSHD]
 SSHDAUTH=u # SSHD authenticated - If you have right to use (u)sers or (g)roup you must belong a group
 SSHDGROUP=NetAdmins # SSHD authenticated group
-SSHDUSERS='cosmefc johndoe teste' # users list with ssh right
+SSHDUSERS='cosmefc anasilv' # users list with ssh right
 
 # [Postfix]
 RELAYHOST=mxrelay.uff.br

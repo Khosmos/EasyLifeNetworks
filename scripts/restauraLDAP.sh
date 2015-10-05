@@ -1,6 +1,6 @@
 #!/bin/bash                                                         
 clear                                                               
-#set -xv                                                            
+set -xv                                                            
 
 DIRBKP=/home/LDAP
 INICIO=`date +%Y%m%d-%H%M%S`
@@ -79,6 +79,8 @@ echo "Reiniciando Servico.."
 service slapd start
 service slapd restart
 
+read
+
 echo "+--------------------------------------------"
 echo " A restauracao foi efetuada, caso tenha verificado"
 echo "      algum erro, por favor, tente novamente ou corrija-os"
@@ -89,6 +91,15 @@ echo "           ** Conferindo arquivos de configuração       **"
 echo "           ** para slapd: config file testing succeeded **"
 echo "           ***********************************************"
 echo ""
+<<<<<<< HEAD
+echo "   only the 2 first status may have been [FAILED]"
+echo "+--------------------------------------------"
+echo ""
+echo "If after attempts you can not restore the system"
+echo ""
+fi
+echo "    Your contact is"
+=======
 echo "   apenas os 2 primeiros status podem ter sido [FALHOU]"
 echo "+--------------------------------------------"
 echo ""
@@ -96,6 +107,7 @@ echo "Caso apos tentativas voce nao consiga restaurar o sistema"
 fi
 echo ""
 echo "    O seu contato e"
+>>>>>>> 26f3563c45d5dcc1e8a1597fa3238b306b8c06cd
 echo "           Cosme Correa - 21-9219-5949"
 echo ""
 echo ""
