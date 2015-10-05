@@ -6,10 +6,16 @@
 # Author:
 # Ana Carolina Silvério
 #
+#
+# Description:
+# File to organize the many structures to be developed
 # 
+#
+#
 
 Until 05/10/2015
 - establish encrypted connection with LDAP
 - require encrypted connection for access to the LDAP
 - define which processes will have communication with encryption or not
-- 
+- ACL Review: resuming all acl (for Radius-reader, netadmin, netoperators)
+- test for the implementation of nx centos7
