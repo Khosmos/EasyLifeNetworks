@@ -9,14 +9,13 @@
 #
 set -xv
 
-DISTROS=$(whiptail --title "Easy Life Network" --radiolist \
+DISTROS=$(whiptail --title "Easy Life Networks" --radiolist \
 "Profiles" 10 78 5 \
 Simple "Easy design for a limited wireless network" ON \
 Central "Central Machine with Controller and Monitoring" OFF \
 Master "Central Machine for usae with a slave" OFF \
 Slave "Central Machine for usae with a master" OFF \
-Area "Area Machie" OFF 3>&1 1>&2 2>&3)
- 
+Area "Area Machine" OFF 3>&1 1>&2 2>&3) 
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
 #    echo "The chosen mode is:" $DISTROS

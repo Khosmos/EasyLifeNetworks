@@ -28,4 +28,5 @@ SelectRadio() {
         done
         let "L=L+13"
 	whiptail --title "$TITLE" --radiolist "$TLIST" $E $L $I "$@" 3>&1 1>&2 2>&3
+	read
 }

@@ -24,7 +24,7 @@ IsGoodOS || return 1
 source $locid/modules/Base.sh
 
 if [ $locat = $locid ]; then
-    OPTIONS=$(SelectRadio "Easy Life Networks" "Modus operandiI" \
+    OPTIONS=$(SelectRadio "Easy Life Networks" "Modus operandi" \
     PROFILES "Install complete funcional preformated solutions" OFF \
     MODULES "Install individual Modules" ON)
     exitstatus=$?
