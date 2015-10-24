@@ -7,7 +7,7 @@
 # Cosme Faria Corrêa
 # ...
 #
-set -xv
+#set -xv
 
 DISTROS=$(whiptail --title "Easy Life Networks" --radiolist \
 "Profiles" 10 78 5 \
