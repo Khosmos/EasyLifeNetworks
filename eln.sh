@@ -7,7 +7,7 @@
 # Cosme Faria Corrêa
 # ...
 #
-set -xv
+#set -xv
 
 locat=$(pwd)
 locid="/usr/share/EasyLifeNetworks"
