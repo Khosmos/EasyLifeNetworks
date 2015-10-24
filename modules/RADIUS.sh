@@ -34,6 +34,7 @@ if [ $OSVERSION = "7" ]; then
     ln -s libgdbm.so.4 libgdbm.so.2.0.0
     ldconfig
     rpm -ivh $ModDir/RADIUS/*.rpm --nodeps
+    grep freeradius /etc/yum.conf >> /dev/null || echo 'exclude=freeradius*' >> /etc/yum.conf
 fi
 
 #2
