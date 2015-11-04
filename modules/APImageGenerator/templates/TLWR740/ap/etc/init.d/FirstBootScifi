@@ -1,0 +1,84 @@
+#!/bin/sh /etc/rc.common
+
+START=94
+
+#SERVICE_USE_PID=1
+
+start() {
+
+#Definir mac padrão
+MAC=$(ifconfig -a | grep eth0 | awk '{print $5}');
+WLAN0=$(cat /sys/class/ieee80211/phy0/macaddress)
+ARQUIVO="/etc/config/network"
+TEMP="/tmp/network-temp"
+awk '!/macaddr/' $ARQUIVO > $TEMP
+awk -v mac=$MAC '{print $0;} /hostname/{printf "\toption macaddr\t\047%s\047\n", mac;}' $TEMP > /tmp/network
+mv /tmp/network $ARQUIVO
+rm $TEMP
+/etc/init.d/snmpd disable
+
+#Configurar Wireless
+
+#Configurar o Wireless 5ghz e 2.4ghz
+awk -v MAC="$MAC" -v WLAN0="$WLAN0" 'BEGIN {
+
+
+ # reiniciando configuracoes wifi
+        comando="wifi detect > /etc/config/wireless; mv /etc/config/wireless /tmp/wireless.old; sed \047/option disabled 1/d\047 /tmp/wireless.old | sed \047/# REMOVE THIS LINE TO ENABLE WIFI:/d\047 | sed \047/option encryption none/d\047 | sed \047/option ssid/d\047 | sed \047/config wifi-iface/d\047  | sed \047/option device   radio0/d\047  | sed \047/option device   radio1/d\047  | sed \047/option network  lan/d\047  | sed \047/option mode     ap/d\047  | awk \047NR > 1{print t} {t = $0}END{if (NF) print }\047 > /etc/config/wireless";
+        system(comando);
+
+
+# configurando scifi          
+        comando="echo \042config wifi-iface\012\011option device\011\047radio0\047\012\011option network\011\047lan\047\012\011option mode\011\047ap\047\012\011option ssid\011\047scifi\047\012\011option encryption\011\047psk2\047\012\011option key\011\04700000000\047\012\042 >> /etc/config/wireless";
+        system(comando);
+
+}'
+
+
+
+
+
+# Configurando System
+sed -i -n '/config led/,$p' /etc/config/system
+echo "config system
+#option hostname 'OpenWrt'
+        option timezone 'CST-8'
+        option log_ip   '10.0.0.1'
+        option log_port '514'
+        option log_size '16'
+        option log_type 'circular'
+
+config timeserver 'ntp'
+        list server '10.0.0.1'
+        list server 'a.st1.ntp.br'
+        list server 'b.st1.ntp.br'
+        option enabled '1'
+        option enable_server '0'
+ " >> /etc/config/system
+
+
+
+
+#Definindo senha, configurações finais api14
+echo -e "00000000\n00000000\n" |passwd root
+rm -f /etc/snmp/snmpd.conf
+ln -s /var/run/snmpd.conf /etc/snmp/
+ln -s /usr/share/scifi/scripts/get_channel.sh /etc/scripts/
+ln -s /usr/share/scifi/scripts/get_power.sh /etc/scripts/
+ln -s /usr/share/scifi/scripts/reboot.sh /etc/scripts/
+ln -s /usr/share/scifi/scripts/scan.sh /etc/scripts/
+ln -s /usr/share/scifi/scripts/set_channel.sh /etc/scripts/
+ln -s /usr/share/scifi/scripts/set_power.sh /etc/scripts/
+ln -s /usr/share/scifi/scripts/sta.sh /etc/scripts/
+opkg remove dnsmasq
+opkg remove odhcpd
+rm /etc/rc.d/*dnsmasq
+rm /etc/rc.d/*odhcpd
+/etc/init.d/uhttpd disable
+chmod -R 777 /www/*
+/etc/init.d/network restart
+wifi 
+/etc/init.d/FirstBootScifi disable
+
+exit 0
+}

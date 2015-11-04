@@ -7,10 +7,9 @@
 # ImageGenerator Module
 #
 # Cosme Faria Corrêa
-# Ana Carolina Silvério
 # ...
 #
-#set -xv        
+#set -xv
 
 clear
 
@@ -37,13 +36,14 @@ if [ $exitstatus = 0 ]; then
 	    fi
 	    #uncompress
 	    tar xvf OpenWrt-ImageBuilder-ar71xx_generic-for-linux-x86_64.tar.bz2
-	    # use template
+	    # use template for TLWR740
 	    \cp -Rf /opt/ImageGenerator/templates/TLWR740/* /opt/ImageGenerator/architecture/OpenWrt-ImageBuilder-ar71xx_generic-for-linux-x86_64/
 	    #load scifi
 	    rm -rf /opt/ImageGenerator/tmp/*
-	    cp /opt/ImageGenerator/scifi/* /opt/ImageGenerator/tmp/
-	    cd /opt/ImageGenerator
-	    make image PROFILE=TLW740 FILES=/opt/ImageGenerator/images/TLWR740
+	    cp -r /opt/ImageGenerator/scifi/* /opt/ImageGenerator/tmp/
+	    # generate image
+	    cd /opt/ImageGenerator/OpenWrt-ImageBuilder-ar71xx_generic-for-linux-x86_64
+	    make image PROFILE=TLW740 FILES=/opt/ImageGenerator/tmp BIN_DIR=/opt/ImageGenerator/images
 	    ;;
 	02 ) # TLWR743
 	    #erase directory
