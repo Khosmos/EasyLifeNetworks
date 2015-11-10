@@ -34,5 +34,5 @@ set -xv
 	    let H=$LINES
 	    let "Itens=H-8"
 	fi
-	whiptail --title '$TITLE' --menu '$BTITLE' $H $width $Itens "$@" 3>&1 1>&2 2>&3
+	whiptail --title "$TITLE" --menu "$BTITLE" $H $width $Itens "$@" 3>&1 1>&2 2>&3
 }

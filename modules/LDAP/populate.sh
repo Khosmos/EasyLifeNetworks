@@ -262,7 +262,7 @@ structuralObjectClass: inetOrgPerson
 sn: $LDAPPRIMARYSN
 givenName: $LDAPPRIMARYCN
 mail: $LDAPPRIMARYUIDMAIL
-uidNumber: 100001
+uidNumber: 10001
 gidNumber: 100
 homeDirectory: /home/$LDAPPRIMARYUID
 loginShell: /bin/bash

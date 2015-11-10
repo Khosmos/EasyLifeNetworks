@@ -47,8 +47,18 @@ if [ $exitstatus = 0 ]; then
 	09 )
 	    source $ModDir'NX.sh'
 	    ;;
+	10 )
+	    source $ModDir'DenyHosts.sh'
+	    ;;
+	11 )
+	    source $ModDir'NTPD.sh'
+	    ;;
+	12 )
+	    source $ModDir'Apache.sh'
+	    ;;
 	28 )
 	    source $ModDir'APImageGenerator.sh'
+	    ;;
 	* )
 	    exit
 	    ;;
