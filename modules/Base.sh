@@ -51,16 +51,16 @@ fi
 
 # 4) Create directories
 mkdir -p $SCRIPTDIR
-mkdir $ELNCONFDIR
+mkdir -p $ELNCONFDIR
 
 #4) arp table setup
 echo 'net.ipv4.neigh.default.gc_thresh1 = 4096' >> /etc/sysctl.conf
 echo 'net.ipv4.neigh.default.gc_thresh2 = 8192' >> /etc/sysctl.conf
 echo 'net.ipv4.neigh.default.gc_thresh3 = 8192' >> /etc/sysctl.conf
 
-chmod 700 $ELNDIR'\eln.sh'
+chmod 700 $ELNDIR'/eln.sh'
 cd /usr/bin
-ln -s $ELNDIR'\eln.sh' .
+ln -s $ELNDIR'/eln.sh' .
 
 
 #echo Base module finished
