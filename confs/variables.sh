@@ -2,14 +2,12 @@
 # Initial information
 VERSION="20151111"
 LOGFILE="/var/log/eln.log"
-ELNCONFDIR="/etc/EasyLifeNetwork"
-ELNDIR="/usr/share/EasyLifeNetwork"
+ELNCONFDIR="/etc/EasyLifeNetworks"
+ELNDIR="/usr/share/EasyLifeNetworks"
 
 
 # [Linux]
-#OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
 OSNAME=`lsb_release -si`
-#OSVERSION=`cut -d' ' -f$(( \`cat /etc/redhat-release | wc -w\`-1 ))  /etc/redhat-release | cut -d. -f1`
 OSVERSION=`lsb_release -sr | cut -d'.' -f1`
 
 # [Network]

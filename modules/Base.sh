@@ -45,7 +45,7 @@ SelinuxOff
 
 # 3) Utilities
 yum install redhat-lsb-core net-tools git screen vim htop tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core sipcalc xterm -y
-if [ $OSVERSION = "7" ]; then
+if [ "$OSVERSION" = "7" ]; then
     yum localinstall $ModDir/Base/sipcalc-1.1.6-4.fc20.x86_64.rpm -y
 fi
 
