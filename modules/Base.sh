@@ -44,7 +44,7 @@ EPELOn || return 1
 SelinuxOff
 
 # 3) Utilities
-yum install net-tools git screen vim htop tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core sipcalc xterm -y
+yum install redhat-lsb-core net-tools git screen vim htop tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core sipcalc xterm -y
 if [ $OSVERSION = "7" ]; then
     yum localinstall $ModDir/Base/sipcalc-1.1.6-4.fc20.x86_64.rpm -y
 fi
@@ -57,6 +57,11 @@ mkdir $ELNCONFDIR
 echo 'net.ipv4.neigh.default.gc_thresh1 = 4096' >> /etc/sysctl.conf
 echo 'net.ipv4.neigh.default.gc_thresh2 = 8192' >> /etc/sysctl.conf
 echo 'net.ipv4.neigh.default.gc_thresh3 = 8192' >> /etc/sysctl.conf
+
+chmod 700 $ELNDIR'\eln.sh'
+cd /usr/bin
+ln -s $ELNDIR'\eln.sh' .
+
 
 #echo Base module finished
 #echo 'Press <Enter> to exit'

@@ -1,8 +1,10 @@
 #!/bin/bash
 # Initial information
-VERSION="20150608"
+VERSION="20151111"
 LOGFILE="/var/log/eln.log"
 ELNCONFDIR="/etc/EasyLifeNetwork"
+ELNDIR="/usr/share/EasyLifeNetwork"
+
 
 # [Linux]
 #OSNAME=`cut -d' ' -f1 /etc/redhat-release` # Distribuition
