@@ -22,6 +22,7 @@ INTINT=eth1 # Internal Interface
 INTIP=192.168.122.53 # Interface IP Address
 INTMASK=255.255.255.0 # Interface IP Mask
 INTMASKB=`echo "obase=2;"${INTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Internal IP Mask bit format
+INTNET=`ipcalc $INTIP'/'$INTMASKB -n | cut -d'=' -f2`
 #MONINT=eth2 # Monitoring interface
 #MONIP=172.30.255.22 # Monitoring IP Address
 #MONMASK=255.255.0.0 # Monitoring IP Mask
@@ -104,8 +105,7 @@ RELAYPASSWD=segredo
 # Brazil's NTP Servers
 NTPSERVERS="pool.ntp.br"
 # To provide NTP internally. Comment both to disable them
-NTPNETACCESS=`ipcalc $INTIP'/'$INTMASKB -n | cut -d'=' -f2`
-
+NTPNETACCESS=$INTNET
 NTPMASKACCESS=$INTMASK
 
 # Denyhosts

@@ -14,8 +14,7 @@
 CurDir='/usr/share/EasyLifeNetworks'
 CFGFile=$CurDir'/confs/variables.sh'
 Start=`date +%Y%m%d-%H%M%S`
-Steps='01 Variables 02 Network 03 SNMPD 04 Logs 05 Apache 06 LDAP 07 LDAPolc 08 phpLDAPadmin 09 SSHD 10 NX 11 DenyHosts 12 NTPD 13 Monitorix 14 DNSMasq 15 MRTG 16 Nagios 17 RADIUS 18 RadSecProxy 19 Firewall 20 Conntrack 21 Postfix 22 PostgreSQL 23 PostgreSQLUp 24 JavaJDK 25 NetDot 26 JavaOracle 27 JBossAS 28 APImageGenerator 29 Exit'
-#    	Steps='Variables Network SNMPD Logs LDAP LDAPolc phpLDAPadmin SSHD NX DenyHosts NTPD Apache Monitorix DNSMasq MRTG Nagios RADIUS RadSecProxy Firewall Conntrack Postfix PostgreSQL PostgreSQLUp JavaJDK NetDot JavaOracle JBossAS Exit' 
+Steps='01 Variables 02 Network 03 SNMPD 04 Logs 05 Apache 06 LDAP 07 LDAPolc 08 phpLDAPadmin 09 SSHD 10 NX 11 DenyHosts 12 NTPD 13 Monitorix 14 DNSMasq 15 MRTG 16 Nagios 17 RADIUS 18 RadSecProxy 19 Firewall 20 Conntrack 21 Postfix 22 PostgreSQL 23 PostgreSQLUp 24 JavaJDK 25 NetDot 26 JavaOracle 27 JBossAS 28 APImageGenerator 29 SelfServicePassword 30 Exit'
 OPTIONS=$(SelectMenu "Easy Life Networks" "Module Selection" $Steps) 
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
@@ -103,6 +102,9 @@ if [ $exitstatus = 0 ]; then
 	    ;;
 	28 )
 	    source $ModDir'APImageGenerator.sh'
+	    ;;
+	29 )
+	    source $ModDir'SSP.sh'
 	    ;;
 	* )
 	    exit
