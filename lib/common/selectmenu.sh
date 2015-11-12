@@ -13,7 +13,6 @@
 #	SelectMenu "Main Title" "Back Title" O1 "Option 1" O2 "Option 2"
 
 SelectMenu() { 
-set -xv
 	eval `resize`
 	TITLE=$1
 	BTITLE=$2

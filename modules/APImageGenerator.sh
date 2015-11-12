@@ -27,7 +27,7 @@ DisplayYN "EasyLife Networks - APImageGenerator" \
 if [ ! -d "/opt/ImageGenerator" ]; then
     mkdir /opt/ImageGenerator
     cd /opt/ImageGenerator
-    cp -Rf $ModDir/APImageGenerator /opt/ImageGenerator
+    cp -Rf $ModDir/APImageGenerator .
 fi
 
 cd /opt/ImageGenerator/
