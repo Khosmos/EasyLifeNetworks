@@ -19,7 +19,6 @@ for src in $locid/lib/common/*.sh; do source "$src"; done
 source $locid/confs/variables.sh
 source $locid/modules/Base.sh
 
-
 touch $LOGFILE
 IsRoot || exit 1
 IsGoodOS || exit 1

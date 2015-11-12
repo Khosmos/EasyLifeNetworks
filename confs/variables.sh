@@ -5,7 +5,6 @@ LOGFILE="/var/log/eln.log"
 ELNCONFDIR="/etc/EasyLifeNetworks"
 ELNDIR="/usr/share/EasyLifeNetworks"
 
-
 # [Linux]
 OSNAME=`lsb_release -si`
 OSVERSION=`lsb_release -sr | cut -d'.' -f1`
@@ -105,7 +104,8 @@ RELAYPASSWD=segredo
 # Brazil's NTP Servers
 NTPSERVERS="pool.ntp.br"
 # To provide NTP internally. Comment both to disable them
-NTPNETACCESS=`sipcalc $INTIP'/'$INTMASKB| grep 'Network address'| cut -d'-' -f2  | cut -c2-`
+NTPNETACCESS=`ipcalc $INTIP'/'$INTMASKB -n | cut -d'=' -f2`
+
 NTPMASKACCESS=$INTMASK
 
 # Denyhosts
