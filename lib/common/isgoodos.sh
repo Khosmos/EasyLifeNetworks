@@ -10,7 +10,7 @@
 #
 #set -xv
 IsGoodOS() {
-	if [ $OSNAME = "CentOS" ]; then
+	if [ "$OSNAME" = "CentOS" ]; then
 		if [ $OSVERSION -eq 6 -o $OSVERSION -eq 7 ]; then	
 			return 0
 		fi

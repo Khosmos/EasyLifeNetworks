@@ -17,11 +17,12 @@ for src in $locid/lib/common/*.sh; do source "$src"; done
 
 # Source variables
 source $locid/confs/variables.sh
+source $locid/modules/Base.sh
+
 
 touch $LOGFILE
-IsRoot || return 1
-IsGoodOS || return 1
-source $locid/modules/Base.sh
+IsRoot || exit 1
+IsGoodOS || exit 1
 
 OPTIONS=$(SelectRadio "Easy Life Networks" "Modus operandi" \
 PROFILES "Install complete funcional preformated solutions" OFF \
