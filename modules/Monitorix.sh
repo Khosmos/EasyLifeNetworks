@@ -30,7 +30,11 @@ yum install monitorix -y
 #2 Setup Monitorix
 echo Setup Monitorix
 # Fix a problem
-chown 755 /etc/init.d/monitorix
+if [ $OSVERSION -eq 6 ]; then	
+    chown 755 /etc/init.d/monitorix
+fi
+
+
 # Setup monitorix.conf
 sed -i s/'Place a title here'/$MACHINE' - Monitoring'/g /etc/monitorix/monitorix.conf # rename the machine as $MACHINE - Monitoring
 sed -i s/'enabled = y'/'enabled = n'/g /etc/monitorix/monitorix.conf # change the permission to n. Now everyone can access monitorix
