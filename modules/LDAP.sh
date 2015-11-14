@@ -14,8 +14,6 @@
 
 clear
 
-                
-
 DisplayYN "EasyLife Networks - LDAP " \
 "This module will :
  1) Install LDAP
@@ -28,9 +26,6 @@ DisplayYN "EasyLife Networks - LDAP " \
  8) Setup Auth
  9) Setup Log
  10) Start
-
-
-
 " "Install" "Cancel" || exit
 
 
