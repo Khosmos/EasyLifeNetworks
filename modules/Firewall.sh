@@ -45,7 +45,7 @@ rm /etc/logrotate.d/iptables 2> /dev/null
 cp -p $ModDir/Firewall/firewall.logrotate /etc/logrotate.d/iptables
 
 #5 start FB
-case $OPTIONS in
+case $OSVERSION in
     6 )
       service iptables stop
       service ip6tables stop
