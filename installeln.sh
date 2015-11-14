@@ -20,5 +20,5 @@ else
 	cd ..
 	mv EasyLifeNetworks /usr/share/ 2> /dev/null
         cd $locid
-        ./eln.sh
+        . ./eln.sh
 fi

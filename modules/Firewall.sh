@@ -38,8 +38,6 @@ fi
 yum localinstall $ModDir/Firewall/"$FW" -y
 
 #3 Setup FirewallB
-service firewalld stop 2>/dev/null
-chkcongig firewalld off 2>/dev/null
 cp -p $ModDir/Firewall/firewall /etc/init.d/
 
 #4 Setup logrotate
@@ -47,9 +45,21 @@ rm /etc/logrotate.d/iptables 2> /dev/null
 cp -p $ModDir/Firewall/firewall.logrotate /etc/logrotate.d/iptables
 
 #5 start FB
+case $OPTIONS in
+    6 )
+      service iptables stop
+      service ip6tables stop
+      chkconfig iptables off
+      chkconfig ip6tables off
+      ;;
+    7 )
+      systemctl stop  firewalld.service
+      systemctl disable firewalld.service
+      ;;
+esac
+
 chkconfig firewall on
-chkconfig iptables off
-chkconfig ip6tables off
+
 
 cat <<-EOF
 
