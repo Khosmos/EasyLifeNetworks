@@ -38,8 +38,7 @@ if [ -d "$ELNCONFDIR" ]; then
 fi
 
 # 3) Utilities
-yum install redhat-lsb-core net-tools git screen vim htop tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core sipcalc xterm php-mcrypt -y
-
+yum install redhat-lsb-core net-tools git screen vim htop tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core xterm php-mcrypt -y
 
 # Source variables
 source $locid/confs/variables.sh
@@ -49,8 +48,6 @@ EPELOn || return 1
 
 # 2) Selinux
 SelinuxOff
-
-
 
 # 4) Create directories
 mkdir -p $SCRIPTDIR
