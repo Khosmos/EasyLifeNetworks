@@ -2,7 +2,7 @@
 # Easy Life Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150516
+# Version 20151115
 #
 # Cosme Faria Corrêa
 # John Doe
@@ -11,5 +11,8 @@
 #	DisplayMsg TITLE MSG
 #set -xv
 DisplayMsg() { 
-	whiptail --title "$1" --msgbox "$2" $((6+`echo "$2" | wc -l`)) $((`echo "$2" | wc -L` + 4))
+	TITLE=$1
+	shift
+	MESSAGE=$*
+	whiptail --title "$TITLE" --msgbox "$MESSAGE" $((6+`echo "$MESSAGE" | wc -l`)) $((`echo "$MESSAGE" | wc -L` + 4))
 }

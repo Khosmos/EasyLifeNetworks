@@ -9,11 +9,12 @@
 # Cosme Faria Corrêa
 # Ana Carolina Silvério
 # ...
-#
-#set -xv        
+#set -xv
 
-clear
+#Show readme.txt, if it exists
+[ -e $ModDir'DenyHosts/DenyHosts-readme.txt' ] && DisplayMsg "DenyHosts" "`cat $ModDir'DenyHosts/DenyHosts-readme.txt'`"
 
+# Show actions
 DisplayYN "EasyLife Networks - DenyHosts" \
 "This module will:
  1) Install DenyHosts
@@ -42,6 +43,5 @@ cp -p $ModDir/DenyHosts/denyhosts.logrotate /etc/logrotate.d/denyhosts
 chkconfig denyhosts on
 service denyhosts restart
 
-echo DenyHosts module finished
-echo 'Press <Enter> to exit'
-read
+#Show postinstall.txt, if it exists
+[ -e $ModDir'DenyHosts/DenyHosts-postinstall.txt' ] && DisplayMsg "DenyHosts" "`cat $ModDir'DenyHosts/DenyHosts-postinstall.txt'`" || ( echo 'DenyHosts module finished'; read )

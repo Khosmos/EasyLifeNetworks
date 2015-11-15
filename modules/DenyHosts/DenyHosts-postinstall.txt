@@ -1,0 +1,8 @@
+Configuration Files
+-/etc/denyhosts.conf
+
+Decisions
+-block all services instead of only block sshd
+
+Future ideas
+-Adoption of fail2ban
