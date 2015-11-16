@@ -2,7 +2,7 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150904
+# Version 20151116
 #
 # Postfix module
 #
@@ -10,22 +10,18 @@
 # Ana Carolina Silvério
 # ...
 #
-#set -xv        
+#set -xv
 
-clear
+#Show readme.txt, if it exists
+[ -e $ModDir'Postfix/Postfix-readme.txt' ] && DisplayMsg "Postfix" "`cat $ModDir'Postfix/Postfix-readme.txt'`"
 
 DisplayYN "EasyLife Networks - Postfix " \
-
 "This module will :
  1) Install Postfix
  2) Copy Templates
  3) Setup
  4) Start
-
-
-
 " "Install" "Cancel" || exit
-
 
 #1
 yum install postfix -y
@@ -48,6 +44,6 @@ postmap /etc/postfix/sasl_passwd
 chkconfig postfix on
 service postfix restart
 
-echo Postfix module finished
-echo 'Press <Enter> to exit'
-read
+#Show postinstall.txt, if it exists
+[ -e $ModDir'Postfix/Postfix-postinstall.txt' ] && DisplayMsg "Postfix" "`cat $ModDir'Postfix/Postfix-postinstall.txt'`" || ( echo 'Postfix module finished'; read )
+

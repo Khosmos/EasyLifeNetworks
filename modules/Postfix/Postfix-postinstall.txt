@@ -1,0 +1,11 @@
+Configuration Files
+-/etc/postfix/main.conf
+-/etc/postfix/sasl_passwd
+
+Decisions
+-without cryptography
+-a relay host point to a real server
+-use of smtpauth for deliver
+
+Future ideas
+-with cryptography
