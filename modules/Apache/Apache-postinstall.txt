@@ -1,0 +1,17 @@
+Configuration Files
+-/etc/httpd/httpd.conf/*
+
+Decisions
+-without cryptography
+-LDAP capable
+
+Future ideas
+-with cryptography
+
+Test:
+- from server
+  - links http://127.0.0.1
+-from REMOTEADMINPOINTS
+  - firefox http://MACHINEIP
+You should see:
+"Apache HTTP Server Test Page"
