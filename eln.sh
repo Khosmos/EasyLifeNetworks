@@ -27,6 +27,7 @@ OPTIONS=$(SelectRadio "Easy Life Networks" "Modus operandi" \
 PROFILES "Install complete funcional preformated solutions" OFF \
 MODULES "Install individual Modules" ON)
 exitstatus=$?
+cd $locid
 if [ $exitstatus = 0 ]; then
 	case $OPTIONS in
 	    PROFILES )

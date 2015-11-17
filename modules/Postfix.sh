@@ -28,7 +28,7 @@ yum install postfix -y
 
 #2
 mv /etc/postfix/main.cf /etc/postfix/main.cf.`date +%Y%m%d-%H%M%S`
-mv /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.`date +%Y%m%d-%H%M%S`
+mv /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.`date +%Y%m%d-%H%M%S` 2>/dev/null
 cp -rp $ModDir/Postfix/main.cf /etc/postfix/
 cp -rp $ModDir/Postfix/sasl_passwd /etc/postfix/
 chmod 640 /etc/postfix/sasl_passwd

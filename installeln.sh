@@ -20,4 +20,6 @@ else
 	cd ..
 	mv EasyLifeNetworks /usr/share/ 2> /dev/null
 	whiptail --title "EasyLife Networks" --msgbox "For EasyLife for Networks, type:\n   eln.sh" 9 38
+	cd $locid
+	. ./eln.sh
 fi
