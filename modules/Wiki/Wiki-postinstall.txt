@@ -1,0 +1,19 @@
+Configuration Files
+-/var/www/mediawiki/LocalSettings.php
+-/usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+
+Decisions
+-without cryptography
+-LDAP capable
+
+Future ideas
+-AccessControl extension adoption
+-with cryptography
+
+Test:
+- from server
+  - links http://127.0.0.1/wiki
+-from everywhere 
+  - firefox http://MACHINEIP/wiki
+You should see:
+"Mediawiki first Page"

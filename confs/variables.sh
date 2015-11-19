@@ -108,8 +108,22 @@ NTPSERVERS="pool.ntp.br"
 NTPNETACCESS=$INTNET
 NTPMASKACCESS=$INTMASK
 
-# Denyhosts
+# [Denyhosts]
 LOCKTIME=4h # Deny Hosts lock time
+
+# [Wiki]
+MDBADMIN=root
+MDBPASS=Batata
+WIKISITENAME='ELN Knowledge Base'
+WIKIDBSERVER='127.0.0.1'
+WIKIDB=wiki
+WIKIDBUSER=wikiuser
+WIKIDBPASS=Pitanga
+WIKILANGUAGE='pt-br' # or 'en'
+WIKILDAPLABEL=LDAPELN
+WIKILDAPSERVER=$LDAPSERVER # or another machine
+
+
 
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
