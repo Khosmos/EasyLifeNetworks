@@ -41,7 +41,7 @@ NETDOTDBPASSWD=123456 # NetDot database user password
 
 # [PostgreSQL]
 DBADMIN=postgres # PostgreSQL admin account. Think twice before change it.
-DBADMINPASSWD=12345678 # PostgreSQL admin account password and also for database user "postgres". Use only alphanumeric characters and . and _. Must have 8 or + characters.
+DBADMINPASSWD=5102ltsoclazteuQ# PostgreSQL admin account password and also for database user "postgres". Use only alphanumeric characters and . and _. Must have 8 or + characters.
 
 # [SNMPD]
 SYSLOCATION='Data Center'
@@ -122,8 +122,6 @@ WIKIDBPASS=Pitanga
 WIKILANGUAGE='pt-br' # or 'en'
 WIKILDAPLABEL=LDAPELN
 WIKILDAPSERVER=$LDAPSERVER # or another machine
-
-
 
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
