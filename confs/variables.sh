@@ -41,7 +41,11 @@ NETDOTDBPASSWD=123456 # NetDot database user password
 
 # [PostgreSQL]
 DBADMIN=postgres # PostgreSQL admin account. Think twice before change it.
-DBADMINPASSWD=5102ltsoclazteuQ# PostgreSQL admin account password and also for database user "postgres". Use only alphanumeric characters and . and _. Must have 8 or + characters.
+DBADMINPASSWD=5102ltsoclazteuQ # PostgreSQL admin account password and also for database user "postgres". Use only alphanumeric characters and . and _. Must have 8 or + characters.
+
+# [MariaDB]
+MDBADMIN=root
+MDBPASS=Batata
 
 # [SNMPD]
 SYSLOCATION='Data Center'
@@ -112,8 +116,6 @@ NTPMASKACCESS=$INTMASK
 LOCKTIME=4h # Deny Hosts lock time
 
 # [Wiki]
-MDBADMIN=root
-MDBPASS=Batata
 WIKISITENAME='ELN Knowledge Base'
 WIKIDBSERVER='127.0.0.1'
 WIKIDB=wiki
@@ -151,7 +153,3 @@ MRTGGROUP=NetAdmins # MRTG authenticated group
 # NAGIOS
 NAGIOSAUTH=g # NAGIOS authenticated - If you have to authenticate to see (y)es or (g) you must belong a group
 NAGIOSGROUP=NetAdmins # NAGIOS authenticated group
-
-
-
-

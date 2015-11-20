@@ -11,7 +11,7 @@ Future ideas
 Test:
 - from server
   - links http://127.0.0.1
--from REMOTEADMINPOINTS
+-from anywhere 
   - firefox http://MACHINEIP
 You should see:
-"Apache HTTP Server Test Page"
+¨Apache HTTP Server Test Page powered by CentOS

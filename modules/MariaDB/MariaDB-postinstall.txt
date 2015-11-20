@@ -1,0 +1,13 @@
+Configuration Files
+-/etc/my.cnf
+-/etc/my.cnf.d/*
+
+Decisions
+-local access only
+-administrator with password
+
+Future ideas
+- ?
+
+Test
+- ?

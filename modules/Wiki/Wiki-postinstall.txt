@@ -13,7 +13,7 @@ Future ideas
 Test:
 - from server
   - links http://127.0.0.1/wiki
--from everywhere 
+-from anywhere 
   - firefox http://MACHINEIP/wiki
 You should see:
 "Mediawiki first Page"
