@@ -118,7 +118,7 @@ LOCKTIME=4h # Deny Hosts lock time
 # [Wiki]
 WIKISITENAME='ELN Knowledge Base'
 WIKIDBSERVER='127.0.0.1'
-WIKIDB=wiki
+WIKIDBNAME=wiki
 WIKIDBUSER=wikiuser
 WIKIDBPASS=Pitanga
 WIKILANGUAGE='pt-br' # or 'en'

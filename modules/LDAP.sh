@@ -33,21 +33,23 @@ DisplayYN "EasyLife Networks - LDAP " \
 yum install openldap-clients openldap nss-pam-ldapd openldap-servers  -y
 
 #1 Copy scripts
-cp -p $ModDir/LDAP/ldap.sh $SCRIPTDIR #for simple test - debug
+\cp -p $ModDir/LDAP/ldap.sh $SCRIPTDIR #for simple test - debug
 chmod 700 $SCRIPTDIR'ldap.sh'
 chown root:root $SCRIPTDIR'ldap.sh'
 
-cp -p $ModDir/LDAP/fazbkp.sh $SCRIPTDIR
+\cp -p $ModDir/LDAP/fazbkp.sh $SCRIPTDIR
 chmod 700 $SCRIPTDIR'fazbkp.sh'
 chown root:root $SCRIPTDIR'fazbkp.sh'
 
-cp -p $ModDir/LDAP/restauraLDAP.sh $SCRIPTDIR
+\cp -p $ModDir/LDAP/restauraLDAP.sh $SCRIPTDIR
 chmod 700 $SCRIPTDIR'restauraLDAP.sh'
 chown root:root $SCRIPTDIR'restauraLDAP.sh'
 cd /usr/bin
-ln -s $SCRIPTDIR'fazbkp.sh' .
-ln -s $SCRIPTDIR'restauraLDAP.sh' .
-ln -s $SCRIPTDIR'ldap.sh' .
+#ln -s $SCRIPTDIR'fazbkp.sh' .
+#ln -s $SCRIPTDIR'restauraLDAP.sh' .
+#ln -s $SCRIPTDIR'ldap.sh' .
+ln -s $SCRIPTDIR'*' .
+
 mv /etc/openldap/DB_CONFIG.example /etc/openldap/DB_CONFIG.example.`date +%Y%m%d-%H%M%S` 2>/dev/null #template DB_CONFIG
 cp $ModDir/LDAP/DB_CONFIG.example /etc/openldap/
 

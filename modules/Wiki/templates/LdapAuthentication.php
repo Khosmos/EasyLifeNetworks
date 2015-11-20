@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2004 Ryan Lane <http://www.mediawiki.org/wiki/User:Ryan_lane>
+# Copyright (C) 2004 Ryan Lane <http://www.mediaWiki.org/Wiki/User:Ryan_lane>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,54 +26,54 @@
 #
 # LdapAuthentication.php
 #
-# Info available at http://www.mediawiki.org/wiki/Extension:LDAP_Authentication
-# Support is available at http://www.mediawiki.org/wiki/Extension_talk:LDAP_Authentication
+# Info available at http://www.mediaWiki.org/Wiki/Extension:LDAP_Authentication
+# Support is available at http://www.mediaWiki.org/Wiki/Extension_talk:LDAP_Authentication
 #
 
-if ( !defined( 'MEDIAWIKI' ) ) exit;
+if ( !defined( 'MEDIAWiki' ) ) exit;
 
-$wgLDAPDomainNames = array( 'WIKILDAPLABLE' );
-$wgLDAPServerNames = array( 'WIKILDAPLABLE' => 'WIKILDAPSERVER' );
+$wgLDAPDomainNames = array( 'WikiLDAPLABLE' );
+$wgLDAPServerNames = array( 'WikiLDAPLABLE' => 'WikiLDAPSERVER' );
 $wgLDAPUseLocal = false;
-$wgLDAPEncryptionType = array( 'WIKILDAPLABLE' => 'clear' );
+$wgLDAPEncryptionType = array( 'WikiLDAPLABLE' => 'clear' );
 $wgLDAPOptions = array();
 $wgLDAPPort = array();
-$wgLDAPSearchStrings = array( "WIKILDAPLABLE"=>"uid=USER-NAME,ou=People,LDAPSUFIX" );
+$wgLDAPSearchStrings = array( "WikiLDAPLABLE"=>"uid=USER-NAME,ou=People,LDAPSUFIX" );
 $wgLDAPProxyAgent = array();
 $wgLDAPProxyAgentPassword = array();
-$wgLDAPSearchAttributes = array( 'WIKILDAPLABLE' => 'uid' );
-$wgLDAPBaseDNs = array( 'WIKILDAPLABLE' => 'LDAPSUFIX' );
-$wgLDAPGroupBaseDNs = array( 'WIKILDAPLABLE' => 'ou=Group,LDAPSUFIX' );
-$wgLDAPUserBaseDNs = array( 'WIKILDAPLABLE' => 'ou=People,LDAPSUFIX' );
-$wgLDAPWriterDN = array( 'WIKILDAPLABLE' => 'cn=Manager,LDAPSUFIX' );
-$wgLDAPWriterPassword = array( 'WIKILDAPLABLE' => 'LDAPADMPASSWD' );
-$wgLDAPWriteLocation = array( 'WIKILDAPLABLE' => 'ou=People,LDAPSUFIX' );
-$wgLDAPAddLDAPUsers = array( 'WIKILDAPLABLE' => false );
-$wgLDAPUpdateLDAP = array( 'WIKILDAPLABLE' => true );
+$wgLDAPSearchAttributes = array( 'WikiLDAPLABLE' => 'uid' );
+$wgLDAPBaseDNs = array( 'WikiLDAPLABLE' => 'LDAPSUFIX' );
+$wgLDAPGroupBaseDNs = array( 'WikiLDAPLABLE' => 'ou=Group,LDAPSUFIX' );
+$wgLDAPUserBaseDNs = array( 'WikiLDAPLABLE' => 'ou=People,LDAPSUFIX' );
+$wgLDAPWriterDN = array( 'WikiLDAPLABLE' => 'cn=Manager,LDAPSUFIX' );
+$wgLDAPWriterPassword = array( 'WikiLDAPLABLE' => 'LDAPADMPASSWD' );
+$wgLDAPWriteLocation = array( 'WikiLDAPLABLE' => 'ou=People,LDAPSUFIX' );
+$wgLDAPAddLDAPUsers = array( 'WikiLDAPLABLE' => false );
+$wgLDAPUpdateLDAP = array( 'WikiLDAPLABLE' => true );
 $wgLDAPPasswordHash = array();
-$wgLDAPMailPassword = array( 'WIKILDAPLABLE' => true );
-$wgLDAPPreferences = array( 'WIKILDAPLABLE' => array( 'email' => 'mail','realname' => 'displayname','nickname' => 'cn','language' => 'preferredlanguage' ) );
-$wgLDAPDisableAutoCreate = array( 'WIKILDAPLABLE' => false );
+$wgLDAPMailPassword = array( 'WikiLDAPLABLE' => true );
+$wgLDAPPreferences = array( 'WikiLDAPLABLE' => array( 'email' => 'mail','realname' => 'displayname','nickname' => 'cn','language' => 'preferredlanguage' ) );
+$wgLDAPDisableAutoCreate = array( 'WikiLDAPLABLE' => false );
 #$wgLDAPDebug = 3;
-#$wgDebugLogGroups["WIKILDAPLABLE"] = '/tmp/wikildap.log'; #It never worked to me
-$wgLDAPGroupUseFullDN = array( 'WIKILDAPLABLE' => true );
-$wgLDAPLowerCaseUsername = array( 'WIKILDAPLABLE' => true );
-$wgLDAPGroupUseRetrievedUsername = array( 'WIKILDAPLABLE' => false );
-$wgLDAPGroupObjectclass = array( 'WIKILDAPLABLE' => 'posixgroup' );
-$wgLDAPGroupAttribute = array( 'WIKILDAPLABLE' => 'memberuid' );
-$wgLDAPGroupNameAttribute = array( 'WIKILDAPLABLE' => 'cn' );
-$wgLDAPGroupsUseMemberOf = array( 'WIKILDAPLABLE' => false );
-$wgLDAPUseLDAPGroups = array( 'WIKILDAPLABLE' => true );
+#$wgDebugLogGroups["WikiLDAPLABLE"] = '/tmp/Wikildap.log'; #It never worked to me
+$wgLDAPGroupUseFullDN = array( 'WikiLDAPLABLE' => true );
+$wgLDAPLowerCaseUsername = array( 'WikiLDAPLABLE' => true );
+$wgLDAPGroupUseRetrievedUsername = array( 'WikiLDAPLABLE' => false );
+$wgLDAPGroupObjectclass = array( 'WikiLDAPLABLE' => 'posixgroup' );
+$wgLDAPGroupAttribute = array( 'WikiLDAPLABLE' => 'memberuid' );
+$wgLDAPGroupNameAttribute = array( 'WikiLDAPLABLE' => 'cn' );
+$wgLDAPGroupsUseMemberOf = array( 'WikiLDAPLABLE' => false );
+$wgLDAPUseLDAPGroups = array( 'WikiLDAPLABLE' => true );
 $wgLDAPLocallyManagedGroups = array();
-$wgLDAPGroupsPrevail = array( 'WIKILDAPLABLE' => true );
-#$wgLDAPRequiredGroups = array( 'WIKILDAPLABLE'=> array ( 'cn=users,ou=Group,LDAPSUFIX' ) ); # Some problems here
+$wgLDAPGroupsPrevail = array( 'WikiLDAPLABLE' => true );
+#$wgLDAPRequiredGroups = array( 'WikiLDAPLABLE'=> array ( 'cn=users,ou=Group,LDAPSUFIX' ) ); # Some problems here
 $wgLDAPExcludedGroups = array();
-$wgLDAPGroupSearchNestedGroups = array( 'WIKILDAPLABLE' => false );
+$wgLDAPGroupSearchNestedGroups = array( 'WikiLDAPLABLE' => false );
 $wgLDAPAuthAttribute = array();
 $wgLDAPAutoAuthUsername = "";
 $wgLDAPAutoAuthDomain = "";
 $wgPasswordResetRoutes['domain'] = true;
-$wgLDAPActiveDirectory = array( 'WIKILDAPLABLE' => false );
+$wgLDAPActiveDirectory = array( 'WikiLDAPLABLE' => false );
 
 define( "LDAPAUTHVERSION", "2.1.0" );
 
@@ -86,7 +86,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => LDAPAUTHVERSION,
 	'author' => 'Ryan Lane',
 	'descriptionmsg' => 'ldapauthentication-desc',
-	'url' => 'https://www.mediawiki.org/wiki/Extension:LDAP_Authentication',
+	'url' => 'https://www.mediaWiki.org/Wiki/Extension:LDAP_Authentication',
 );
 
 $dir = __DIR__ . '/';
@@ -632,7 +632,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 
 	/**
 	 * Check if a username+password pair is a valid login, or if the username
-	 * is allowed access to the wiki.
+	 * is allowed access to the Wiki.
 	 * The name will be normalized to MediaWiki's requirements, so
 	 * you might need to munge it (for instance, for lowercase initial
 	 * letters).
@@ -650,7 +650,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 			return false;
 		}
 
-		// Mediawiki munges the username before authenticate is called,
+		// MediaWiki munges the username before authenticate is called,
 		// this can mess with authentication, group pulling/restriction,
 		// preference pulling, etc. Let's allow the admin to use
 		// a lowercased username if needed.
@@ -662,7 +662,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		// that he/she isn't trying to fool us by sending a username other
 		// than the one the web server got from the auto-authentication method.
 		if ( $this->useAutoAuth() && $this->getConf( 'AutoAuthUsername' ) != $username ) {
-			$this->printDebug( "The username provided ($username) doesn't match the username provided by the webserver (" . $this->getConf( 'AutoAuthUsername' ) . "). The user is probably trying to log in to the auto-authentication domain with password authentication via the wiki. Denying access.", SENSITIVE );
+			$this->printDebug( "The username provided ($username) doesn't match the username provided by the webserver (" . $this->getConf( 'AutoAuthUsername' ) . "). The user is probably trying to log in to the auto-authentication domain with password authentication via the Wiki. Denying access.", SENSITIVE );
 			return false;
 		}
 
@@ -791,7 +791,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 
 		if ( $this->getConf( 'AutoAuthDomain' ) ) {
 			$this->printDebug( "Allowing auto-authentication login, removing the domain from the list.", NONSENSITIVE );
-			// There is no reason for people to log in directly to the wiki if the are using an
+			// There is no reason for people to log in directly to the Wiki if the are using an
 			// auto-authentication domain. If they try to, they are probably up to something fishy.
 			unset( $tempDomArr[array_search( $this->getConf( 'AutoAuthDomain' ), $tempDomArr )] );
 		}
@@ -804,7 +804,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 	}
 
 	/**
-	 * Return true if the wiki should create a new local account automatically
+	 * Return true if the Wiki should create a new local account automatically
 	 * when asked to login a user who doesn't exist locally but does in the
 	 * external auth database.
 	 *
@@ -830,7 +830,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		if ( $this->getDomain() == 'local' ) {
 			$this->printDebug( "User is using a local domain", NONSENSITIVE );
 
-			// We don't set local passwords, but we don't want the wiki
+			// We don't set local passwords, but we don't want the Wiki
 			// to send the user a failure.
 			return true;
 		}
@@ -888,15 +888,15 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 
 		$this->printDebug( "Entering updateExternalDB", NONSENSITIVE );
 		if ( !$this->getConf( 'UpdateLDAP' ) || $this->getDomain() == 'local' ) {
-			$this->printDebug( "Either the user is using a local domain, or the wiki isn't allowing updates", NONSENSITIVE );
+			$this->printDebug( "Either the user is using a local domain, or the Wiki isn't allowing updates", NONSENSITIVE );
 			// We don't handle local preferences, but we don't want the
-			// wiki to return an error.
+			// Wiki to return an error.
 			return true;
 		}
 
 		$writer = $this->getConf( 'WriterDN' );
 		if ( !$writer ) {
-			$this->printDebug( "The wiki doesn't have wgLDAPWriterDN set", NONSENSITIVE );
+			$this->printDebug( "The Wiki doesn't have wgLDAPWriterDN set", NONSENSITIVE );
 			// We can't modify LDAP preferences if we don't have a user
 			// capable of editing LDAP attributes.
 			return false;
@@ -957,7 +957,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 	}
 
 	/**
-	 * Can the wiki create accounts in LDAP?
+	 * Can the Wiki create accounts in LDAP?
 	 * Return true if yes.
 	 *
 	 * @return bool
@@ -967,7 +967,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 	}
 
 	/**
-	 * Can the wiki change passwords in LDAP, or can the user
+	 * Can the Wiki change passwords in LDAP, or can the user
 	 * change passwords locally?
 	 * Return true if yes.
 	 *
@@ -1009,13 +1009,13 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		$this->printDebug( "Entering addUser", NONSENSITIVE );
 
 		if ( !$this->getConf( 'AddLDAPUsers' ) || 'local' == $this->getDomain() ) {
-			$this->printDebug( "Either the user is using a local domain, or the wiki isn't allowing users to be added to LDAP", NONSENSITIVE );
+			$this->printDebug( "Either the user is using a local domain, or the Wiki isn't allowing users to be added to LDAP", NONSENSITIVE );
 
-			// Tell the wiki not to return an error.
+			// Tell the Wiki not to return an error.
 			return true;
 		}
 		if ( $this->getConf( 'RequiredGroups' ) ) {
-			$this->printDebug( "The wiki is requiring users to be in specific groups, and cannot add users as this would be a security hole.", NONSENSITIVE );
+			$this->printDebug( "The Wiki is requiring users to be in specific groups, and cannot add users as this would be a security hole.", NONSENSITIVE );
 			// It is possible that later we can add users into
 			// groups, but since we don't support it, we don't want
 			// to open holes!
@@ -1024,7 +1024,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 
 		$writer = $this->getConf( 'WriterDN' );
 		if ( !$writer ) {
-			$this->printDebug( "The wiki doesn't have wgLDAPWriterDN set", NONSENSITIVE );
+			$this->printDebug( "The Wiki doesn't have wgLDAPWriterDN set", NONSENSITIVE );
 
 			// We can't add users without an LDAP account capable of doing so.
 			return false;
@@ -2082,7 +2082,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 }
 
 // The auto-auth code was originally derived from the SSL Authentication plugin
-// http://www.mediawiki.org/wiki/SSL_authentication
+// http://www.mediaWiki.org/Wiki/SSL_authentication
 
 /**
  * Sets up the auto-authentication piece of the LDAP plugin.

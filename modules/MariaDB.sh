@@ -32,7 +32,7 @@ chkconfig mariadb on
 \cp $ModDir'MariaDB/mysql_secure_installation.sql' /tmp
 sed -i s/MDBADMIN/$MDBADMIN/g /tmp/mysql_secure_installation.sql
 sed -i s/MDBPASS/$MDBPASS/g /tmp/mysql_secure_installation.sql
-mysql -u $MDBADMIN -p$MDBPASS < /tmp/mysql_secure_installation.sql
+mysql -u $MDBADMIN < /tmp/mysql_secure_installation.sql
 rm -f /tmp/mysql_secure_installation.sql
 
 #Show postinstall.txt, if it exists

@@ -9,4 +9,4 @@ Why MariaDB?
 -It works very well
 
 Status
--Incomplete - Do not install, please.
+-Mature

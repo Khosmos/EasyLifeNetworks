@@ -14,4 +14,4 @@ Test:
 -from anywhere 
   - firefox http://MACHINEIP
 You should see:
-¨Apache HTTP Server Test Page powered by CentOS
+Apache HTTP Server Test Page powered by CentOS

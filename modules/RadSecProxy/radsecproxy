@@ -1,20 +1,20 @@
 #!/bin/bash
-# radsecproxy daemon
+# Wiki daemon
 # chkconfig: 2345 90 20
-# description: radsecproxy daemon
-# processname: radsecproxy
+# description: Wiki daemon
+# processname: Wiki
 
 DAEMON_PATH="/usr/bin/"
 
-#DAEMON=radsecproxy
-DAEMON=/usr/local/sbin/radsecproxy
-DAEMONOPTS="-c /etc/radsecproxy.conf -i /var/run/radsecproxy.pid"
+#DAEMON=Wiki
+DAEMON=/usr/local/sbin/Wiki
+DAEMONOPTS="-c /etc/Wiki.conf -i /var/run/Wiki.pid"
 
-NAME=radsecproxy
+NAME=Wiki
 DESC="RadSec"
 PIDFILE=/var/run/$NAME.pid
 #SCRIPTNAME=/etc/init.d/radsec.sh
-SCRIPTNAME=/etc/init.d/radsecproxy
+SCRIPTNAME=/etc/init.d/Wiki
 
 case "$1" in
 start)

@@ -8,25 +8,25 @@
 # file, not there.
 #
 # Further documentation for configuration settings may be found at:
-# https://www.mediawiki.org/wiki/Manual:Configuration_settings
+# https://www.mediaWiki.org/Wiki/Manual:Configuration_settings
 
 # Protect against web entry
-if ( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWiki' ) ) {
 	exit;
 }
 
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename = "WIKISITENAME";
+$wgSitename = "WikiSITENAME";
 $wgMetaNamespace = "KB";
 
-## The URL base path to the directory containing the wiki;
+## The URL base path to the directory containing the Wiki;
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs
-## (like /w/index.php/Page_title to /wiki/Page_title) please see:
-## https://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath = "/wiki";
+## (like /w/index.php/Page_title to /Wiki/Page_title) please see:
+## https://www.mediaWiki.org/Wiki/Manual:Short_URL
+$wgScriptPath = "/Wiki";
 $wgScriptExtension = ".php";
 
 ## The protocol and server name to use in fully-qualified URLs
@@ -37,7 +37,7 @@ $wgStylePath = "$wgScriptPath/skins";
 
 ## The relative URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo = "/logowiki.svg";
+$wgLogo = "/logoWiki.svg";
 
 ## UPO means: this is also a user preference option
 
@@ -53,10 +53,10 @@ $wgEmailAuthentication = true;
 
 ## Database settings
 $wgDBtype = "mysql";
-$wgDBserver = "WIKIDBSERVER";
-$wgDBname = "WIKIDB";
-$wgDBuser = "WIKIDBUSER";
-$wgDBpassword = "WIKIDBPASS";
+$wgDBserver = "WikiDBSERVER";
+$wgDBname = "WikiDB";
+$wgDBuser = "WikiDBUSER";
+$wgDBpassword = "WikiDBPASS";
 
 # MySQL specific settings
 $wgDBprefix = "";
@@ -78,7 +78,7 @@ $wgEnableUploads = true;
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 
-# InstantCommons allows wiki to use images from http://commons.wikimedia.org
+# InstantCommons allows Wiki to use images from http://commons.Wikimedia.org
 $wgUseInstantCommons = true;
 
 ## If you use ImageMagick (or any other shell command) on a
@@ -93,12 +93,12 @@ $wgShellLocale = "en_US.utf8";
 #$wgHashedUploadDirectory = false;
 
 ## Set $wgCacheDirectory to a writable directory on the web server
-## to make your wiki go slightly faster. The directory should not
+## to make your Wiki go slightly faster. The directory should not
 ## be publically accessible from the web.
 #$wgCacheDirectory = "$IP/cache";
 
 # Site language code, should be one of the list in ./languages/Names.php
-$wgLanguageCode = WIKILANGUAGE;
+$wgLanguageCode = WikiLANGUAGE;
 
 $wgSecretKey = "5fe47e8168453f18d39ee346ea0691795e7a919a1afa06aec5c0f5e90e5f1e6e";
 
@@ -113,7 +113,7 @@ $wgDefaultSkin = "vector";
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.
-$wgRightsPage = "Our license/copyright"; # Set to the title of a wiki page that describes your license/copyright
+$wgRightsPage = "Our license/copyright"; # Set to the title of a Wiki page that describes your license/copyright
 $wgRightsUrl = "http://creativecommons.org/licenses/by-sa/3.0/";
 $wgRightsText = "Creative Commons - Attribution - Share Alike";
 $wgRightsIcon = "{$wgStylePath}/common/images/cc-by-sa.png";
@@ -131,7 +131,7 @@ $wgGroupPermissions['*']['edit'] = false;
 #require_once "$IP/extensions/Cite/Cite.php";
 #require_once "$IP/extensions/ImageMap/ImageMap.php";
 #require_once "$IP/extensions/InputBox/InputBox.php";
-#require_once "$IP/extensions/Interwiki/Interwiki.php";
+#require_once "$IP/extensions/InterWiki/InterWiki.php";
 #require_once "$IP/extensions/ParserFunctions/ParserFunctions.php";
 #require_once "$IP/extensions/PdfHandler/PdfHandler.php";
 #require_once "$IP/extensions/Poem/Poem.php";
