@@ -18,9 +18,7 @@
 DisplayYN "EasyLife Networks - Apache" \
 "This module will:
  1) Install Apache
- 2) Start Apache
-
-" "Install" "Cancel" || return
+ 2) Start Apache" "Install" "Cancel" || return
 
 #1 Install Apache
 yum install httpd httpd-tools mod_authz_ldap mod_ldap -y # mod_authz_ldap works for CentOS 6 and mod_ldap works for CentOS 7

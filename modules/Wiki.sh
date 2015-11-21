@@ -21,54 +21,53 @@ DisplayYN "EasyLife Networks - Wiki" \
  3) Apply extensions
  4) Copy templates
  5) Some subs
- 6) Copy Logo
-" "Install" "Cancel" || return
+ 6) Copy Logo" "Install" "Cancel" || return
 
 #1 Install Wiki
-yum install php-xml php-intl php-gd texlive php-xcache php-pecl-imagick mediaWiki -y
-ln -s /var/www/mediaWiki123 /var/www/mediaWiki
-ln -s /usr/share/mediaWiki123 /usr/share/mediaWiki
+yum install php-xml php-intl php-gd texlive php-xcache php-pecl-imagick mediawiki -y
+ln -s /var/www/mediawiki123 /var/www/mediawiki
+ln -s /usr/share/mediawiki123 /usr/share/mediawiki
 
 #2 create/restore database
-\cp $ModDir'Wiki/startWikidb.sql' /tmp
-sed -i s/WikiDB/$WikiDB/g /tmp/startWikidb.sql
-sed -i s/WikiDBUSER/$WikiDBUSER/g /tmp/startWikidb.sql
-mysql -u $MDBADMIN -p$MDBPASS < /tmp/startWikidb.sql
+\cp $ModDir'Wiki/startwikidb.sql' /tmp
+sed -i s/WIKIDBNAME/$WIKIDBNAME/g /tmp/startwikidb.sql
+sed -i s/WIKIDBUSER/$WIKIDBUSER/g /tmp/startwikidb.sql
+mysql -u $MDBADMIN -p$MDBPASS < /tmp/startwikidb.sql
 rm -f /tmp/startWikidb.sql
 
 #3 Apply extensions
-tar -xvf $ModDir'Wiki/extensions/'LdapAuthentication-REL1_23-f266c74.tar.gz -C /usr/share/mediaWiki/extensions/
-#tar -xvf $ModDir'Wiki/extensions/'AccessControl-REL1_23-befc02e.tar.gz -C /usr/share/mediaWiki/extensions/
+tar -xvf $ModDir'Wiki/extensions/'LdapAuthentication-REL1_23-f266c74.tar.gz -C /usr/share/mediawiki/extensions/
+#tar -xvf $ModDir'Wiki/extensions/'AccessControl-REL1_23-befc02e.tar.gz -C /usr/share/mediawiki/extensions/
 
-php /usr/share/mediaWiki/maintenance/update.php --conf /var/www/mediaWiki/LocalSettings.php
+php /usr/share/mediawiki/maintenance/update.php --conf /var/www/mediawiki/LocalSettings.php
 
 #4 Copy templates
 # Apache conf
-mv /etc/httpd/conf.d/mediaWiki*.conf /etc/httpd/conf.d/mediaWiki.conf 2> /dev/null
-cp -p /etc/httpd/conf.d/mediaWiki.conf /etc/httpd/conf.d/mediaWiki.conf.`date +%Y%m%d-%H%M%S` 2> /dev/null
-cat $ModDir'Wiki/templates/mediaWiki.conf > /etc/httpd/conf.d/mediaWiki.conf
+mv /etc/httpd/conf.d/mediawiki*.conf /etc/httpd/conf.d/mediawiki.conf 2> /dev/null
+cp -p /etc/httpd/conf.d/mediawiki.conf /etc/httpd/conf.d/mediawiki.conf.`date +%Y%m%d-%H%M%S` 2> /dev/null
+cat $ModDir'Wiki/templates/mediawiki.conf > /etc/httpd/conf.d/mediawiki.conf
 # LocalSettings.php
-cat $ModDir'Wiki/templates/LocalSettings.php > /var/www/mediaWiki/LocalSettings.php
+cat $ModDir'Wiki/templates/LocalSettings.php > /var/www/mediawiki/LocalSettings.php
 # LdapAuthentication.php
-cat $ModDir'Wiki/templates/LdapAuthentication.php' > /usr/share/mediaWiki/extensions/LdapAuthentication/LdapAuthentication.php
+cat $ModDir'Wiki/templates/LdapAuthentication.php' > /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 
 #5 Some subs
 # LocalSettings.php
-sed -i s/WikiSITENAME/$WikiSITENAME/g /var/www/mediaWiki/LocalSettings.php
-sed -i s/WikiDBSERVER/$WikiDBSERVER/g /var/www/mediaWiki/LocalSettings.php
-sed -i s/WikiDB/$WikiDB/g /var/www/mediaWiki/LocalSettings.php
-sed -i s/WikiDBUSER/$WikiDBUSER/g /var/www/mediaWiki/LocalSettings.php
-sed -i s/WikiDBPASS/$WikiDBPASS/g /var/www/mediaWiki/LocalSettings.php
-sed -i s/WikiLANGUAGE/$WikiLANGUAGE/g /var/www/mediaWiki/LocalSettings.php
+sed -i s/WIKISITENAME/$WIKISITENAME/g /var/www/mediawiki/LocalSettings.php
+sed -i s/WIKIDBSERVER/$WIKIDBSERVER/g /var/www/mediawiki/LocalSettings.php
+sed -i s/WIKIDB/$WIKIDB/g /var/www/mediawiki/LocalSettings.php
+sed -i s/WIKIDBUSER/$WIKIDBUSER/g /var/www/mediawiki/LocalSettings.php
+sed -i s/WIKIDBPASS/$WikiDBPASS/g /var/www/mediawiki/LocalSettings.php
+sed -i s/WIKILANGUAGE/$WIKILANGUAGE/g /var/www/mediawiki/LocalSettings.php
 # LdapAuthentication.php
-sed -i s/WikiLDAPLABLE/$WikiLDAPLABLE/g /usr/share/mediaWiki/extensions/LdapAuthentication/LdapAuthentication.php
-sed -i s/WikiLDAPSERVER/$WikiLDAPSERVER/g /usr/share/mediaWiki/extensions/LdapAuthentication/LdapAuthentication.php
-sed -i s/LDAPSUFIX/$LDAPSUFIX/g /usr/share/mediaWiki/extensions/LdapAuthentication/LdapAuthentication.php
-sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediaWiki/extensions/LdapAuthentication/LdapAuthentication.php
-sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediaWiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/WIKILDAPLABLE/$WIKILDAPLABLE/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/WIKILDAPSERVER/$WIKILDAPSERVER/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPSUFIX/$LDAPSUFIX/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 
 #6 Copy Logo
-cp $ELNDIR'/media/ELN.svg /var/www/html/logoWiki.svg'
+cp $ELNDIR'/media/ELN.svg /var/www/html/logowiki.svg'
 
 #7 Start Wiki
 service httpd restart
