@@ -11,7 +11,7 @@
 # https://www.mediaWiki.org/Wiki/Manual:Configuration_settings
 
 # Protect against web entry
-if ( !defined( 'MEDIAWiki' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
@@ -26,7 +26,7 @@ $wgMetaNamespace = "KB";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /Wiki/Page_title) please see:
 ## https://www.mediaWiki.org/Wiki/Manual:Short_URL
-$wgScriptPath = "/Wiki";
+$wgScriptPath = "/wiki";
 $wgScriptExtension = ".php";
 
 ## The protocol and server name to use in fully-qualified URLs
@@ -37,26 +37,26 @@ $wgStylePath = "$wgScriptPath/skins";
 
 ## The relative URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo = "/logoWiki.svg";
+$wgLogo = "/logowiki.svg";
 
 ## UPO means: this is also a user preference option
 
 $wgEnableEmail = false;
 $wgEnableUserEmail = false; # UPO
 
-$wgEmergencyContact = "apache@127.0.0.1";
-$wgPasswordSender = "apache@127.0.0.1";
+$wgEmergencyContact = "returned@127.0.0.1";
+$wgPasswordSender = "returned@127.0.0.1";
 
-$wgEnotifUserTalk = false; # UPO
-$wgEnotifWatchlist = false; # UPO
+$wgEnotifUserTalk = true; # UPO
+$wgEnotifWatchlist = true; # UPO
 $wgEmailAuthentication = true;
 
 ## Database settings
 $wgDBtype = "mysql";
-$wgDBserver = "WikiDBSERVER";
-$wgDBname = "WikiDB";
-$wgDBuser = "WikiDBUSER";
-$wgDBpassword = "WikiDBPASS";
+$wgDBserver = "WIKIDBSERVER";
+$wgDBname = "WIKIDBNAME";
+$wgDBuser = "WIKIDBUSER";
+$wgDBpassword = "WIKIDBPASS";
 
 # MySQL specific settings
 $wgDBprefix = "";
