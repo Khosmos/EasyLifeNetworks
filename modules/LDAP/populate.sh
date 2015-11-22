@@ -102,6 +102,7 @@ objectClass: top
 gidNumber: 100
 cn: users
 memberUid: $LDAPPRIMARYUID
+memberUid: johndoe
 
 dn: cn=Domain Admins,ou=Group,$RAIZ_BASE_LDAP
 gidNumber: 512
@@ -230,6 +231,7 @@ cn: NetOperators
 gidNumber: 1002
 userPassword:: Kg==
 memberUid: $LDAPPRIMARYUID
+memberUid: johndoe
 sambaSID: $SAMBASID-1002
 displayName: Network Operators
 description: Network Operators
@@ -281,6 +283,30 @@ objectClass: posixAccount
 objectClass: shadowAccount
 objectClass: sambaSamAccount
 
+dn: uid=johndoe,ou=People,$RAIZ_BASE_LDAP
+structuralObjectClass: inetOrgPerson
+sn: DOE
+givenName: JONH
+mail: johndoe'@'$DOMAIN
+uidNumber: 10002
+gidNumber: 100
+homeDirectory: /home/user1
+loginShell: /bin/bash
+userPassword: $HASH_PASS_USER
+uid: johndoe
+sambaSID: $SAMBASID-10002
+cn: JOHN
+sambaNTPassword: $HASH_PASS_USER_NT
+displayName: JOHN DOE
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: eduPerson
+objectClass: brPerson
+objectClass: schacPersonalCharacteristics
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: sambaSamAccount
+
 
 EOF
 
@@ -290,4 +316,3 @@ chmod 600 /etc/openldap/slapd.conf /var/lib/ldap/*
 
 # 5- Restarts the LDAP
 /sbin/service slapd start
-

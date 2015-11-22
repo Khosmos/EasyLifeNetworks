@@ -48,7 +48,7 @@ cd /usr/bin
 #ln -s $SCRIPTDIR'fazbkp.sh' .
 #ln -s $SCRIPTDIR'restauraLDAP.sh' .
 #ln -s $SCRIPTDIR'ldap.sh' .
-ln -s $SCRIPTDIR'*' .
+ln -s $SCRIPTDIR'*'.sh .
 
 mv /etc/openldap/DB_CONFIG.example /etc/openldap/DB_CONFIG.example.`date +%Y%m%d-%H%M%S` 2>/dev/null #template DB_CONFIG
 cp $ModDir/LDAP/DB_CONFIG.example /etc/openldap/

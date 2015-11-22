@@ -98,7 +98,7 @@ $wgShellLocale = "en_US.utf8";
 #$wgCacheDirectory = "$IP/cache";
 
 # Site language code, should be one of the list in ./languages/Names.php
-$wgLanguageCode = WikiLANGUAGE;
+$wgLanguageCode = WIKILANGUAGE;
 
 $wgSecretKey = "5fe47e8168453f18d39ee346ea0691795e7a919a1afa06aec5c0f5e90e5f1e6e";
 
@@ -137,9 +137,9 @@ $wgGroupPermissions['*']['edit'] = false;
 #require_once "$IP/extensions/Poem/Poem.php";
 #require_once "$IP/extensions/SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.php";
 #require_once "$IP/extensions/TitleBlacklist/TitleBlacklist.php";
-require_once "$IP/extensions/WikiEditor/WikiEditor.php";
-require_once "$IP/extensions/LdapAuthentication/LdapAuthentication.php";
-$wgAuth = new LdapAuthenticationPlugin();
+#require_once "$IP/extensions/WikiEditor/WikiEditor.php";
+#require_once "$IP/extensions/LdapAuthentication/LdapAuthentication.php";
+#$wgAuth = new LdapAuthenticationPlugin();
 
 # End of automatically generated settings.
 # Add more configuration options below.
