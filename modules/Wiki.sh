@@ -23,18 +23,23 @@ DisplayYN "EasyLife Networks - Wiki" \
  5) Copy Logo
  6) Apply extensions" "Install" "Cancel" || return
 
+ 
 #1 Install Wiki
 yum install php-xml php-intl php-gd texlive php-xcache php-pecl-imagick mediawiki -y
 ln -s /var/www/mediawiki123 /var/www/mediawiki
 ln -s /usr/share/mediawiki123 /usr/share/mediawiki
 
+
 #2 restore database
-#\cp $ModDir'Wiki/startwikidb.sql' /tmp
-#sed -i s/WIKIDBNAME/$WIKIDBNAME/g /tmp/startwikidb.sql
-#sed -i s/WIKIDBUSER/$WIKIDBUSER/g /tmp/startwikidb.sql
-#mysql -u $MDBADMIN -p$MDBPASS < /tmp/startwikidb.sql
-#rm -f /tmp/startWikidb.sql
 mysql -u $MDBADMIN -p$MDBPASS < $ModDir'Wiki/bkp.sql'
+
+\cp $ModDir'Wiki/createwikiuser.sql' /tmp
+sed -i s/WIKIDBNAME/$WIKIDBNAME/g /tmp/createwikiuser.sql
+sed -i s/WIKIDBUSER/$WIKIDBUSER/g /tmp/createwikiuser.sql
+sed -i s/WIKIDBPASS/$WIKIDBPASS/g /tmp/createwikiuser.sql
+mysql -u $MDBADMIN -p$MDBPASS < /tmp/createwikiuser.sql
+rm -f /tmp/createwikiuser.sql
+
 
 #3 Copy templates
 # Apache conf
@@ -46,10 +51,12 @@ cat $ModDir'Wiki/templates/LocalSettings.php' > /var/www/mediawiki/LocalSettings
 # LdapAuthentication.php
 #cat $ModDir'Wiki/templates/LdapAuthentication.php' > /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 
+
 #4 Apply extensions
 #tar -xvf $ModDir'Wiki/extensions/'LdapAuthentication-REL1_23-f266c74.tar.gz -C /usr/share/mediawiki/extensions/
 #tar -xvf $ModDir'Wiki/extensions/'AccessControl-REL1_23-befc02e.tar.gz -C /usr/share/mediawiki/extensions/
 #php /usr/share/mediawiki/maintenance/update.php --conf /var/www/mediawiki/LocalSettings.php
+
 
 #5 Some subs
 # LocalSettings.php
@@ -57,7 +64,7 @@ sed -i s/WIKISITENAME/$WIKISITENAME/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBSERVER/$WIKIDBSERVER/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBNAME/$WIKIDBNAME/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBUSER/$WIKIDBUSER/g /var/www/mediawiki/LocalSettings.php
-sed -i s/WIKIDBPASS/$WikiDBPASS/g /var/www/mediawiki/LocalSettings.php
+sed -i s/WIKIDBPASS/$WIKIDBPASS/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKILANGUAGE/$WIKILANGUAGE/g /var/www/mediawiki/LocalSettings.php
 # LdapAuthentication.php
 #sed -i s/WIKILDAPLABLE/$WIKILDAPLABLE/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
@@ -66,11 +73,14 @@ sed -i s/WIKILANGUAGE/$WIKILANGUAGE/g /var/www/mediawiki/LocalSettings.php
 #sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 #sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 
+
 #6 Copy Logo
 cp $ELNDIR'/media/ELN.svg' /var/www/html/logowiki.svg
 
+
 #7 Start Wiki
 service httpd restart
+
 
 #Show postinstall.txt, if it exists
 [ -e $ModDir'Wiki/Wiki-postinstall.txt' ] && DisplayMsg "Wiki" "`cat $ModDir'Wiki/Wiki-postinstall.txt'`" || ( echo 'Wiki module finished'; read )

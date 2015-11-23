@@ -116,7 +116,7 @@ NTPMASKACCESS=$INTMASK
 LOCKTIME=4h # Deny Hosts lock time
 
 # [Wiki]
-WIKISITENAME='ELN Knowledge Base'
+WIKISITENAME='KnowledgeBase' # without spaces, please
 WIKIDBSERVER='127.0.0.1'
 WIKIDBNAME=wiki
 WIKIDBUSER=wikiuser
