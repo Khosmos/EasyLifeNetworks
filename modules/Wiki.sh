@@ -55,7 +55,7 @@ cat $ModDir'Wiki/templates/LocalSettings.php' > /var/www/mediawiki/LocalSettings
 # LocalSettings.php
 sed -i s/WIKISITENAME/$WIKISITENAME/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBSERVER/$WIKIDBSERVER/g /var/www/mediawiki/LocalSettings.php
-sed -i s/WIKIDB/$WIKIDB/g /var/www/mediawiki/LocalSettings.php
+sed -i s/WIKIDBNAME/$WIKIDBNAME/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBUSER/$WIKIDBUSER/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBPASS/$WikiDBPASS/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKILANGUAGE/$WIKILANGUAGE/g /var/www/mediawiki/LocalSettings.php
@@ -67,7 +67,7 @@ sed -i s/WIKILANGUAGE/$WIKILANGUAGE/g /var/www/mediawiki/LocalSettings.php
 #sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 
 #6 Copy Logo
-cp $ELNDIR'/media/ELN.svg /var/www/html/logowiki.svg'
+cp $ELNDIR'/media/ELN.svg' /var/www/html/logowiki.svg
 
 #7 Start Wiki
 service httpd restart

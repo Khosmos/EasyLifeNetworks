@@ -4,13 +4,14 @@
 # Configuration Tool for an Easy Life
 # Version 20151119
 #
-# Remove Wik
+# Remove Wiki
 #
 # Cosme Faria Corrêa
 # ...
 #
 set -xv
 
+mv /var/www/mediawiki/LocalSettings.php /var/www/mediawiki/LocalSettings.`date +%Y%m%d-%H%M%S`.php
 rm -y /var/www/mediawiki /usr/share/mediawiki
 
 cat <<-EOF | mysql -uroot -pBatata

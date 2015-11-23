@@ -31,7 +31,7 @@ NINTERFACES=2 # 2|3 - If 3 we ignore MONINT
 DNSSERVER='75.75.75.75'
 IGNAME=xfinity # Internet gateway name InternetGateway - Default Gateway name
 IGIP=10.0.0.1 # Internet gateway IP - Default Gateway IP
-REMOTEADMINPOINTS='10.0.0.5' # List of trustable machines for adminstrative purposes
+REMOTEADMINPOINTS='192.168.122.1' # List of trustable machines for adminstrative purposes
 
 # [NetDot]
 NETDOTDB=Pg # Pg | mysql

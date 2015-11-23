@@ -1,6 +1,6 @@
 Configuration Files
--/var/www/mediaWiki/LocalSettings.php
--/usr/share/mediaWiki/extensions/LdapAuthentication/LdapAuthentication.php
+-/var/www/mediawiki/LocalSettings.php
+-/usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 
 Decisions
 -without cryptography
@@ -12,8 +12,8 @@ Future ideas
 
 Test:
 - from server
-  - links http://127.0.0.1/Wiki
+  - links http://127.0.0.1/wiki
 -from anywhere 
-  - firefox http://MACHINEIP/Wiki
+  - firefox http://MACHINEIP/wiki
 You should see:
 "MediaWiki first Page"
