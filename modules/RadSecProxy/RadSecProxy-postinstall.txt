@@ -1,0 +1,13 @@
+Configuration Files
+-/etc/raddb/clients.conf
+-/etc/raddb/proxy.conf
+-/etc/RadSecProxy.conf
+
+Decisions
+-?
+
+Future ideas
+-Adopt RADIUS 3.x
+
+Test:
+- ?

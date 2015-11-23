@@ -1,0 +1,10 @@
+# RadSecProxy 
+# Get the file packet from rnp. It will be:
+# - rnp-ca.crt
+# - FQDN.crt - ex: wifi.uff.br.crt
+# - FQDN.key - ex: wifi.uff.br.key
+# - clients.conf
+# - configura - Do not use it.
+# - proxy.conf
+# - radsecproxy.conf
+# Put them in RadSecProxy/RNP directory
