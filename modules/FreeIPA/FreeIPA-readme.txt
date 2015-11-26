@@ -8,3 +8,4 @@ Why FreeIPA?
 
 Status
 -Incomplete - Do not install, please.
+-In a VM this can take a lot of time
