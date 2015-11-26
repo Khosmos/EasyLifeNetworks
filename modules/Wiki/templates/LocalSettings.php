@@ -138,6 +138,8 @@ $wgGroupPermissions['*']['edit'] = false;
 #require_once "$IP/extensions/SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.php";
 #require_once "$IP/extensions/TitleBlacklist/TitleBlacklist.php";
 #require_once "$IP/extensions/WikiEditor/WikiEditor.php";
+#$wgDefaultUserOptions['usebetatoolbar'] = 1;
+#$wgDefaultUserOptions['usebetatoolbar-cgd'] = 1;
 #require_once "$IP/extensions/LdapAuthentication/LdapAuthentication.php";
 #$wgAuth = new LdapAuthenticationPlugin();
 

@@ -77,7 +77,7 @@ fi
 #5 Setup hostname and default gateway
 hostnamectl set-hostname $MACHINE.$DOMAINWIFI 
  
-echo "$EXTIP $MACHINE.$DOMAINWIFI $MACHINE" >> /etc/hosts
+echo "$INTIP $MACHINE.$DOMAINWIFI $MACHINE" >> /etc/hosts
 sed -i s/$IGIP/'#'$IGIP/g /etc/hosts
 echo $IGIP' '$IGNAME' #'" Added by ELN - `date +%Y%m%d-%H%M%S`" >> /etc/hosts #Put default gateway name in hosts
 

@@ -1,13 +1,17 @@
 #!/bin/bash
 # Initial information
+
+
 VERSION="20151111"
 LOGFILE="/var/log/eln.log"
 ELNCONFDIR="/etc/EasyLifeNetworks"
 ELNDIR="/usr/share/EasyLifeNetworks"
 
+
 # [Linux]
 OSNAME=`lsb_release -si`
 OSVERSION=`lsb_release -sr | cut -d'.' -f1`
+
 
 # [Network]
 MACHINE=wifi # Machine name wifi
@@ -33,46 +37,77 @@ IGNAME=xfinity # Internet gateway name InternetGateway - Default Gateway name
 IGIP=10.0.0.1 # Internet gateway IP - Default Gateway IP
 REMOTEADMINPOINTS='192.168.122.1' # List of trustable machines for adminstrative purposes
 
+
 # [NetDot]
 NETDOTDB=Pg # Pg | mysql
 NETDOTDBNAME=netdot # NetDot database name
 NETDOTDBUSER=netdot_user # NetDot database user name
 NETDOTDBPASSWD=123456 # NetDot database user password
 
+
 # [PostgreSQL]
 DBADMIN=postgres # PostgreSQL admin account. Think twice before change it.
 DBADMINPASSWD=5102ltsoclazteuQ # PostgreSQL admin account password and also for database user "postgres". Use only alphanumeric characters and . and _. Must have 8 or + characters.
+
 
 # [MariaDB]
 MDBADMIN=root
 MDBPASS=Batata
 
+
 # [SNMPD]
 SYSLOCATION='Data Center'
 
+
 # [LOG]
 DURATION=104 # Weeks to retain logs. Two years.
+
 
 # [LDAP]
 LDAPSERVER=127.0.0.1 # LDAP server
 #LDAPSERVER=ldap://127.0.0.1,ldap://200.200.200.200 # LDAP server
 LDAPSUFIX='dc=uff,dc=br' # LDAP sufix
-LDAPADMPASSWD=Batata # LDAP Administrator password
+LDAPADMNAME='cn=Manager'$LDAPSUFIX
+#LDAPADMNAME='uid=admin,cn=users,cn=accounts,'$LDAPSUFIX
+LDAPADMPASSWD=Batatata # LDAP Administrator password
 LDAPPRIMARYUID=cosmefc # LDAP UID
+LDAPSECONDARYUID=johndoe # LDAP UID
 LDAPPRIMARYDISPLAYNAME='COSME FARIA CORREA' # LDAP CN. Must have two words at least
+LDAPSECONDARYDISPLAYNAME='JOHN DOE' # LDAP CN. Must have two words at least
+
 LDAPPRIMARYCN=`echo $LDAPPRIMARYDISPLAYNAME | cut -d' ' -f1`
 L=`echo $LDAPPRIMARYDISPLAYNAME | wc -w`
-LDAPPRIMARYSN=`echo $LDAPPRIMARYDISPLAYNAME | cut -d' ' -f$L` 
+LDAPPRIMARYSN=`echo $LDAPPRIMARYDISPLAYNAME | cut -d' ' -f$L`
+
+LDAPSECONDARYCN=`echo $LDAPSECONDARYDISPLAYNAME | cut -d' ' -f1`
+L=`echo $LDAPSECONDARYDISPLAYNAME | wc -w`
+LDAPSECONDARYSN=`echo $LDAPSECONDARYDISPLAYNAME | cut -d' ' -f$L`
+
 LDAPPRIMARYPASSWD=Beringela # LDAP primary user password
+LDAPSECONDARYPASSWD=Beringela # LDAP primary user password
 LDAPPRIMARYUIDMAIL=$LDAPPRIMARYUID'@'$DOMAIN
+
+
+# [OpenLDAP]
+OLUserBaseDNs=='ou=Group,'$LDAPSUFIX
+OLGroupBaseDNs='ou=People,'$LDAPSUFIX
+
+
+# [FreeIPA]
+FIDMPASSWD=Batatata # LDAP Administrator password
+FIUserBaseDNs=='cn=users,cn=accounts,'$LDAPSUFIX
+FIGroupBaseDNs='cn=groups,cn=accounts,'$LDAPSUFIX'
+
 
 # [Samba]
 SAMBASID=S-1-5-21-1014769180-777746548-3660226278 # Samba SID
 SAMBADOMAIN=WIFI # Samba Domain Name
 
+
 # [Monitorix]
 MONITORIXAUTH=y # MONITORIX authenticated - If you have to authenticate to see (y)es, (n)o or (g) you must belong a group
 MONITORIXGROUP=NetAdmins # MONITORIX authenticated group
+
 
 # [Radius]
 RADIUSSERVER=127.0.0.1 # Radius server
@@ -81,7 +116,8 @@ RADIUSACCOUNT='reader-radius' # Radius account - think twice before change
 RADIUSACCPASS=Aspargos # Radius account password
 RADIUSPASS=Taioba # Radius password for clients
 
-# RadSecProxy 
+
+# [RadSecProxy ]
 # Get the file packet from rnp. It will be:
 # - rnp-ca.crt
 # - FQDN.crt - ex: wifi.uff.br.crt
@@ -92,18 +128,22 @@ RADIUSPASS=Taioba # Radius password for clients
 # - radsecproxy.conf
 # Put them in RadSecProxy/RNP directory
 
+
 # [Shibboleth]
 SHIBPASS=BeterrabaDoce # Shib password
+
 
 # [SSHD]
 SSHDAUTH=u # SSHD authenticated - If you have right to use (u)sers or (g)roup you must belong a group
 SSHDGROUP=NetAdmins # SSHD authenticated group
-SSHDUSERS='cosmefc anasilv' # users list with ssh right
+SSHDUSERS='cosmefc' # users list with ssh right
+
 
 # [Postfix]
 RELAYHOST=mxrelay.uff.br
 RELAYACC=manezinho
 RELAYPASSWD=segredo
+
 
 # [NTPD]
 # Brazil's NTP Servers
@@ -112,8 +152,10 @@ NTPSERVERS="pool.ntp.br"
 NTPNETACCESS=$INTNET
 NTPMASKACCESS=$INTMASK
 
+
 # [Denyhosts]
 LOCKTIME=4h # Deny Hosts lock time
+
 
 # [Wiki]
 WIKISITENAME='KnowledgeBase' # without spaces, please
@@ -125,6 +167,7 @@ WIKILANGUAGE='en' # or 'en' 'pt-br'
 WIKILDAPLABEL=LDAPELN
 WIKILDAPSERVER=$LDAPSERVER # or another machine
 
+
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
 ModDir=$DIRELSCIFI'modules/' # Where are modules
@@ -132,23 +175,29 @@ SCRIPTDIR=/usr/share/EasyLifeNetworks/scripts/ # Where are scripts
 SCIFIVERION=12
 SCIFISUBVERSION=0
 
+
 # SCIFI Web Interface
 SCIFIWEBUSERNAME='admin' # user name to access EasyLifeNetworks administrative web interface 
 SCIFIWEBPASSWD='admin' # password to access EasyLifeNetworks administrative web interface 
 SSLCERTIFICATEPASSWD='keystore' # keypass and keystore password for HTTPS certificate
 
+
 # SCIFI Core
 SCIFIPASSWD='sc1f1_206.' # password for linux user "EasyLifeNetworks".
+
 
 # SCIFI Database
 SCIFIDBPASSWD='EasyLifeNetworks' # password for default database user "EasyLifeNetworks". Use only alphanumeric characters and . and _.
 
+
 # JBossAS
 JBOSSPASSWD='JBAs_711.' # password for default user "jboss" to access jboss administrative interface and linux user "jboss".
+
 
 # MRTG
 MRTGAUTH=n # MRTG authenticated - If you have to authenticate to see (y)es, (n)o or (g) you must belong a group
 MRTGGROUP=NetAdmins # MRTG authenticated group
+
 
 # NAGIOS
 NAGIOSAUTH=g # NAGIOS authenticated - If you have to authenticate to see (y)es or (g) you must belong a group

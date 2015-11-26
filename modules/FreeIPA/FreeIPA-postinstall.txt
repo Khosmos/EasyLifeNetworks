@@ -1,0 +1,21 @@
+Configuration Files
+- use console or web tools
+
+Decisions
+-with eduroam compatibility
+
+Future ideas
+-Replica
+-DHCP integration
+-Handle ssh
+
+Test:
+- from server
+  - ?
+You should see:
+?
+
+-from anywhere 
+  - ?
+You should see:
+?
