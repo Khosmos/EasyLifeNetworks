@@ -10,21 +10,21 @@
 # Ana Carolina Silvério
 # ...
 #
-#set -xv        
+#set -xv
 
-clear
+#Show readme.txt, if it exists
+[ -e $ModDir'phpLDAPadmin/phpLDAPadmin-readme.txt' ] && DisplayMsg "phpLDAPadmin" "`cat $ModDir'phpLDAPadmin/phpLDAPadmin-readme.txt'`"
 
 DisplayYN "EasyLife Networks - phpLDAPadmin" \
 "This module will:
  1) Install phpLDAPadmin
  2) Setup phpLDAPadmin
  3) Some subs
- 4) Restart Apache
-
-" "Install" "Cancel" || exit
+ 4) Restart Apache" "Install" "Cancel" || exit
 
 #1 Install phpLDAPadmin
 yum install phpldapadmin -y
+
 
 #2 Set up phpLDAPadmin
 mv  /etc/phpldapadmin/config.php /etc/phpldapadmin/config.php.`date +%Y%m%d-%H%M%S`
@@ -36,12 +36,14 @@ chown root:apache /etc/phpldapadmin/config.php
 chmod 644 /etc/httpd/conf.d/phpldapadmin.conf
 chown root:root /etc/httpd/conf.d/phpldapadmin.conf
 
+
 #3
 sed -i s/REMOTEADMINPOINTS/$REMOTEADMINPOINTS/g /etc/httpd/conf.d/phpldapadmin.conf
+
 
 #4
 service httpd restart
 
-echo phpLDAPadmin module finished
-echo 'Press <Enter> to exit'
-read
+
+#Show postinstall.txt, if it exists
+[ -e $ModDir'phpLDAPadmin/phpLDAPadmin-postinstall.txt' ] && DisplayMsg "phpLDAPadmin" "`cat $ModDir'phpLDAPadmin/phpLDAPadmin-postinstall.txt'`" || ( echo 'Apache module finished'; read )

@@ -1,0 +1,15 @@
+Configuration Files
+- /etc/phpldapadmin/config.php
+- /etc/httpd/conf.d/phpldapadmin.conf
+
+Decisions
+- ?
+Future ideas
+- ?
+
+Test:
+- from server use: links http://127.0.0.1/phpldapadmin
+- with FreeIPA
+  - uid=admin,cn=users,cn=accounts,DOMAIN
+- with OpenLDAP
+  - cn=Manager,DOMAIN
