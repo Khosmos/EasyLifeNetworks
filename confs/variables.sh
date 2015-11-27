@@ -68,7 +68,6 @@ LDAPSERVER=127.0.0.1 # LDAP server
 #LDAPSERVER=ldap://127.0.0.1,ldap://200.200.200.200 # LDAP server
 LDAPSUFIX='dc=uff,dc=br' # LDAP sufix
 LDAPADMNAME='cn=Manager'$LDAPSUFIX
-#LDAPADMNAME='uid=admin,cn=users,cn=accounts,'$LDAPSUFIX
 LDAPADMPASSWD=Batatata # LDAP Administrator password
 LDAPPRIMARYUID=cosmefc # LDAP UID
 LDAPSECONDARYUID=johndoe # LDAP UID
@@ -76,27 +75,35 @@ LDAPPRIMARYDISPLAYNAME='COSME FARIA CORREA' # LDAP CN. Must have two words at le
 LDAPSECONDARYDISPLAYNAME='JOHN DOE' # LDAP CN. Must have two words at least
 
 LDAPPRIMARYCN=`echo $LDAPPRIMARYDISPLAYNAME | cut -d' ' -f1`
+LDAPPRIMARYFN=$LDAPPRIMARYCN # First Name
 L=`echo $LDAPPRIMARYDISPLAYNAME | wc -w`
 LDAPPRIMARYSN=`echo $LDAPPRIMARYDISPLAYNAME | cut -d' ' -f$L`
 
 LDAPSECONDARYCN=`echo $LDAPSECONDARYDISPLAYNAME | cut -d' ' -f1`
+LDAPSECONDARYFN=$LDAPSECONDARYCN
 L=`echo $LDAPSECONDARYDISPLAYNAME | wc -w`
 LDAPSECONDARYSN=`echo $LDAPSECONDARYDISPLAYNAME | cut -d' ' -f$L`
 
 LDAPPRIMARYPASSWD=Beringela # LDAP primary user password
 LDAPSECONDARYPASSWD=Beringela # LDAP primary user password
 LDAPPRIMARYUIDMAIL=$LDAPPRIMARYUID'@'$DOMAIN
+LDAPSECONDARYUIDMAIL=$LDAPSECONDARYUID'@'$DOMAIN
 
 
 # [OpenLDAP]
 OLUserBaseDNs=='ou=Group,'$LDAPSUFIX
 OLGroupBaseDNs='ou=People,'$LDAPSUFIX
+OLADMNAME='cn=Manager'$LDAPSUFIX
+OLADMPASSWD=Batatata # OpenLDAP Administrator password
 
 
 # [FreeIPA]
-FIDMPASSWD=Batatata # LDAP Administrator password
+FIDMNAME='Directory Manager'
+FIDMPASSWD=Mandioca # FreeIPA DM password
+FIADMNAME='uid=admin,cn=users,cn=accounts,'$LDAPSUFIX
+FIADMPASSWD=Batatata # FreeIPA Administrator password
 FIUserBaseDNs=='cn=users,cn=accounts,'$LDAPSUFIX
-FIGroupBaseDNs='cn=groups,cn=accounts,'$LDAPSUFIX'
+FIGroupBaseDNs='cn=groups,cn=accounts,'$LDAPSUFIX
 
 
 # [Samba]

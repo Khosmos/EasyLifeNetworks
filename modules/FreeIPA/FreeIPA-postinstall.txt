@@ -2,7 +2,8 @@ Configuration Files
 - use console or web tools
 
 Decisions
--with eduroam compatibility
+-with eduroam compatibility is broken 
+without schac squema
 
 Future ideas
 -Replica
@@ -11,11 +12,4 @@ Future ideas
 
 Test:
 - from server
-  - ?
-You should see:
-?
-
--from anywhere 
-  - ?
-You should see:
-?
+  - htp://127.0.0.1/ipa/ui
