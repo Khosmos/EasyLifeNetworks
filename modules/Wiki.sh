@@ -67,8 +67,32 @@ sed -i s/WIKIDBUSER/$WIKIDBUSER/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBPASS/$WIKIDBPASS/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKILANGUAGE/$WIKILANGUAGE/g /var/www/mediawiki/LocalSettings.php
 # LdapAuthentication.php
-#sed -i s/WIKILDAPLABLE/$WIKILDAPLABLE/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
-#sed -i s/WIKILDAPSERVER/$WIKILDAPSERVER/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+if IsFreeIPA ; then
+    LDAPGROUPBASEDNS=$FIGROUPBASEDNS
+    LDAPUSERBASEDNS=$FIUSERBASEDNS
+    LDAPADMNAME=$FIADMNAME
+    LDAPGROUPOBJECTCLASS=$FIGROUPOBJECTCLASS
+    LDAPGROUPATTRIBUTE=$FIGROUPATTRIBUTE
+else
+    LDAPGROUPBASEDNS=$OLGROUPBASEDNS
+    LDAPUSERBASEDNS=$OLUSERBASEDNS
+    LDAPADMNAME=$OLADMNAME
+    LDAPGROUPOBJECTCLASS=$OLGROUPOBJECTCLASS
+    LDAPGROUPATTRIBUTE=$OLGROUPATTRIBUTE
+
+
+    
+
+
+
+fi
+sed -i s/WIKILDAPLABLE/$WIKILDAPLABLE/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/WIKILDAPSERVER/$WIKILDAPSERVER/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPGROUPBASEDNS/$LDAPGROUPBASEDNS/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPGROUPOBJECTCLASS/$LDAPGROUPOBJECTCLASS/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+
+
+
 #sed -i s/LDAPSUFIX/$LDAPSUFIX/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 #sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 #sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php

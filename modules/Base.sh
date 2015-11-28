@@ -38,7 +38,12 @@ if [ -d "$ELNCONFDIR" ]; then
 fi
 
 # 3) Utilities Base
-yum install redhat-lsb-core net-tools git screen vim tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core xterm links expect -y
+yum install redhat-lsb-core net-tools git screen vim tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core xterm links expect virt-what -y
+if [ IsVM ]; then
+    yum install haveged -y
+    chkconfig heveged on
+    service heveged start
+fi
 
 # Source variables
 source $locid/confs/variables.sh

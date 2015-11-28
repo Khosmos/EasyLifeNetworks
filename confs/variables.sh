@@ -91,19 +91,23 @@ LDAPSECONDARYUIDMAIL=$LDAPSECONDARYUID'@'$DOMAIN
 
 
 # [OpenLDAP]
-OLUserBaseDNs=='ou=Group,'$LDAPSUFIX
-OLGroupBaseDNs='ou=People,'$LDAPSUFIX
-OLADMNAME='cn=Manager'$LDAPSUFIX
-OLADMPASSWD=Batatata # OpenLDAP Administrator password
+OLADMNAME='cn=Manager'$LDAPSUFIX # OpenLDAP Administrator account
+OLUSERBASEDNS=='ou=Group,'$LDAPSUFIX
+OLGROUPBASEDNS='ou=People,'$LDAPSUFIX
+FIGROUPOBJECTCLASS=posixgroup
+OLGROUPATTRIBUTE=memberuid
+OLGROUPSUSEMEMBEROF=false
 
 
 # [FreeIPA]
 FIDMNAME='Directory Manager'
 FIDMPASSWD=Mandioca # FreeIPA DM password
-FIADMNAME='uid=admin,cn=users,cn=accounts,'$LDAPSUFIX
-FIADMPASSWD=Batatata # FreeIPA Administrator password
-FIUserBaseDNs=='cn=users,cn=accounts,'$LDAPSUFIX
-FIGroupBaseDNs='cn=groups,cn=accounts,'$LDAPSUFIX
+FIADMNAME='uid=admin,cn=users,cn=accounts,'$LDAPSUFIX # FreeIPA Administrator account
+FIUSERBASEDNS=='cn=users,cn=accounts,'$LDAPSUFIX
+FIGROUPBASEDNS='cn=groups,cn=accounts,'$LDAPSUFIX
+FIGROUPOBJECTCLASS=groupofnames
+FIGROUPATTRIBUTE=member
+FIGROUPSUSEMEMBEROF=true
 
 
 # [Samba]
