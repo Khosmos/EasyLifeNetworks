@@ -67,35 +67,31 @@ sed -i s/WIKIDBUSER/$WIKIDBUSER/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBPASS/$WIKIDBPASS/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKILANGUAGE/$WIKILANGUAGE/g /var/www/mediawiki/LocalSettings.php
 # LdapAuthentication.php
-if IsFreeIPA ; then
+if [ IsFreeIPA ] ; then
     LDAPGROUPBASEDNS=$FIGROUPBASEDNS
     LDAPUSERBASEDNS=$FIUSERBASEDNS
     LDAPADMNAME=$FIADMNAME
     LDAPGROUPOBJECTCLASS=$FIGROUPOBJECTCLASS
     LDAPGROUPATTRIBUTE=$FIGROUPATTRIBUTE
-else
+    LDAPGROUPSUSEMEMBEROF=$FIGROUPSUSEMEMBEROF
+else # OpenLDAP
     LDAPGROUPBASEDNS=$OLGROUPBASEDNS
     LDAPUSERBASEDNS=$OLUSERBASEDNS
     LDAPADMNAME=$OLADMNAME
     LDAPGROUPOBJECTCLASS=$OLGROUPOBJECTCLASS
     LDAPGROUPATTRIBUTE=$OLGROUPATTRIBUTE
-
-
-    
-
-
-
+    LDAPGROUPSUSEMEMBEROF=$OLGROUPSUSEMEMBEROF
 fi
 sed -i s/WIKILDAPLABLE/$WIKILDAPLABLE/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 sed -i s/WIKILDAPSERVER/$WIKILDAPSERVER/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPUSERBASEDNS/$LDAPUSERBASEDNS/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPSUFIX/$LDAPSUFIX/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 sed -i s/LDAPGROUPBASEDNS/$LDAPGROUPBASEDNS/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPADMNAME/$LDAPADMNAME/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 sed -i s/LDAPGROUPOBJECTCLASS/$LDAPGROUPOBJECTCLASS/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
-
-
-
-#sed -i s/LDAPSUFIX/$LDAPSUFIX/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
-#sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
-#sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPGROUPATTRIBUTE/$LDAPGROUPATTRIBUTE/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/LDAPGROUPSUSEMEMBEROF/$LDAPGROUPSUSEMEMBEROF/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 
 
 #6 Copy Logo
