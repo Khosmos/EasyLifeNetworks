@@ -18,10 +18,11 @@ DisplayYN "EasyLife Networks - Wiki" \
 "This module will:
  1) Install Wiki
  2) Create database
- 3) Copy templates
- 4) Some subs
- 5) Copy Logo
- 6) Apply extensions" "Install" "Cancel" || return
+ 3) Get extensions
+ 4) Copy templates
+ 5) Some subs
+ 6) Copy Logo
+ 7) Apply extensions" "Install" "Cancel" || return
 
  
 #1 Install Wiki
@@ -32,7 +33,6 @@ ln -s /usr/share/mediawiki123 /usr/share/mediawiki
 
 #2 restore database
 mysql -u $MDBADMIN -p$MDBPASS < $ModDir'Wiki/bkp.sql'
-
 \cp $ModDir'Wiki/createwikiuser.sql' /tmp
 sed -i s/WIKIDBNAME/$WIKIDBNAME/g /tmp/createwikiuser.sql
 sed -i s/WIKIDBUSER/$WIKIDBUSER/g /tmp/createwikiuser.sql
@@ -41,7 +41,12 @@ mysql -u $MDBADMIN -p$MDBPASS < /tmp/createwikiuser.sql
 rm -f /tmp/createwikiuser.sql
 
 
-#3 Copy templates
+#3 Get extensions
+tar -xvf $ModDir'Wiki/extensions/'LdapAuthentication-REL1_23-f266c74.tar.gz -C /usr/share/mediawiki/extensions/
+#tar -xvf $ModDir'Wiki/extensions/'AccessControl-REL1_23-befc02e.tar.gz -C /usr/share/mediawiki/extensions/
+
+
+#4 Copy templates
 # Apache conf
 mv /etc/httpd/conf.d/mediawiki*.conf /etc/httpd/conf.d/mediawiki.conf 2> /dev/null
 cp -p /etc/httpd/conf.d/mediawiki.conf /etc/httpd/conf.d/mediawiki.conf.`date +%Y%m%d-%H%M%S` 2> /dev/null
@@ -49,13 +54,7 @@ cat $ModDir'Wiki/templates/mediawiki.conf' > /etc/httpd/conf.d/mediawiki.conf
 # LocalSettings.php
 cat $ModDir'Wiki/templates/LocalSettings.php' > /var/www/mediawiki/LocalSettings.php
 # LdapAuthentication.php
-#cat $ModDir'Wiki/templates/LdapAuthentication.php' > /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
-
-
-#4 Apply extensions
-#tar -xvf $ModDir'Wiki/extensions/'LdapAuthentication-REL1_23-f266c74.tar.gz -C /usr/share/mediawiki/extensions/
-#tar -xvf $ModDir'Wiki/extensions/'AccessControl-REL1_23-befc02e.tar.gz -C /usr/share/mediawiki/extensions/
-#php /usr/share/mediawiki/maintenance/update.php --conf /var/www/mediawiki/LocalSettings.php
+cat $ModDir'Wiki/templates/LdapAuthentication.php' > /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 
 
 #5 Some subs
@@ -99,7 +98,11 @@ sed -i s/LDAPGROUPSUSEMEMBEROF/$LDAPGROUPSUSEMEMBEROF/g /usr/share/mediawiki/ext
 cp $ELNDIR'/media/ELN.svg' /var/www/html/logowiki.svg
 
 
-#7 Start Wiki
+#7 Apply extensions
+php /usr/share/mediawiki/maintenance/update.php --conf /var/www/mediawiki/LocalSettings.php
+
+
+#8 Start Wiki
 service httpd restart
 
 

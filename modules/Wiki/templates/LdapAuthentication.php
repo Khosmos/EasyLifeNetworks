@@ -62,7 +62,7 @@ $wgLDAPGroupUseRetrievedUsername = array( 'WIKILDAPLABEL' => false );
 $wgLDAPGroupObjectclass = array( 'WIKILDAPLABEL' => 'LDAPGROUPOBJECTCLASS' );
 $wgLDAPGroupAttribute = array( 'WIKILDAPLABEL' => 'LDAPGROUPATTRIBUTE' );
 $wgLDAPGroupNameAttribute = array( 'WIKILDAPLABEL' => 'cn' );
-$wgLDAPGroupsUseMemberOf = array( 'WIKILDAPLABEL' => LDAPGROUPSUSEMEMBEROF );
+$wgLDAPGroupsUseMemberOf = array( 'WIKILDAPLABEL' => 'LDAPGROUPSUSEMEMBEROF' );
 $wgLDAPUseLDAPGroups = array( 'WIKILDAPLABEL' => true );
 $wgLDAPLocallyManagedGroups = array();
 $wgLDAPGroupsPrevail = array( 'WIKILDAPLABEL' => true );
