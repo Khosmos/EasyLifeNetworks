@@ -32,7 +32,7 @@ yum install ipa-server bind bind-dyndb-ldap oddjob-mkhomedir nss-pam-ldapd -y
 
 #2 Install FreeIPA
 authconfig --enablemkhomedir --update
-ipa-server-install --realm=`echo ${DOMAIN^^}` --domain=$DOMAIN --ds-password=$FIDMPASSWD --admin-password=$FIADMPASSWD --mkhomedir --ip-address=$INTIP --hostname="$MACHINE.$DOMAINWIFI" --idstart=10000 -U --setup-dns --forwarder=$DNSSERVER
+ipa-server-install --realm=`echo ${DOMAIN^^}` --domain=$DOMAIN --ds-password=$FIDMPASSWD --admin-password=$LDAPADMPASSWD --mkhomedir --ip-address=$INTIP --hostname="$MACHINE.$DOMAINWIFI" --idstart=10000 -U --setup-dns --forwarder=$DNSSERVER
 #Firewall setup
 #for x in 53 80 88 389 443 464 636 7389 9443 9444 9445; do firewall-cmd --permanent --zone=public --add-port=$x/tcp ; done
 #for x in 53 88 123 464; do firewall-cmd --permanent --zone=public --add-port=$x/udp ; done
@@ -43,7 +43,8 @@ echo Batatata|kinit admin
 #disable private groups
 ipa-managed-entries disable -e 'UPG Definition'
 ipa config-mod --defaultshell=/bin/bash
-#sed -i s/'RewriteRule \^\/\$'/'#RewriteRule ^/$'/g /etc/httpd/conf.d/ipa-rewrite.conf
+sed '0,/RewriteRule/s/RewriteRule/#RewriteRule/' /etc/httpd/conf.d/ipa-rewrite.conf > /tmp/temp.txt
+cat /tmp/temp.txt > /etc/httpd/conf.d/ipa-rewrite.conf
 
 
 #4 Load schemas

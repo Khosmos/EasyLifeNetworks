@@ -140,8 +140,8 @@ $wgGroupPermissions['*']['edit'] = false;
 #require_once "$IP/extensions/WikiEditor/WikiEditor.php";
 #$wgDefaultUserOptions['usebetatoolbar'] = 1;
 #$wgDefaultUserOptions['usebetatoolbar-cgd'] = 1;
-#require_once "$IP/extensions/LdapAuthentication/LdapAuthentication.php";
-#$wgAuth = new LdapAuthenticationPlugin();
+require_once "$IP/extensions/LdapAuthentication/LdapAuthentication.php";
+$wgAuth = new LdapAuthenticationPlugin();
 
 # End of automatically generated settings.
 # Add more configuration options below.

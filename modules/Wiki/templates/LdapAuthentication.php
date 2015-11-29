@@ -32,48 +32,48 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) exit;
 
-$wgLDAPDomainNames = array( 'WIKILDAPLABLE' );
-$wgLDAPServerNames = array( 'WIKILDAPLABLE' => 'WIKILDAPSERVER' );
+$wgLDAPDomainNames = array( 'WIKILDAPLABEL' );
+$wgLDAPServerNames = array( 'WIKILDAPLABEL' => 'WIKILDAPSERVER' );
 $wgLDAPUseLocal = false;
-$wgLDAPEncryptionType = array( 'WIKILDAPLABLE' => 'clear' );
+$wgLDAPEncryptionType = array( 'WIKILDAPLABEL' => 'clear' );
 $wgLDAPOptions = array();
 $wgLDAPPort = array();
-$wgLDAPSearchStrings = array( "WIKILDAPLABLE"=>"uid=USER-NAME,LDAPUSERBASEDNS" );
+$wgLDAPSearchStrings = array( "WIKILDAPLABEL"=>"uid=USER-NAME,LDAPUSERBASEDNS" );
 $wgLDAPProxyAgent = array();
 $wgLDAPProxyAgentPassword = array();
-$wgLDAPSearchAttributes = array( 'WIKILDAPLABLE' => 'uid' );
-$wgLDAPBaseDNs = array( 'WIKILDAPLABLE' => 'LDAPSUFIX' );
-$wgLDAPGroupBaseDNs = array( 'WIKILDAPLABLE' => 'LDAPGROUPBASEDNS' );
-$wgLDAPUserBaseDNs = array( 'WIKILDAPLABLE' => 'LDAPUSERBASEDNS' );
-$wgLDAPWriterDN = array( 'WIKILDAPLABLE' => 'LDAPADMNAME' );
-$wgLDAPWriterPassword = array( 'WIKILDAPLABLE' => 'LDAPADMPASSWD' );
-$wgLDAPWriteLocation = array( 'WIKILDAPLABLE' => 'LDAPUSERBASEDNS' );
-$wgLDAPAddLDAPUsers = array( 'WIKILDAPLABLE' => false );
-$wgLDAPUpdateLDAP = array( 'WIKILDAPLABLE' => true );
+$wgLDAPSearchAttributes = array( 'WIKILDAPLABEL' => 'uid' );
+$wgLDAPBaseDNs = array( 'WIKILDAPLABEL' => 'LDAPSUFIX' );
+$wgLDAPGroupBaseDNs = array( 'WIKILDAPLABEL' => 'LDAPGROUPBASEDNS' );
+$wgLDAPUserBaseDNs = array( 'WIKILDAPLABEL' => 'LDAPUSERBASEDNS' );
+$wgLDAPWriterDN = array( 'WIKILDAPLABEL' => 'LDAPADMNAME' );
+$wgLDAPWriterPassword = array( 'WIKILDAPLABEL' => 'LDAPADMPASSWD' );
+$wgLDAPWriteLocation = array( 'WIKILDAPLABEL' => 'LDAPUSERBASEDNS' );
+$wgLDAPAddLDAPUsers = array( 'WIKILDAPLABEL' => false );
+$wgLDAPUpdateLDAP = array( 'WIKILDAPLABEL' => true );
 $wgLDAPPasswordHash = array();
-$wgLDAPMailPassword = array( 'WIKILDAPLABLE' => true );
-$wgLDAPPreferences = array( 'WIKILDAPLABLE' => array( 'email' => 'mail','realname' => 'displayname','nickname' => 'cn','language' => 'preferredlanguage' ) );
-$wgLDAPDisableAutoCreate = array( 'WIKILDAPLABLE' => false );
+$wgLDAPMailPassword = array( 'WIKILDAPLABEL' => true );
+$wgLDAPPreferences = array( 'WIKILDAPLABEL' => array( 'email' => 'mail','realname' => 'displayname','nickname' => 'cn','language' => 'preferredlanguage' ) );
+$wgLDAPDisableAutoCreate = array( 'WIKILDAPLABEL' => false );
 #$wgLDAPDebug = 3;
-#$wgDebugLogGroups["WIKILDAPLABLE"] = '/tmp/Wikildap.log'; #It never worked to me
-$wgLDAPGroupUseFullDN = array( 'WIKILDAPLABLE' => true );
-$wgLDAPLowerCaseUsername = array( 'WIKILDAPLABLE' => true );
-$wgLDAPGroupUseRetrievedUsername = array( 'WIKILDAPLABLE' => false );
-$wgLDAPGroupObjectclass = array( 'WIKILDAPLABLE' => 'LDAPGROUPOBJECTCLASS' );
-$wgLDAPGroupAttribute = array( 'WIKILDAPLABLE' => 'LDAPGROUPATTRIBUTE' );
-$wgLDAPGroupNameAttribute = array( 'WIKILDAPLABLE' => 'cn' );
-$wgLDAPGroupsUseMemberOf = array( 'WIKILDAPLABLE' => false );
-$wgLDAPUseLDAPGroups = array( 'WIKILDAPLABLE' => true );
+#$wgDebugLogGroups["WIKILDAPLABEL"] = '/tmp/Wikildap.log'; #It never worked to me
+$wgLDAPGroupUseFullDN = array( 'WIKILDAPLABEL' => true );
+$wgLDAPLowerCaseUsername = array( 'WIKILDAPLABEL' => true );
+$wgLDAPGroupUseRetrievedUsername = array( 'WIKILDAPLABEL' => false );
+$wgLDAPGroupObjectclass = array( 'WIKILDAPLABEL' => 'LDAPGROUPOBJECTCLASS' );
+$wgLDAPGroupAttribute = array( 'WIKILDAPLABEL' => 'LDAPGROUPATTRIBUTE' );
+$wgLDAPGroupNameAttribute = array( 'WIKILDAPLABEL' => 'cn' );
+$wgLDAPGroupsUseMemberOf = array( 'WIKILDAPLABEL' => LDAPGROUPSUSEMEMBEROF );
+$wgLDAPUseLDAPGroups = array( 'WIKILDAPLABEL' => true );
 $wgLDAPLocallyManagedGroups = array();
-$wgLDAPGroupsPrevail = array( 'WIKILDAPLABLE' => true );
-#$wgLDAPRequiredGroups = array( 'WIKILDAPLABLE'=> array ( 'cn=users,ou=Group,LDAPSUFIX' ) ); # Some problems here
+$wgLDAPGroupsPrevail = array( 'WIKILDAPLABEL' => true );
+#$wgLDAPRequiredGroups = array( 'WIKILDAPLABEL'=> array ( 'cn=users,ou=Group,LDAPSUFIX' ) ); # Some problems here
 $wgLDAPExcludedGroups = array();
-$wgLDAPGroupSearchNestedGroups = array( 'WIKILDAPLABLE' => false );
+$wgLDAPGroupSearchNestedGroups = array( 'WIKILDAPLABEL' => false );
 $wgLDAPAuthAttribute = array();
 $wgLDAPAutoAuthUsername = "";
 $wgLDAPAutoAuthDomain = "";
 $wgPasswordResetRoutes['domain'] = true;
-$wgLDAPActiveDirectory = array( 'WIKILDAPLABLE' => false );
+$wgLDAPActiveDirectory = array( 'WIKILDAPLABEL' => false );
 
 define( "LDAPAUTHVERSION", "2.1.0" );
 

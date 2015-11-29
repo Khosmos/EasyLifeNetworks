@@ -67,7 +67,8 @@ sed -i s/WIKIDBUSER/$WIKIDBUSER/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKIDBPASS/$WIKIDBPASS/g /var/www/mediawiki/LocalSettings.php
 sed -i s/WIKILANGUAGE/$WIKILANGUAGE/g /var/www/mediawiki/LocalSettings.php
 # LdapAuthentication.php
-if [ IsFreeIPA ] ; then
+IsFreeIPA
+if [ $? ] ; then
     LDAPGROUPBASEDNS=$FIGROUPBASEDNS
     LDAPUSERBASEDNS=$FIUSERBASEDNS
     LDAPADMNAME=$FIADMNAME
@@ -82,7 +83,7 @@ else # OpenLDAP
     LDAPGROUPATTRIBUTE=$OLGROUPATTRIBUTE
     LDAPGROUPSUSEMEMBEROF=$OLGROUPSUSEMEMBEROF
 fi
-sed -i s/WIKILDAPLABLE/$WIKILDAPLABLE/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
+sed -i s/WIKILDAPLABEL/$WIKILDAPLABEL/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 sed -i s/WIKILDAPSERVER/$WIKILDAPSERVER/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 sed -i s/LDAPUSERBASEDNS/$LDAPUSERBASEDNS/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
 sed -i s/LDAPSUFIX/$LDAPSUFIX/g /usr/share/mediawiki/extensions/LdapAuthentication/LdapAuthentication.php
