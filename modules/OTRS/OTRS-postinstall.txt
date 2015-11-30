@@ -1,0 +1,15 @@
+Configuration Files
+-/etc/????
+
+Decisions
+-without cryptography
+-LDAP capable
+
+Future ideas
+-with cryptography
+
+Test:
+- from server
+  - links http://127.0.0.1/otrs
+-from anywhere 
+  - firefox http://MACHINEIP
