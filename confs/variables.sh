@@ -179,6 +179,15 @@ WIKILDAPLABEL='LDAPELN'
 WIKILDAPSERVER=$LDAPSERVER # or another machine
 
 
+# [OTRS]
+OTRSDBSERVER='127.0.0.1'
+OTRSDBNAME=otrs
+OTRSDBUSER=otrs
+OTRSDBPASS=Pitanga
+OTRSLANGUAGE='en' # or 'en' 'pt-br'
+OTRSLDAPSERVER=$LDAPSERVER # or another machine
+
+
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
 ModDir=$DIRELSCIFI'modules/' # Where are modules

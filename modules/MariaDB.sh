@@ -28,6 +28,7 @@ yum install mariadb-server mariadb -y
 tail -$(( `wc -l /etc/my.cnf| cut -d' ' -f1` - 1 )) /etc/my.cnf > /tmp/temp.txt
 echo '[mysqld]' > /etc/my.cnf
 echo 'innodb_log_file_size=512MB' >> /etc/my.cnf
+cat /tmp/temp.txt >> /etc/my.cnf
 
 #2) Initial setup MariaDB
 service mariadb start
