@@ -2,39 +2,36 @@
 # Easy Life for Networks
 #
 # Configuration Tool for an Easy Life
-# Version 20150914
+# Version 20151201
 #
-# LDAP module
+# OpenLDAPBis module
 #
 # Cosme Faria Corrêa
-# Ana Carolina Silvério
-# ...
 #
-#set -xv        
-
+#set -xv
 clear
 
-DisplayYN "EasyLife Networks - LDAP " \
+DisplayYN "EasyLife Networks - OpenLDAPBis " \
 "This module will :
- 1) Install LDAP
+ 1) Install OpenLDAPBis
  2) Copy scripts
  3) Create BKP structure
  4) Insert BKP in cron
  5) Copy Schemas
  6) Setup slapd.conf
- 7) Populate LDAP
+ 7) Populate OpenLDAPBis
  8) Setup Auth
  9) Setup Log
  10) Start
 " "Install" "Cancel" || exit
 
 
-#0 Install LDAP
+#0 Install OpenLDAPBis
 yum install openldap-clients openldap nss-pam-ldapd openldap-servers  -y
 
 
 #1 Copy scripts
-\cp -p $ModDir/LDAP/scrips/*.sh $SCRIPTDIR #for simple test - debug
+\cp -p $ModDir/OpenLDAPBis/scrips/*.sh $SCRIPTDIR #for simple test - debug
 #chmod 700 $SCRIPTDIR'ldap.sh'
 #chown root:root $SCRIPTDIR'ldap.sh'
 
@@ -61,12 +58,12 @@ chmod 700 /home/LDAP
 
 
 #3 Insert BKP in cron
-cp -p $ModDir/LDAP/ldap.cron /etc/cron.d/ldap
+cp -p $ModDir/OpenLDAPBis/ldap.cron /etc/cron.d/ldap
 service crond restart
 
 
 #4 Copy Schemas
-cp -p $ModDir/LDAP/schema/* /etc/openldap/schema
+cp -p $ModDir/OpenLDAPBis/schema/* /etc/openldap/schema
 
 
 #5 Setup slapd.conf

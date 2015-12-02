@@ -120,6 +120,9 @@ do
 		33 )
 		    source $ModDir'OTRS.sh'
 		    ;;
+		34 )
+		    source $ModDir'OpenLDAPBis.sh'
+		    ;;
 		* )
 		    exit
 		    ;;
