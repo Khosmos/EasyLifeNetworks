@@ -6,25 +6,25 @@ DIRBKP=/home/LDAP
 INICIO=`date +%Y%m%d-%H%M%S`
 INICIOFORMAT=`date +%H:%M:%S-%Y/%m/%d`
 
-# ACQUIRING INFORMATION OF BACKUP DIRECTORY
+# ADQUIRINDO INFORMACOES DO DIRETORIO DE BACKUPS
 ls -tr $DIRBKP > lista.$INICIO                      
 cat lista.$INICIO | grep .ldif > listaok.$INICIO
 LISTA=`tail -n 8 listaok.$INICIO`               
 rm -f lista.$INICIO                             
 rm -f listaok.$INICIO                           
 
-# choosing which backup restore
+# ESCOLHA DE QUAL BACKUP RESTAURAR
 echo ""                           
-echo "Which backup should be restored ??"
+echo "Qual backup deve ser restaurado ??"
 select var in SAIR $LISTA; do            
    break                                 
 done                                     
-echo "It will be restored backup $var"     
+echo "Sera restaurado o backup $var"     
 RESTAURA=$DIRBKP/$var                    
 
-echo "### LDAP Restoration service - SISTEMA DE RESTAURACAO DE LDAP ###"
+echo "### SISTEMA DE RESTAURACAO DE LDAP ###"
 echo ""                                      
-echo "###   It will be restored the file    ###"
+echo "###   Sera restaurado o arquivo    ###"
 if [ -n "$RESTAURA" ]; then                  
         echo "         $RESTAURA"            
 else                                         

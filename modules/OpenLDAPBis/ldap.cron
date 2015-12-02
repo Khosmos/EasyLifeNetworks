@@ -1,1 +1,1 @@
-45       22      *       *       *	root       fazbkp.sh >> /var/log/backup-ok.log 2> /var/log/backup-erro.log 
+45       22      *       *       *	root       backupLDAP.sh >> /var/log/backupLDAP-ok.log 2> /var/log/backupLDAP-erro.log 
