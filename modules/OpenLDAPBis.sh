@@ -15,22 +15,22 @@ DisplayYN "EasyLife Networks - OpenLDAPBis " \
 "This module will :
  1) Install OpenLDAPBis
  2) Copy scripts
- 3) Create BKP structure
- 4) Insert BKP in cron
- 5) Copy Schemas
- 6) Setup slapd.conf
- 7) Populate OpenLDAPBis
- 8) Setup Auth
- 9) Setup Log
- 10) Start
+ 3) Insert BKP in cron
+ 4) Copy Schemas
+ 5) Setup slapd.conf
+ 6) Populate OpenLDAPBis
+ 7) Setup Auth
+ 8) Setup Log
+ 9) Start
 " "Install" "Cancel" || exit
 
 
-#0 Install OpenLDAPBis
-yum install openldap-clients openldap nss-pam-ldapd openldap-servers  -y
+#1 Install OpenLDAPBis
+yum install openldap-clients openldap nss-pam-ldapd openldap-servers sssd -y
+service slapd stop 
 
 
-#1 Copy scripts
+#2 Copy scripts
 \cp -p $ModDir/OpenLDAPBis/scrips/*.sh $SCRIPTDIR #for simple test - debug
 #chmod 700 $SCRIPTDIR'ldap.sh'
 #chown root:root $SCRIPTDIR'ldap.sh'
@@ -49,12 +49,7 @@ cd /usr/bin
 ln -s $SCRIPTDIR"*".sh .
 
 mv /etc/openldap/DB_CONFIG.example /etc/openldap/DB_CONFIG.example.`date +%Y%m%d-%H%M%S` 2>/dev/null #template DB_CONFIG
-cp $ModDir/LDAP/DB_CONFIG.example /etc/openldap/
-
-
-#2 Create BKP structure
-mkdir -p /home/LDAP
-chmod 700 /home/LDAP
+cp $ModDir/OpenLDAPBis/DB_CONFIG.example /etc/openldap/
 
 
 #3 Insert BKP in cron
@@ -80,11 +75,19 @@ sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g $SCRIPTDIR/ldap.sh
 
 
 #6 Populate LDAP
-. $ModDir/LDAP/populate.sh
+mv /var/lib/ldap /var/lib/ldap.$INICIO
+mkdir /var/lib/ldap
+cp /etc/openldap/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
+chown ldap:ldap /var/lib/ldap/ -Rf
+service slapd start
+service slapd stop
+slapadd -vl $ModDir/OpenLDAPBis/startbase/ldif
+chown ldap:ldap /var/lib/ldap/ -Rf
+service slapd start
 
 
 #7 Setup Auth
-authconfig --passalgo=sha512 --enableldap --enableldapauth --ldapserver=$LDAPSERVER --ldapbasedn=$LDAPSUFIX --disablesmartcard --enableforcelegacy --enablemkhomedir --updateall
+authconfig --passalgo=sha512 --enableldap --enableldapauth --ldapserver=$LDAPSERVER --ldapbasedn=$LDAPSUFIX --enablerfc2307bis --disablesmartcard --enableforcelegacy --enablemkhomedir --updateall
 
 
 #8 Setup log

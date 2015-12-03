@@ -54,6 +54,8 @@ yum install htop php-mcrypt -y
 # 4) Create directories
 mkdir -p $SCRIPTDIR
 mkdir -p $ELNCONFDIR
+mkdir -p /home/BKP
+chmod 700 /home/BKP
 
 #4) arp table setup
 echo 'net.ipv4.neigh.default.gc_thresh1 = 4096' >> /etc/sysctl.conf
