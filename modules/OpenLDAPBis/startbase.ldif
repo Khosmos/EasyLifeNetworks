@@ -14,51 +14,53 @@ objectClass: organizationalUnit
 ou: People
 structuralObjectClass: organizationalUnit
 
-dn: uid=cosmefc,ou=People,LDAPSUFIX
+dn: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: top
 objectClass: organizationalPerson
 objectClass: sambaSamAccount
 objectClass: person
-uid: cosmefc
+uid: LDAPPRIMARYUID
 sn: CORREA
 cn: COSME
 gidNumber: 100
-homeDirectory: /home/cosmefc
+homeDirectory: /home/LDAPPRIMARYUID
+loginShell: /bin/bash
 uidNumber: 10001
 structuralObjectClass: inetOrgPerson
 sambaSID:: SAMBASID-10001
 sambaNTPassword: 5921f851c39383c16cbb66b959a22c94
 userPassword:: LDAPHASHPRIMARYPASS
 
-dn: uid=johndoe,ou=People,LDAPSUFIX
+dn: uid=LDAPSECONDARYUID,ou=People,LDAPSUFIX
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: top
 objectClass: organizationalPerson
 objectClass: sambaSamAccount
 objectClass: person
-uid: johndoe
+uid: LDAPSECONDARYUID
 sn: DOE
 memberOf: cn=users,ou=Group,LDAPSUFIX
 memberOf: cn=netoperators,ou=Group,LDAPSUFIX
 cn: JOHN
 gidNumber: 100
-homeDirectory: /home/johndoe
+homeDirectory: /home/LDAPSECONDARYUID
+loginShell: /bin/bash
 uidNumber: 10002
 structuralObjectClass: inetOrgPerson
 sambaSID:: SAMBASID-10002
 sambaNTPassword: 5921f851c39383c16cbb66b959a22c94
-userPassword:: LDAPHASHSECONDARYPAS
+userPassword:: LDAPHASHSECONDARYPASS
 
 dn: cn=users,ou=Group,LDAPSUFIX
 objectClass: groupOfNames
 objectClass: posixGroup
 objectClass: top
 cn: users
-member: uid=cosmefc,ou=People,LDAPSUFIX
-member: uid=johndoe,ou=People,LDAPSUFIX
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
+member: uid=LDAPSECONDARYUID,ou=People,LDAPSUFIX
 structuralObjectClass: groupOfNames
 gidNumber: 100
 description: Users
@@ -66,7 +68,7 @@ description: Users
 dn: cn=netadmins,ou=Group,LDAPSUFIX
 cn: netadmins
 gidNumber: 1001
-member: uid=cosmefc,ou=People,LDAPSUFIX
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 objectClass: groupOfNames
 objectClass: posixGroup
 objectClass: top
@@ -76,10 +78,9 @@ description: Network Administrators
 dn: cn=netoperators,ou=Group,LDAPSUFIX
 cn: netoperators
 gidNumber: 1002
-member: uid=johndoe,ou=People,LDAPSUFIX
+member: uid=LDAPSECONDARYUID,ou=People,LDAPSUFIX
 objectClass: groupOfNames
 objectClass: posixGroup
 objectClass: top
 structuralObjectClass: groupOfNames
 description: Network Operators
-

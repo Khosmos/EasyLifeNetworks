@@ -67,7 +67,7 @@ DURATION=104 # Weeks to retain logs. Two years.
 LDAPSERVER=127.0.0.1 # LDAP server
 #LDAPSERVER=ldap://127.0.0.1,ldap://200.200.200.200 # LDAP server
 LDAPSUFIX='dc=uff,dc=br' # LDAP sufix
-LDAPADMNAME='cn=Manager'$LDAPSUFIX
+LDAPADMNAME='cn=Manager,'$LDAPSUFIX
 LDAPADMPASSWD=Batatata # LDAP Administrator password
 
 # Primary user
@@ -78,7 +78,7 @@ LDAPPRIMARYFN=$LDAPPRIMARYCN # First Name
 L=`echo $LDAPPRIMARYDISPLAYNAME | wc -w`
 LDAPPRIMARYSN=`echo $LDAPPRIMARYDISPLAYNAME | cut -d' ' -f$L`
 LDAPPRIMARYPASSWD=Beringela # LDAP primary user password
-LDAPHASHPRIMARYPASS=$( slappasswd -h {SSHA} -u -s $LDAPPRIMARYPASSWD )
+LDAPHASHPRIMARYPASS=$( slappasswd -h {CRYPT} -u -s $LDAPPRIMARYPASSWD )
 LDAPHASHPRIMARYPASSNT=`printf $LDAPPRIMARYPASSWD | iconv -t utf16le | openssl md4 | cut -c10-`
 LDAPPRIMARYUIDMAIL=$LDAPPRIMARYUID'@'$DOMAIN
 
@@ -96,7 +96,7 @@ LDAPSECONDARYUIDMAIL=$LDAPSECONDARYUID'@'$DOMAIN
 
 
 # [OpenLDAP]
-OLADMNAME='cn=Manager'$LDAPSUFIX # OpenLDAP Administrator account
+OLADMNAME='cn=Manager,'$LDAPSUFIX # OpenLDAP Administrator account
 OLUSERBASEDNS='ou=Group,'$LDAPSUFIX
 OLGROUPBASEDNS='ou=People,'$LDAPSUFIX
 FIGROUPOBJECTCLASS=posixgroup

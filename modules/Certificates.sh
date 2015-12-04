@@ -36,11 +36,6 @@ mv root.key /etc/pki/tls/private
 mv root.csr /etc/pki/tls/certs
 mv root.crt /etc/pki/tls/certs
 
-CERTCOUNTRY=BR
-CERTSTATE='Rio de Janeiro'
-CERTCITY='Niterói'
-CERTORGANIZATION='UFF'
-
 
 #Show postinstall.txt, if it exists
 [ -e $ModDir'Certificates/Certificates-postinstall.txt' ] && DisplayMsg "Certificates" "`cat $ModDir'Certificates/Certificates-postinstall.txt'`" || ( echo 'Certificates module finished'; read )

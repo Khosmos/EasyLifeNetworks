@@ -10,11 +10,11 @@
 
 Principal() {
    clear
-   suffix="dc=uff,dc=br"
+   suffix="LDAPSUFIX"
    people="ou=People",$suffix
    group="ou=Group",$suffix
    rootdn="cn=Manager"
-   rootpw="Batata"
+   rootpw="LDAPADMPASSWD"
      echo "+--------------------------------------------------------+"
      echo "|                       SCIFI*                           |"
      echo "+--------------------------------------------------------+"

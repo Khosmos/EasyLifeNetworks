@@ -2,9 +2,9 @@ Configuration Files
 - ?
 
 Decisions
-- root.key - CA Key -			/etc/pki/tls/private/
-- root.csr - CA certificate -		/etc/pki/tls/certs/
-- root.crt - CA signed certificate -	/etc/pki/tls/certs/
+- /etc/pki/tls/private/root.key - CA Key
+- /etc/pki/tls/certs/root.csr   - CA certificate
+- /etc/pki/tls/certs/root.crt   - CA signed certificate
 
 Future ideas
 - ?
