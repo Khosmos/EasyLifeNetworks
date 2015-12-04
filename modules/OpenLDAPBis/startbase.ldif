@@ -1,38 +1,20 @@
-dn: dc=uff,dc=br
+dn: LDAPSUFIX
 objectClass: domain
 dc: uff
 structuralObjectClass: domain
-entryUUID: a9f1f660-2cec-1035-94aa-59793899f77e
-creatorsName: cn=Manager,dc=uff,dc=br
-createTimestamp: 20151202030101Z
 description: Universidade Federal Fluminense
-entryCSN: 20151202043547.262038Z#000000#000#000000
-modifiersName: cn=Manager,dc=uff,dc=br
-modifyTimestamp: 20151202043547Z
 
-dn: ou=Group,dc=uff,dc=br
+dn: ou=Group,LDAPSUFIX
 objectClass: organizationalUnit
 ou: Group
 structuralObjectClass: organizationalUnit
-entryUUID: aa0d6fa8-2cec-1035-94ab-59793899f77e
-creatorsName: cn=Manager,dc=uff,dc=br
-createTimestamp: 20151202030101Z
-entryCSN: 20151202030101.757598Z#000000#000#000000
-modifiersName: cn=Manager,dc=uff,dc=br
-modifyTimestamp: 20151202030101Z
 
-dn: ou=People,dc=uff,dc=br
+dn: ou=People,LDAPSUFIX
 objectClass: organizationalUnit
 ou: People
 structuralObjectClass: organizationalUnit
-entryUUID: aa122c00-2cec-1035-94ac-59793899f77e
-creatorsName: cn=Manager,dc=uff,dc=br
-createTimestamp: 20151202030101Z
-entryCSN: 20151202030101.788636Z#000000#000#000000
-modifiersName: cn=Manager,dc=uff,dc=br
-modifyTimestamp: 20151202030101Z
 
-dn: uid=cosmefc,ou=People,dc=uff,dc=br
+dn: uid=cosmefc,ou=People,LDAPSUFIX
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: top
@@ -41,24 +23,16 @@ objectClass: sambaSamAccount
 objectClass: person
 uid: cosmefc
 sn: CORREA
-entryUUID: aa16f5fa-2cec-1035-94ad-59793899f77e
-creatorsName: cn=Manager,dc=uff,dc=br
-createTimestamp: 20151202030101Z
 cn: COSME
 gidNumber: 100
 homeDirectory: /home/cosmefc
 uidNumber: 10001
 structuralObjectClass: inetOrgPerson
-sambaSID:: IFMtMS01LTIxLTEwMTQ3NjkxODAtNzc3NzQ2NTQ4LTM2NjAyMjYyNzgtMTAwMDE=
+sambaSID:: SAMBASID-10001
 sambaNTPassword: 5921f851c39383c16cbb66b959a22c94
-userPassword:: e1NTSEF9aGx4R1dtMGJQNEZsWDROZkZKbkpqMWt0ZEtCbHFMY0hlUGl3SUE9PQ=
- =
-entryCSN: 20151202033727.318094Z#000000#000#000000
-modifyTimestamp: 20151202033727Z
-memberOf: cn=netadmins,ou=Group,dc=uff,dc=br
-modifiersName: cn=Manager,dc=uff,dc=br
+userPassword:: LDAPHASHPRIMARYPASS
 
-dn: uid=johndoe,ou=People,dc=uff,dc=br
+dn: uid=johndoe,ou=People,LDAPSUFIX
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: top
@@ -67,70 +41,45 @@ objectClass: sambaSamAccount
 objectClass: person
 uid: johndoe
 sn: DOE
-entryUUID: aa2d076e-2cec-1035-94ae-59793899f77e
-creatorsName: cn=Manager,dc=uff,dc=br
-createTimestamp: 20151202030101Z
-memberOf: cn=users,ou=Group,dc=uff,dc=br
-memberOf: cn=netoperators,ou=Group,dc=uff,dc=br
+memberOf: cn=users,ou=Group,LDAPSUFIX
+memberOf: cn=netoperators,ou=Group,LDAPSUFIX
 cn: JOHN
 gidNumber: 100
 homeDirectory: /home/johndoe
 uidNumber: 10002
 structuralObjectClass: inetOrgPerson
-sambaSID:: IFMtMS01LTIxLTEwMTQ3NjkxODAtNzc3NzQ2NTQ4LTM2NjAyMjYyNzgtMTAwMDI=
+sambaSID:: SAMBASID-10002
 sambaNTPassword: 5921f851c39383c16cbb66b959a22c94
-userPassword:: e1NTSEF9VjF5aFFYS3ZWV0lkUjh2WFJoSUdQNXJHZTloY3g2TFZ6ZGNiaWc9PQ=
- =
-entryCSN: 20151202033757.546261Z#000000#000#000000
-modifyTimestamp: 20151202033757Z
-modifiersName: cn=Manager,dc=uff,dc=br
+userPassword:: LDAPHASHSECONDARYPAS
 
-dn: cn=users,ou=Group,dc=uff,dc=br
+dn: cn=users,ou=Group,LDAPSUFIX
 objectClass: groupOfNames
 objectClass: posixGroup
 objectClass: top
 cn: users
-member: uid=cosmefc,ou=People,dc=uff,dc=br
-member: uid=johndoe,ou=People,dc=uff,dc=br
+member: uid=cosmefc,ou=People,LDAPSUFIX
+member: uid=johndoe,ou=People,LDAPSUFIX
 structuralObjectClass: groupOfNames
-entryUUID: aa30dd1c-2cec-1035-94af-59793899f77e
-creatorsName: cn=Manager,dc=uff,dc=br
-createTimestamp: 20151202030101Z
 gidNumber: 100
 description: Users
-entryCSN: 20151202043447.766621Z#000000#000#000000
-modifiersName: cn=Manager,dc=uff,dc=br
-modifyTimestamp: 20151202043447Z
 
-dn: cn=netadmins,ou=Group,dc=uff,dc=br
+dn: cn=netadmins,ou=Group,LDAPSUFIX
 cn: netadmins
 gidNumber: 1001
-member: uid=cosmefc,ou=People,dc=uff,dc=br
+member: uid=cosmefc,ou=People,LDAPSUFIX
 objectClass: groupOfNames
 objectClass: posixGroup
 objectClass: top
 structuralObjectClass: groupOfNames
-entryUUID: 21b9feea-2cf2-1035-9820-31619a48bdf5
-creatorsName: cn=Manager,dc=uff,dc=br
-createTimestamp: 20151202034010Z
 description: Network Administrators
-entryCSN: 20151202043258.988194Z#000000#000#000000
-modifiersName: cn=Manager,dc=uff,dc=br
-modifyTimestamp: 20151202043258Z
 
-dn: cn=netoperators,ou=Group,dc=uff,dc=br
+dn: cn=netoperators,ou=Group,LDAPSUFIX
 cn: netoperators
 gidNumber: 1002
-member: uid=johndoe,ou=People,dc=uff,dc=br
+member: uid=johndoe,ou=People,LDAPSUFIX
 objectClass: groupOfNames
 objectClass: posixGroup
 objectClass: top
 structuralObjectClass: groupOfNames
-entryUUID: 9aab752c-2cf2-1035-9821-31619a48bdf5
-creatorsName: cn=Manager,dc=uff,dc=br
-createTimestamp: 20151202034332Z
-businessCategory: Network Operators
-entryCSN: 20151202043334.388959Z#000000#000#000000
-modifiersName: cn=Manager,dc=uff,dc=br
-modifyTimestamp: 20151202043334Z
+description: Network Operators
 

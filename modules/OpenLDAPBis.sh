@@ -19,9 +19,10 @@ DisplayYN "EasyLife Networks - OpenLDAPBis " \
  4) Copy Schemas
  5) Setup slapd.conf
  6) Populate OpenLDAPBis
- 7) Setup Auth
- 8) Setup Log
- 9) Start
+ 7) Certificates
+ 8) Setup Auth
+ 9) Setup Log
+ 10) Start
 " "Install" "Cancel" || exit
 
 
@@ -31,7 +32,7 @@ service slapd stop
 
 
 #2 Copy scripts
-\cp -p $ModDir/OpenLDAPBis/scrips/*.sh $SCRIPTDIR #for simple test - debug
+\cp -p $ModDir"OpenLDAPBis/scrips/*.sh" $SCRIPTDIR #for simple test - debug
 #chmod 700 $SCRIPTDIR'ldap.sh'
 #chown root:root $SCRIPTDIR'ldap.sh'
 
@@ -67,30 +68,54 @@ mv /etc/openldap/slapd.conf /etc/openldap/slapd.conf.`date +%Y%m%d-%H%M%S` 2>/de
 cp -p $ModDir/LDAP/slapd.conf /etc/openldap/
 chmod 640 /etc/openldap/slapd.conf
 chown ldap:ldap /etc/openldap/slapd.conf
-# subs
+# subs in slapd.conf
 sed -i s/LDAPSUFIX/$LDAPSUFIX/g /etc/openldap/slapd.conf
 sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g /etc/openldap/slapd.conf
+
+# subs in ldap.sh
 sed -i s/LDAPSUFIX/$LDAPSUFIX/g $SCRIPTDIR/ldap.sh
 sed -i s/LDAPADMPASSWD/$LDAPADMPASSWD/g $SCRIPTDIR/ldap.sh
 
 
 #6 Populate LDAP
-mv /var/lib/ldap /var/lib/ldap.$INICIO
+mv /var/lib/ldap /var/lib/ldap.`date +%Y%m%d-%H%M%S`
 mkdir /var/lib/ldap
 cp /etc/openldap/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
 chown ldap:ldap /var/lib/ldap/ -Rf
 service slapd start
 service slapd stop
-slapadd -vl $ModDir/OpenLDAPBis/startbase/ldif
+
+# subs in startbase.ldif
+cp $ModDir/OpenLDAPBis/startbase.ldif /tmp
+sed -i s/LDAPSUFIX/$LDAPSUFIX/g /tmp/startbase.ldif
+sed -i s/SAMBASID/$SAMBASID/g /tmp/startbase.ldif
+sed -i s/LDAPHASHPRIMARYPASS/$LDAPHASHPRIMARYPASS/g /tmp/startbase.ldif
+sed -i s/LDAPHASHSECONDARYPASS/$LDAPHASHSECONDARYPASS/g /tmp/startbase.ldif
+
+slapadd -vl /tmp/startbase.ldif
+rm -f /tmp/startbase.ldif
+
 chown ldap:ldap /var/lib/ldap/ -Rf
 service slapd start
 
 
-#7 Setup Auth
+#7 Certficates
+cd /etc/openldap/certs
+rm ldap.???
+# Generate a key for the LDAP server
+openssl genrsa -out ldap.key 2048
+# Generate a csr for the LDAP server
+openssl req -new -days 3650 -key ldap.key -out ldap.csr -subj "/C=$CERTCOUNTRY/ST=$CERTSTATE/L=$CERTCITY/O=$CERTORGANIZATION/CN=`hostname`"
+# Sign the LDAP server’s csr with your CA key
+openssl x509 -req -days 2048 -in ldap.csr -CA root.crt -CAkey root.key -out ldap.crt -set_serial 1
+chown ldap. ./ldap*
+
+
+#8 Setup Auth
 authconfig --passalgo=sha512 --enableldap --enableldapauth --ldapserver=$LDAPSERVER --ldapbasedn=$LDAPSUFIX --enablerfc2307bis --disablesmartcard --enableforcelegacy --enablemkhomedir --updateall
 
 
-#8 Setup log
+#9 Setup log
 mv /etc/rsyslog.d/slapd.conf /etc/rsyslog.d/slapd.conf.`date +%Y%m%d-%H%M%S` 2>//dev/null
 cp -p $ModDir/LDAP/slapd.rsyslog /etc/rsyslog.d/slapd.conf
 touch /var/log/slapd.log
@@ -98,7 +123,7 @@ service rsyslog restart
 cp -p $ModDir/LDAP/slapd.logrotate /etc/logrotate.d/slapd
 
 
-#9 Start
+#10 Start
 chkconfig slapd on
 service slapd restart
 

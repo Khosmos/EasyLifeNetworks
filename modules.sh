@@ -16,7 +16,7 @@ CFGFile=$CurDir'/confs/variables.sh'
 while :
 do
 	Start=`date +%Y%m%d-%H%M%S`
-	Steps='01 Variables 02 Network 03 SNMPD 04 Logs 05 Apache 06 LDAP 07 LDAPolc 08 phpLDAPadmin 09 SSHD 10 NX 11 DenyHosts 12 NTPD 13 Monitorix 14 DNSMasq 15 MRTG 16 Nagios 17 RADIUS 18 RadSecProxy 19 Firewall 20 Conntrack 21 Postfix 22 PostgreSQL 23 PostgreSQLUp 24 JavaJDK 25 NetDot 26 JavaOracle 27 JBossAS 28 APImageGenerator 29 SelfServicePassword 30 Wiki 31 MariaDB 32 FreeIPA 33 OTRS 34 Exit'
+	Steps='01 Variables 02 Network 03 SNMPD 04 Logs 05 Apache 06 LDAP 07 LDAPolc 08 phpLDAPadmin 09 SSHD 10 NX 11 DenyHosts 12 NTPD 13 Monitorix 14 DNSMasq 15 MRTG 16 Nagios 17 RADIUS 18 RadSecProxy 19 Firewall 20 Conntrack 21 Postfix 22 PostgreSQL 23 PostgreSQLUp 24 JavaJDK 25 NetDot 26 JavaOracle 27 JBossAS 28 APImageGenerator 29 SelfServicePassword 30 Wiki 31 MariaDB 32 FreeIPA 33 OTRS 34 OpenLDAPBis 35 Certificates 36 Exit'
 	OPTIONS=$(SelectMenu "Easy Life Networks" "Module Selection" $Steps) 
 	exitstatus=$?
 	if [ $exitstatus = 0 ]; then
@@ -122,6 +122,9 @@ do
 		    ;;
 		34 )
 		    source $ModDir'OpenLDAPBis.sh'
+		    ;;
+		35 )
+		    source $ModDir'Certificates.sh'
 		    ;;
 		* )
 		    exit

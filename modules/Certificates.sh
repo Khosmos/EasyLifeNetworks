@@ -24,12 +24,22 @@ yum install mod_ssl crypto-utils -y
 
 #2 Generate Certificates
 cd /tmp
-openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout `hostname`.key -out `hostname`.crt
-openssl x509 -in `hostname`.csr -out `hostname`.crt -req -signkey `hostname`.key -days 3650
-chmod 700 `hostname`.c??
-mv `hostname`.key /etc/pki/tls/private
-mv `hostname`.csr /etc/pki/tls/certs
-mv `hostname`.crt /etc/pki/tls/certs
+rm -rf root.???
+# Use openssl to generate your CA Key.
+openssl genrsa -out root.key 2048
+# Use openssl to generate your CA certificate
+openssl req -new -days 3650 -key root.key -out root.csr -subj "/C=$CERTCOUNTRY/ST=$CERTSTATE/L=$CERTCITY/O=$CERTORGANIZATION/CN=`hostname`"
+# Sign the certificate with your CA key
+openssl x509 -req -days 3650 -in root.csr -signkey root.key -out root.crt
+
+mv root.key /etc/pki/tls/private
+mv root.csr /etc/pki/tls/certs
+mv root.crt /etc/pki/tls/certs
+
+CERTCOUNTRY=BR
+CERTSTATE='Rio de Janeiro'
+CERTCITY='Niterói'
+CERTORGANIZATION='UFF'
 
 
 #Show postinstall.txt, if it exists
