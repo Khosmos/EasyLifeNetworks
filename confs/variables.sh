@@ -1,5 +1,6 @@
 #!/bin/bash
 # Initial information
+#set -xv
 
 
 VERSION="20151111"
@@ -19,11 +20,11 @@ DOMAIN=uff.br # Domain name
 DOMAINWIFI=wifi.uff.br # Wifi Domain name
 FQDN=$MACHINE'.'$DOMAIN # Machine name + . + Domain name
 EXTINT=eth0 # External Interface
-EXTIP=10.0.0.11 # External IP Address- last change (10.0.0.5)
+EXTIP=10.0.0.15 # External IP Address- last change (10.0.0.5)
 EXTMASK=255.255.255.0 # External IP Mask-last change 255.255.255.0
 EXTMASKB=`echo "obase=2;"${EXTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # External IP Mask bit format
 INTINT=eth1 # Internal Interface
-INTIP=192.168.122.53 # Interface IP Address
+INTIP=192.168.122.230 # Interface IP Address
 INTMASK=255.255.255.0 # Interface IP Mask
 INTMASKB=`echo "obase=2;"${INTMASK//./;} | bc | tr -d  '\n' | tr -dc '1\n' | awk '{ print length; }'` # Internal IP Mask bit format
 INTNET=`ipcalc $INTIP'/'$INTMASKB -n | cut -d'=' -f2`
@@ -90,7 +91,7 @@ LDAPSECONDARYFN=$LDAPSECONDARYCN
 L=`echo $LDAPSECONDARYDISPLAYNAME | wc -w`
 LDAPSECONDARYSN=`echo $LDAPSECONDARYDISPLAYNAME | cut -d' ' -f$L`
 LDAPSECONDARYPASSWD=Beringela # LDAP primary user password
-LDAPHASHSECONDARYPASS=$( slappasswd -h {SSHA} -u -s $LDAPSECONDARYPASSWD )
+LDAPHASHSECONDARYPASS=`slappasswd -h {CRYPT} -u -s $LDAPSECONDARYPASSWD`
 LDAPHASHSECONDARYPASSNT=`printf $LDAPSECONDARYPASSWD | iconv -t utf16le | openssl md4 | cut -c10-`
 LDAPSECONDARYUIDMAIL=$LDAPSECONDARYUID'@'$DOMAIN
 

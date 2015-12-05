@@ -22,16 +22,16 @@ objectClass: organizationalPerson
 objectClass: sambaSamAccount
 objectClass: person
 uid: LDAPPRIMARYUID
-sn: CORREA
-cn: COSME
+sn: LDAPPRIMARYSN
+gn: LDAPPRIMARYFN
 gidNumber: 100
 homeDirectory: /home/LDAPPRIMARYUID
 loginShell: /bin/bash
 uidNumber: 10001
 structuralObjectClass: inetOrgPerson
-sambaSID:: SAMBASID-10001
+sambaSID: SAMBASID-10001
 sambaNTPassword: 5921f851c39383c16cbb66b959a22c94
-userPassword:: LDAPHASHPRIMARYPASS
+userPassword: LDAPHASHPRIMARYPASS
 
 dn: uid=LDAPSECONDARYUID,ou=People,LDAPSUFIX
 objectClass: inetOrgPerson
@@ -41,18 +41,18 @@ objectClass: organizationalPerson
 objectClass: sambaSamAccount
 objectClass: person
 uid: LDAPSECONDARYUID
-sn: DOE
+sn: LDAPSECONDARYSN
 memberOf: cn=users,ou=Group,LDAPSUFIX
 memberOf: cn=netoperators,ou=Group,LDAPSUFIX
-cn: JOHN
+gn: LDAPSECUNDARYFN
 gidNumber: 100
 homeDirectory: /home/LDAPSECONDARYUID
 loginShell: /bin/bash
 uidNumber: 10002
 structuralObjectClass: inetOrgPerson
-sambaSID:: SAMBASID-10002
+sambaSID: SAMBASID-10002
 sambaNTPassword: 5921f851c39383c16cbb66b959a22c94
-userPassword:: LDAPHASHSECONDARYPASS
+userPassword: LDAPHASHSECONDARYPASS
 
 dn: cn=users,ou=Group,LDAPSUFIX
 objectClass: groupOfNames

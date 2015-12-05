@@ -79,8 +79,14 @@ sed -i s/LDAPSUFIX/$LDAPSUFIX/g /tmp/startbase.ldif
 sed -i s/SAMBASID/$SAMBASID/g /tmp/startbase.ldif
 sed -i s/LDAPPRIMARYUID/$LDAPPRIMARYUID/g /tmp/startbase.ldif
 sed -i s/LDAPHASHPRIMARYPASS/$LDAPHASHPRIMARYPASS/g /tmp/startbase.ldif
-sed -i s/LDAPHASHSECONDARYPASS/$LDAPHASHSECONDARYPASS/g /tmp/startbase.ldif
+sed -i s/LDAPPRIMARYFN/$LDAPPRIMARYFN/g /tmp/startbase.ldif
+sed -i s/LDAPPRIMARYSN/$LDAPPRIMARYSN/g /tmp/startbase.ldif
 
+sed -i s/LDAPSECONDARYUID/$LDAPSECONDARYUID/g /tmp/startbase.ldif
+sed -i s/LDAPHASHSECONDARYPASS/$LDAPHASHSECONDARYPASS/g /tmp/startbase.ldif
+sed -i s/LDAPSECUNDARYFN/$LDAPSECUNDARYFN/g /tmp/startbase.ldif
+sed -i s/LDAPSECUNDARYSN/$LDAPSECUNDARYSN/g /tmp/startbase.ldif
+                                
 slapadd -vl /tmp/startbase.ldif
 rm -f /tmp/startbase.ldif
 
@@ -114,9 +120,6 @@ cp -p $ModDir/LDAP/slapd.logrotate /etc/logrotate.d/slapd
 
 
 #10 Start
-ChPasswd cosmefc Beringela
-ChPasswd johndoe Beringela
-
 chkconfig slapd on
 service slapd restart
 
