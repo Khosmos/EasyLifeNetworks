@@ -77,6 +77,10 @@ service slapd stop
 cp $ModDir/OpenLDAPBis/startbase.ldif /tmp
 sed -i s/LDAPSUFIX/$LDAPSUFIX/g /tmp/startbase.ldif
 sed -i s/SAMBASID/$SAMBASID/g /tmp/startbase.ldif
+sed -i s/LDAPORG/$LDAPORG/g /tmp/startbase.ldif
+sed -i s/SAMBADOMAIN/$SAMBADOMAIN/g /tmp/startbase.ldif
+
+
 sed -i s/LDAPPRIMARYUID/$LDAPPRIMARYUID/g /tmp/startbase.ldif
 sed -i s/LDAPHASHPRIMARYPASS/$LDAPHASHPRIMARYPASS/g /tmp/startbase.ldif
 sed -i s/LDAPPRIMARYFN/$LDAPPRIMARYFN/g /tmp/startbase.ldif

@@ -1,0 +1,18 @@
+Configuration Files
+- /etc/openldap/slapd.conf
+
+Decisions
+- with cryptography
+- Samba ready
+- two initial accounts and groups
+
+Future ideas
+- use directory config
+- PAM integration through SSSD
+- Connection only with cryptography
+
+Test:
+- getent passwd
+You should see:
+cosmefc:x:10001:100:COSME:/home.cosmefc:/bin/bash
+johndoe:x:10002:100:JOHN:/home/john:/bin/bash

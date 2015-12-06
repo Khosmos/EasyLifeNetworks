@@ -1,8 +1,7 @@
 dn: LDAPSUFIX
 objectClass: domain
-dc: uff
+dc: LDAPORG
 structuralObjectClass: domain
-description: Universidade Federal Fluminense
 
 dn: ou=Group,LDAPSUFIX
 objectClass: organizationalUnit
@@ -13,6 +12,177 @@ dn: ou=People,LDAPSUFIX
 objectClass: organizationalUnit
 ou: People
 structuralObjectClass: organizationalUnit
+
+dn: sambaDomainName=SAMBADOMAIN,LDAPSUFIX
+sambaDomainName: SAMBADOMAIN
+sambaSID: SAMBASID
+structuralObjectClass: sambaDomain
+sambaMinPwdLength: 5
+sambaPwdHistoryLength: 0
+sambaLogonToChgPwd: 0
+sambaMaxPwdAge: -1
+sambaMinPwdAge: 0
+sambaLockoutDuration: 30
+sambaLockoutObservationWindow: 30
+sambaLockoutThreshold: 0
+sambaForceLogoff: -1
+sambaRefuseMachinePwdChange: 0
+objectClass: sambaDomain
+sambaNextRid: 1000
+sambaNextGroupRid: 1000
+sambaNextUserRid: 1000
+sambaAlgorithmicRidBase: 1000
+
+dn: ou=Computer,LDAPSUFIX
+ou: Computer
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+dn: ou=Idmap,LDAPSUFIX
+ou: Idmap
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+dn: cn=Domain Admins,ou=Group,LDAPSUFIX
+gidNumber: 512
+sambaGroupType: 2
+displayName: Domain Admins
+description: Netbios Domain Administrators
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+sambaSID: SAMBASID-512
+cn: Domain Admins
+structuralObjectClass: groupOfNames
+
+dn: cn=Domain Users,ou=Group,LDAPSUFIX
+gidNumber: 513
+sambaGroupType: 2
+displayName: Domain Users
+description: Netbios Domain Users
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+sambaSID: SAMBASID-513
+cn: Domain Users
+structuralObjectClass: groupOfNames
+
+dn: cn=Domain Guests,ou=Group,LDAPSUFIX
+gidNumber: 514
+sambaGroupType: 2
+displayName: Domain Guests
+description: Netbios Domain Guests
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+sambaSID: SAMBASID-514
+cn: Domain Guests
+structuralObjectClass: groupOfNames
+
+dn: cn=Domain Computers,ou=Group,LDAPSUFIX
+gidNumber: 515
+sambaGroupType: 2
+displayName: Domain Computers
+description: Netbios Domain Computers
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+sambaSID: SAMBASID-515
+cn: Domain Computers
+structuralObjectClass: groupOfNames
+
+dn: cn=Administrators,ou=Group,LDAPSUFIX
+sambaGroupType: 5
+displayName: Administrators
+description: Netbios Domain Members can fully administer the computer/sambaDomainName
+sambaSID: S-1-5-32-544
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+objectClass: top
+gidNumber: 544
+cn: Administrators
+structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
+
+dn: cn=Account Operators,ou=Group,LDAPSUFIX
+gidNumber: 548
+sambaGroupType: 5
+displayName: Account Operators
+description: Netbios Domain Users to manipulate users accounts
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+sambaSID: S-1-5-32-548
+cn: Account Operators
+structuralObjectClass: groupOfNames
+
+dn: cn=Print Operators,ou=Group,LDAPSUFIX
+gidNumber: 550
+sambaGroupType: 5
+displayName: Print Operators
+description: Netbios Domain Print Operators
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+sambaSID: S-1-5-32-550
+cn: Print Operators
+structuralObjectClass: groupOfNames
+
+dn: cn=Backup Operators,ou=Group,LDAPSUFIX
+gidNumber: 551
+sambaGroupType: 5
+displayName: Backup Operators
+description: Netbios Domain Members can bypass file security to back up files
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+sambaSID: S-1-5-32-551
+cn: Backup Operators
+structuralObjectClass: groupOfNames
+
+dn: cn=Replicators,ou=Group,LDAPSUFIX
+gidNumber: 552
+sambaGroupType: 5
+displayName: Replicators
+description: Netbios Domain Supports file replication in a sambaDomainName
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: sambaGroupMapping
+sambaSID: S-1-5-32-552
+cn: Replicators
+structuralObjectClass: groupOfNames
+
+dn: cn=users,ou=Group,LDAPSUFIX
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: top
+cn: users
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
+member: uid=LDAPSECONDARYUID,ou=People,LDAPSUFIX
+structuralObjectClass: groupOfNames
+gidNumber: 100
+description: Users
+
+dn: cn=netadmins,ou=Group,LDAPSUFIX
+cn: netadmins
+gidNumber: 1001
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: top
+structuralObjectClass: groupOfNames
+description: Network Administrators
+
+dn: cn=netoperators,ou=Group,LDAPSUFIX
+cn: netoperators
+gidNumber: 1002
+member: uid=LDAPSECONDARYUID,ou=People,LDAPSUFIX
+objectClass: groupOfNames
+objectClass: posixGroup
+objectClass: top
+structuralObjectClass: groupOfNames
+description: Network Operators
 
 dn: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 objectClass: inetOrgPerson
@@ -53,34 +223,3 @@ structuralObjectClass: inetOrgPerson
 sambaSID: SAMBASID-10002
 sambaNTPassword: 5921f851c39383c16cbb66b959a22c94
 userPassword: LDAPHASHSECONDARYPASS
-
-dn: cn=users,ou=Group,LDAPSUFIX
-objectClass: groupOfNames
-objectClass: posixGroup
-objectClass: top
-cn: users
-member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
-member: uid=LDAPSECONDARYUID,ou=People,LDAPSUFIX
-structuralObjectClass: groupOfNames
-gidNumber: 100
-description: Users
-
-dn: cn=netadmins,ou=Group,LDAPSUFIX
-cn: netadmins
-gidNumber: 1001
-member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
-objectClass: groupOfNames
-objectClass: posixGroup
-objectClass: top
-structuralObjectClass: groupOfNames
-description: Network Administrators
-
-dn: cn=netoperators,ou=Group,LDAPSUFIX
-cn: netoperators
-gidNumber: 1002
-member: uid=LDAPSECONDARYUID,ou=People,LDAPSUFIX
-objectClass: groupOfNames
-objectClass: posixGroup
-objectClass: top
-structuralObjectClass: groupOfNames
-description: Network Operators

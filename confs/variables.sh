@@ -2,8 +2,7 @@
 # Initial information
 #set -xv
 
-
-VERSION="20151111"
+VERSION="20151207"
 LOGFILE="/var/log/eln.log"
 ELNCONFDIR="/etc/EasyLifeNetworks"
 ELNDIR="/usr/share/EasyLifeNetworks"
@@ -68,6 +67,7 @@ DURATION=104 # Weeks to retain logs. Two years.
 LDAPSERVER=127.0.0.1 # LDAP server
 #LDAPSERVER=ldap://127.0.0.1,ldap://200.200.200.200 # LDAP server
 LDAPSUFIX='dc=uff,dc=br' # LDAP sufix
+LDAPORG=`echo $LDAPSUFIX | cut -d',' -f1 | cut -d'=' -f2`
 LDAPADMNAME='cn=Manager,'$LDAPSUFIX
 LDAPADMPASSWD=Batatata # LDAP Administrator password
 
