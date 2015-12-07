@@ -54,6 +54,7 @@ objectClass: sambaGroupMapping
 sambaSID: SAMBASID-512
 cn: Domain Admins
 structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 
 dn: cn=Domain Users,ou=Group,LDAPSUFIX
 gidNumber: 513
@@ -66,6 +67,7 @@ objectClass: sambaGroupMapping
 sambaSID: SAMBASID-513
 cn: Domain Users
 structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 
 dn: cn=Domain Guests,ou=Group,LDAPSUFIX
 gidNumber: 514
@@ -78,6 +80,7 @@ objectClass: sambaGroupMapping
 sambaSID: SAMBASID-514
 cn: Domain Guests
 structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 
 dn: cn=Domain Computers,ou=Group,LDAPSUFIX
 gidNumber: 515
@@ -90,6 +93,7 @@ objectClass: sambaGroupMapping
 sambaSID: SAMBASID-515
 cn: Domain Computers
 structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 
 dn: cn=Administrators,ou=Group,LDAPSUFIX
 sambaGroupType: 5
@@ -116,6 +120,7 @@ objectClass: sambaGroupMapping
 sambaSID: S-1-5-32-548
 cn: Account Operators
 structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 
 dn: cn=Print Operators,ou=Group,LDAPSUFIX
 gidNumber: 550
@@ -128,6 +133,7 @@ objectClass: sambaGroupMapping
 sambaSID: S-1-5-32-550
 cn: Print Operators
 structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 
 dn: cn=Backup Operators,ou=Group,LDAPSUFIX
 gidNumber: 551
@@ -140,6 +146,7 @@ objectClass: sambaGroupMapping
 sambaSID: S-1-5-32-551
 cn: Backup Operators
 structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 
 dn: cn=Replicators,ou=Group,LDAPSUFIX
 gidNumber: 552
@@ -152,6 +159,7 @@ objectClass: sambaGroupMapping
 sambaSID: S-1-5-32-552
 cn: Replicators
 structuralObjectClass: groupOfNames
+member: uid=LDAPPRIMARYUID,ou=People,LDAPSUFIX
 
 dn: cn=users,ou=Group,LDAPSUFIX
 objectClass: groupOfNames
@@ -194,6 +202,7 @@ objectClass: person
 uid: LDAPPRIMARYUID
 sn: LDAPPRIMARYSN
 gn: LDAPPRIMARYFN
+cn: LDAPPRIMARYDISPLAYNAME
 gidNumber: 100
 homeDirectory: /home/LDAPPRIMARYUID
 loginShell: /bin/bash
@@ -214,7 +223,8 @@ uid: LDAPSECONDARYUID
 sn: LDAPSECONDARYSN
 memberOf: cn=users,ou=Group,LDAPSUFIX
 memberOf: cn=netoperators,ou=Group,LDAPSUFIX
-gn: LDAPSECUNDARYFN
+gn: LDAPSECONDARYFN
+cn: LDAPSECONDARYDISPLAYNAME
 gidNumber: 100
 homeDirectory: /home/LDAPSECONDARYUID
 loginShell: /bin/bash

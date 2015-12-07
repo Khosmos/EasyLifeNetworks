@@ -38,7 +38,7 @@ if [ -d "$ELNCONFDIR" ]; then
 fi
 
 # 0) Utilities Base
-yum install redhat-lsb-core net-tools git screen vim tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core xterm links expect virt-what -y
+yum install redhat-lsb-core net-tools git screen vim tree coreutils setuptool authconfig glibc-common openssl nmap unzip perl-Archive-Zip redhat-lsb-core xterm links expect virt-what openldap-servers -y
 # Source variables
 source $locid/confs/variables.sh
 

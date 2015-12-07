@@ -9,7 +9,9 @@
 # Cosme Faria Corrêa
 #
 #set -xv
-clear
+
+#Show readme.txt, if it exists
+[ -e $ModDir'OpenLDAPBis/OpenLDAPBis-readme.txt' ] && DisplayMsg "OpenLDAPBis" "`cat $ModDir'OpenLDAPBis/OpenLDAPBis-readme.txt'`"
 
 DisplayYN "EasyLife Networks - OpenLDAPBis " \
 "This module will :
@@ -85,12 +87,14 @@ sed -i s/LDAPPRIMARYUID/$LDAPPRIMARYUID/g /tmp/startbase.ldif
 sed -i s/LDAPHASHPRIMARYPASS/$LDAPHASHPRIMARYPASS/g /tmp/startbase.ldif
 sed -i s/LDAPPRIMARYFN/$LDAPPRIMARYFN/g /tmp/startbase.ldif
 sed -i s/LDAPPRIMARYSN/$LDAPPRIMARYSN/g /tmp/startbase.ldif
+sed -i s/LDAPPRIMARYDISPLAYNAME/"$LDAPPRIMARYDISPLAYNAME"/g /tmp/startbase.ldif
 
 sed -i s/LDAPSECONDARYUID/$LDAPSECONDARYUID/g /tmp/startbase.ldif
 sed -i s/LDAPHASHSECONDARYPASS/$LDAPHASHSECONDARYPASS/g /tmp/startbase.ldif
-sed -i s/LDAPSECUNDARYFN/$LDAPSECUNDARYFN/g /tmp/startbase.ldif
-sed -i s/LDAPSECUNDARYSN/$LDAPSECUNDARYSN/g /tmp/startbase.ldif
-                                
+sed -i s/LDAPSECONDARYFN/$LDAPSECONDARYFN/g /tmp/startbase.ldif
+sed -i s/LDAPSECONDARYSN/$LDAPSECONDARYSN/g /tmp/startbase.ldif
+sed -i s/LDAPSECONDARYDISPLAYNAME/"$LDAPSECONDARYDISPLAYNAME"/g /tmp/startbase.ldif
+
 slapadd -vl /tmp/startbase.ldif
 rm -f /tmp/startbase.ldif
 
@@ -100,7 +104,7 @@ service slapd start
 
 #7 Certficates
 cd /etc/openldap/certs
-rm ldap.???
+rm ldap.??? 2> /dev/null
 # Generate a key for the LDAP server
 openssl genrsa -out ldap.key 2048
 # Generate a csr for the LDAP server
@@ -127,6 +131,5 @@ cp -p $ModDir/LDAP/slapd.logrotate /etc/logrotate.d/slapd
 chkconfig slapd on
 service slapd restart
 
-echo LDAP module finished
-echo 'Press <Enter> to exit'
-read
+#Show postinstall.txt, if it exists
+[ -e $ModDir'OpenLDAPBis/OpenLDAPBis-postinstall.txt' ] && DisplayMsg "OpenLDAPBis" "`cat $ModDir'OpenLDAPBis/OpenLDAPBis-postinstall.txt'`" || ( echo 'OpenLDAPBis module finished'; read )
