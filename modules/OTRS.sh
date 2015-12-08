@@ -19,7 +19,6 @@ DisplayYN "EasyLife Networks - OTRS" \
  1) Install OTRS
  2) OTRS DB setup
  3) Restore database
- 
  4) Copy templates
  5) Some subs
  6) Copy Logo
@@ -37,9 +36,10 @@ yum install -y mod_perl perl-DBD-MySQL 'perl(Crypt::Eksblowfish::Bcrypt)' 'perl(
 
 #3 Restore database
 mysql -u $MDBADMIN -p$MDBPASS < $ModDir'OTRS/otrs.sql'
-\cp $ModDir'Wiki/createotrsuser.sql' /tmp
+\cp $ModDir'OTRS/createotrsuser.sql' /tmp
 sed -i s/OTRSDBNAME/$OTRSDBNAME/g /tmp/createotrsuser.sql
 sed -i s/OTRSDBUSER/$OTRSDBUSER/g /tmp/createotrsuser.sql
+sed -i s/OTRSDBSERVER/$OTRSDBSERVER/g /tmp/createotrsuser.sql
 sed -i s/OTRSDBPASS/$OTRSDBPASS/g /tmp/createotrsuser.sql
 mysql -u $MDBADMIN -p$MDBPASS < /tmp/createotrsuser.sql
 rm -f /tmp/createotrsuser.sql

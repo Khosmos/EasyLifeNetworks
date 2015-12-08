@@ -26,7 +26,7 @@ DisplayYN "EasyLife Networks - Wiki" \
 
  
 #1 Install Wiki
-yum install php-xml php-intl php-gd texlive php-xcache php-pecl-imagick mediawiki -y
+yum install php-xml php-intl php-gd texlive php-xcache php-pecl-imagick mediawiki php-mysql php-ldap -y
 ln -s /var/www/mediawiki123 /var/www/mediawiki
 ln -s /usr/share/mediawiki123 /usr/share/mediawiki
 

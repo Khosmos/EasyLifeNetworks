@@ -12,7 +12,9 @@
 #
 #set -xv
 
-clear
+#Show readme.txt, if it exists
+[ -e $ModDir'Network/Network-readme.txt' ] && DisplayMsg "Network" "`cat $ModDir'Network/Network-readme.txt'`"
+
 TAIL=''
 if [ $OSVERSION -eq 6 ]; then
     TAIL="You must do it manualy"
@@ -81,5 +83,7 @@ echo "$INTIP $MACHINE.$DOMAINWIFI $MACHINE" >> /etc/hosts
 sed -i s/$IGIP/'#'$IGIP/g /etc/hosts
 echo $IGIP' '$IGNAME' #'" Added by ELN - `date +%Y%m%d-%H%M%S`" >> /etc/hosts #Put default gateway name in hosts
 
-echo  'Press <Enter> key'
-read
+
+#Show postinstall.txt, if it exists
+[ -e $ModDir'Network/Network-postinstall.txt' ] && DisplayMsg "Network" "`cat $ModDir'Network/Network-postinstall.txt'`" || ( echo 'Network module finished'; read )
+reboot

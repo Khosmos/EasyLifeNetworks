@@ -50,7 +50,7 @@ $wgLDAPWriterPassword = array( 'WIKILDAPLABEL' => 'LDAPADMPASSWD' );
 $wgLDAPWriteLocation = array( 'WIKILDAPLABEL' => 'LDAPUSERBASEDNS' );
 $wgLDAPAddLDAPUsers = array( 'WIKILDAPLABEL' => false );
 $wgLDAPUpdateLDAP = array( 'WIKILDAPLABEL' => true );
-$wgLDAPPasswordHash = array();
+$wgLDAPPasswordHash = array( 'WIKILDAPLABEL' => 'sha' );
 $wgLDAPMailPassword = array( 'WIKILDAPLABEL' => true );
 $wgLDAPPreferences = array( 'WIKILDAPLABEL' => array( 'email' => 'mail','realname' => 'displayname','nickname' => 'cn','language' => 'preferredlanguage' ) );
 $wgLDAPDisableAutoCreate = array( 'WIKILDAPLABEL' => false );

@@ -1,0 +1,16 @@
+Configuration Files
+-?
+
+Decisions
+- interfaces will be eth0,eth1,eth2
+- static IP
+- you MUST reboot after this module
+
+Future ideas
+-?
+
+Test:
+- ?
+
+ATTENTION
+- The system will reboot now
