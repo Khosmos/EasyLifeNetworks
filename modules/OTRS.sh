@@ -26,7 +26,7 @@ DisplayYN "EasyLife Networks - OTRS" \
 
  
 #1 Install OTRS
-yum -y install http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-5.0.3-01.noarch.rpm
+yum -y install http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-5.0.4-01.noarch.rpm rubygem-net-ldap
 yum install -y mod_perl perl-DBD-MySQL 'perl(Crypt::Eksblowfish::Bcrypt)' 'perl(JSON::XS)' 'perl(GD::Text)' 'perl(Encode::HanExtra)' 'perl(GD::Graph)' 'perl(Mail::IMAPClient)' 'perl(PDF::API2)' 'perl(Text::CSV_XS)' 'perl(YAML::XS)'
 #firewall-cmd –permanent –zone=public –add-service=http firewall-cmd –reload
 #firewall-cmd –reload

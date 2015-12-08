@@ -193,6 +193,8 @@ OTRSDBSERVER='127.0.0.1'
 OTRSDBNAME=otrs
 OTRSDBUSER=otrs
 OTRSDBPASS=Pitanga
+OTRSADMNAME=root@localhost	# Do not change
+OTRSADMPASS=tQJL3DMY0DUxNziA	# Do not change
 OTRSLANGUAGE='en' # or 'en' 'pt-br'
 OTRSLDAPSERVER=$LDAPSERVER # or another machine
 
