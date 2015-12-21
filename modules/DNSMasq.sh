@@ -12,7 +12,10 @@
 #
 #set -xv        
 
-clear
+
+#Show readme.txt, if it exists
+[ -e $ModDir'DNSMasq/DNSMasq-readme.txt' ] && DisplayMsg "DNSMasq" "`cat $ModDir'DNSMasq/DNSMasq-readme.txt'`"
+
 
 DisplayYN "EasyLife Networks - DNSMasq " \
 "This module will :
@@ -38,6 +41,5 @@ sed -i s/DOMAINWIFI/$DOMAINWIFI/g /etc/dnsmasq.conf
 chkconfig dnsmasq on
 service dnsmasq restart
 
-echo DNSMasq module finished
-echo 'Press <Enter> to exit'
-read
+#Show postinstall.txt, if it exists
+[ -e $ModDir'DNSMasq/DNSMasq-postinstall.txt' ] && DisplayMsg "DNSMasq" "`cat $ModDir'DNSMasq/DNSMasq-postinstall.txt'`" || ( echo 'DNSMasq module finished'; read )
