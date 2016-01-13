@@ -37,7 +37,7 @@ service slapd stop
 \cp -p $ModDir"OpenLDAPBis/scripts/"*.sh $SCRIPTDIR
 chmod 700 $ModDir'OpenLDAPBis/scripts/ldap.sh'
 cd /usr/bin
-ln -s $SCRIPTDIR"*".sh . 2> /dev/null
+ln -s $SCRIPTDIR*.sh . 2> /dev/null
 
 mv /etc/openldap/DB_CONFIG.example /etc/openldap/DB_CONFIG.example.`date +%Y%m%d-%H%M%S` 2>/dev/null #template DB_CONFIG
 cp $ModDir/OpenLDAPBis/DB_CONFIG.example /etc/openldap/
