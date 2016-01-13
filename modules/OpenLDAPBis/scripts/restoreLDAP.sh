@@ -7,7 +7,7 @@ INICIO=`date +%Y%m%d-%H%M%S`
 INICIOFORMAT=`date +%H:%M:%S-%Y/%m/%d`
 
 # ADQUIRINDO INFORMACOES DO DIRETORIO DE BACKUPS
-ls -tr $DIRBKP"/LDAP*" > lista.$INICIO 
+ls -tr $DIRBKP/LDAP* > lista.$INICIO 
 cat lista.$INICIO | grep .ldif > listaok.$INICIO
 LISTA=`tail -n 8 listaok.$INICIO` 
 rm -f lista.$INICIO 
