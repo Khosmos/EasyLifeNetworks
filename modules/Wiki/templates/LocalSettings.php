@@ -18,6 +18,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
+#Set Default Timezone
+$wgLocaltimezone = "America/Sao_Paulo";
+date_default_timezone_set( $wgLocaltimezone );
+
 $wgSitename = "WIKISITENAME";
 $wgMetaNamespace = "KB";
 
