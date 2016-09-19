@@ -1,0 +1,12 @@
+[Unit]
+Description=radsecproxy, a proxy for RADIUS over UDP, TLS, DTLS, TCP
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/radsecproxy.pid
+ExecStartPre=/usr/local/bin/radsecproxy-conf -c /etc/radsecproxy.conf
+ExecStart=/usr/local/sbin/radsecproxy -i /var/run/radsecproxy.pid
+
+[Install]
+WantedBy=multi-user.target
