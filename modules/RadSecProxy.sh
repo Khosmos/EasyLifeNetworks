@@ -52,7 +52,7 @@ cat $ModDir/RadSecProxy/EasyLifeNetworks.txt >> /etc/raddb/clients.conf
 sed -i s/RADIUSPASS/$RADIUSPASS/g /etc/raddb/clients.conf
 
 #4 Start
-cp $ModDir/RadSecProxy/RadSecProxy /usr/lib/systemd/system # Novo
+cp $ModDir/RadSecProxy/radsecproxy.service /usr/lib/systemd/system # Novo
 systemctl enable radsecproxy.service
 systemctl start radsecproxy.service
 systemctl restart radiusd.service
