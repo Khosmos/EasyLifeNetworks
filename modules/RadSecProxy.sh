@@ -52,11 +52,15 @@ cat $ModDir/RadSecProxy/EasyLifeNetworks.txt >> /etc/raddb/clients.conf
 sed -i s/RADIUSPASS/$RADIUSPASS/g /etc/raddb/clients.conf
 
 #4 Start
-cp $ModDir/RadSecProxy/RadSecProxy /etc/init.d/
-chmod 755 /etc/init.d/RadSecProxy
-chkconfig RadSecProxy on
-service RadSecProxy restart
-service radiusd restart
+cp $ModDir/RadSecProxy/RadSecProxy /usr/lib/systemd/system # Novo
+systemctl enable radsecproxy.service
+systemctl start radsecproxy.service
+systemctl restart radiusd.service
+# cp $ModDir/RadSecProxy/RadSecProxy /etc/init.d/ # Antigo
+# chmod 755 /etc/init.d/RadSecProxy
+#chkconfig RadSecProxy on
+#service RadSecProxy restart
+#service radiusd restart
 
 #Show postinstall.txt, if it exists
 [ -e $ModDir'RadSecProxy/RadSecProxy-postinstall.txt' ] && DisplayMsg "RadSecProxy" "`cat $ModDir'RadSecProxy/RadSecProxy-postinstall.txt'`" || ( echo 'RadSecProxy module finished'; read )
