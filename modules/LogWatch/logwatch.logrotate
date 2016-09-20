@@ -1,0 +1,7 @@
+/var/log/logwatch {
+    missingok
+    notifempty
+    create 0644 root root
+    endscript
+
+}

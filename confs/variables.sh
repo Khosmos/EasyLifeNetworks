@@ -206,6 +206,10 @@ CERTCITY='Niterói'
 CERTORGANIZATION='UFF'
 
 
+# [LogWatch]
+LWACCOUNT=cosmefc@anywhere.com
+
+
 # SCIFI
 DIRELSCIFI=/usr/share/EasyLifeNetworks/ # Where ELSCIFI stay
 ModDir=$DIRELSCIFI'modules/' # Where are modules

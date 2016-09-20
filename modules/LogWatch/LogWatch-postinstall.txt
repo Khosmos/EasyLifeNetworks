@@ -1,0 +1,9 @@
+Configuration Files
+-/etc/logwatch/conf/logwatch.conf
+
+Decisions
+-email account
+-high detail
+
+Future ideas
+-Adoption of ...
