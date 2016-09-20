@@ -21,7 +21,8 @@ DisplayYN "EasyLife Networks - RadSecProxy" \
  1) Install Packets
  2) Compile radsec
  3) Setup
- 4) Start
+ 4) Setup Log
+ 5) Start
 " "Install" "Cancel" || return
 
 #1 Install Packets
@@ -51,7 +52,11 @@ cp -Rf $ModDir/RadSecProxy/RNP/*.key /etc/raddb/certs
 cat $ModDir/RadSecProxy/EasyLifeNetworks.txt >> /etc/raddb/clients.conf
 sed -i s/RADIUSPASS/$RADIUSPASS/g /etc/raddb/clients.conf
 
-#4 Start
+#8 Configure log with logrotate
+cp -p $ModDir/RadSecProx/radsecproxy.logrotate /etc/logrotate.d/radsecproxy
+
+
+#5 Start
 cp $ModDir/RadSecProxy/radsecproxy.service /usr/lib/systemd/system # Novo
 systemctl enable radsecproxy.service
 systemctl start radsecproxy.service
