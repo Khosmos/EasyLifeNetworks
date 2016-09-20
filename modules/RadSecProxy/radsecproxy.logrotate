@@ -1,0 +1,15 @@
+# /etc/logrotate.d/radsecproxy
+#
+# Rotate radsecproxy log file.
+#
+# Fernando Silveira
+#
+# Cosme Correa
+
+/var/log/radsecproxy.log {
+compress
+postrotate
+service radsecproxy restart
+endscript
+}
+
