@@ -21,7 +21,7 @@ DisplayYN "EasyLife Networks - RadSecProxy" \
  1) Install Packets
  2) Compile radsec
  3) Setup
- 4) Setup Log
+ 4) Logrotate configuration
  5) Start
 " "Install" "Cancel" || return
 
