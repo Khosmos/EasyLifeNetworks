@@ -1,0 +1,4 @@
+Configuration files:
+
+- /etc/snmp/snmpd.conf
+
