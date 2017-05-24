@@ -57,11 +57,11 @@ MDBPASS=Batata
 
 # [SNMPD]
 SYSLOCATION='Data Center'
-SNMPUSER = 'scifiroot'
-SNMPAUTH = 'SHA'
-SNMPPASSWD = 'scifiauthpass'
-SNMPPRIVPASSWD = 'scifiencpass'
-SNMPENCRYPTION = 'AES'
+SNMPUSER=scifiroot
+SNMPAUTH=SHA
+SNMPPASSWD=scifiauthpass
+SNMPPRIVPASSWD=scifiencpass
+SNMPENCRYPTION=AES
 
 
 # [LOG]
