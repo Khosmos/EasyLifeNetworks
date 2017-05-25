@@ -47,4 +47,4 @@ chkconfig logwatch on
 service logwatch restart
 
 #Show postinstall.txt, if it exists
-[ -e $ModDir'LogWatch/LogWatch-postinstall.txt' ] && DisplayMsg "LogWatch" "`cat $ModDir'LogWatch/LogWatch-postinstall.txt'`" || ( echo 'LogWatch module finished'; read )
+[ -e $ModDir'LogWatch/LogWatch-postinstall.txt' ] && DisplayMsg "LogWatch" "`cat $ModDir'LogWatch/LogWatch-postinstall.txt'`" || ( echo 'LogWatch module finished'; read)
