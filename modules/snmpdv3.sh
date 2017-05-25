@@ -22,6 +22,7 @@ DisplayYN "EasyLife Networks - SNMPDv3" \
  4) Create V3 User
  5)Start Processes
  " "Install" "Cancel" || exit
+
 #1 Install
 yum install net-snmp net-snmp-utils -y
 
