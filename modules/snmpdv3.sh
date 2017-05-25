@@ -10,7 +10,7 @@
 # ...
 #set -xv
 # Show Actions
-"EasyLife Networks - SNMPDv3" \
+DisplayYN "EasyLife Networks - SNMPDv3" \
 "This module will:
  1) Install SNMPD
  2) Copy Templates
