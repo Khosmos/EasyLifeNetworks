@@ -11,7 +11,7 @@
 #set -xv
 
 #Show readme.txt, if it exists
-[ -e $ModDir'SNMPDv3/SNMPDv3-readme.txt' ] && DisplayMsg "SNMPDv3" "`cat $ModDir'SNMPDv3/SNMPDv3-readme.txt'`
+[ -e $ModDir'SNMPDv3/SNMPDv3-readme.txt' ] && DisplayMsg "SNMPDv3" "`cat $ModDir'SNMPDv3/SNMPDv3-readme.txt'`"
 
 # Show Actions
 DisplayYN "EasyLife Networks - SNMPDv3" \
