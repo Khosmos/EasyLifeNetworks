@@ -20,7 +20,7 @@ DisplayYN "EasyLife Networks - SNMPDv3" \
  2) Copy Templates
  3) Setup SNMPD
  4) Create V3 User
- 5)Start Processes
+ 5) Start Processes
  " "Install" "Cancel" || exit
 
 #1 Install
