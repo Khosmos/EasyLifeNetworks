@@ -130,7 +130,7 @@ do
 		    source $ModDir'LogWatch.sh'
 		    ;;
 		37 ) 
-		    source $ModDir'snmpdv3.sh'
+		    source $ModDir'SNMPDv3.sh'
 		    ;;
 		* )
 		    exit
