@@ -1,0 +1,105 @@
+#----------------------------------------------------------------------
+#
+# Definicao do esquema brEduPerson
+# Versao: 20080917-0.0.6
+# Data: Setembro, 2008
+# Baseado no documento: "Proposta de Esquema brEduPerson - Federacao Cafe - agosto de 2008"
+# (brEduPerson-20080714.0.0.4-3.pdf)
+#
+# A ultima versao deste documento esta disponivel no site
+# http://www.rnp-eaa.ufc.br/?/brEduPerson-20080917-0.0.6.schema.txt
+#
+# Converted to ldif format (olc) by Andre Domarques at 2014-09-10
+# Repo https://github.com/domarques/ldap-cafe-rnp#
+#
+#----------------------------------------------------------------------
+#
+# Changelog
+#
+# 20080917 - 0.0.6
+#          - Alteracao do atributo brEduAffiliation
+# 20080911 - 0.0.5
+#          - Inclusao do atributo brEduVoIPphone
+#          - Alteracao da classe brEduVoIP para incluir o atributo brEduVoIPphone
+# 20080714 - 0.0.4
+#          - Exclusao do atributo brEduPersonUniqueId
+#          - Exclusao do atributo brRelatedIdentification
+#          - Criacao do atributo brEduAffiliation
+#          - Exclusao da classe brEduPersonAffiliation
+#          - Exclusao da classe brEduRelatedInfo
+#          - Alteracao da classe brEduPerson  
+# 20080401 - Versao inicial
+#
+#----------------------------------------------------------------------
+#
+dn: cn=breduperson,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: breduperson
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.1.1 NAME ( 'brPersonCPF' 'brcpf')
+  DESC 'Cadastro Pessoa Fisica' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466
+ .115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.1.2 NAME ( 'brPersonPassport' 'br
+ passport') DESC 'Numero do passaporte' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.2.1 NAME ( 'brEduAffiliationType'
+  'brafftype') DESC 'Tipo de vinculo com a instituicao' EQUALITY caseIgnoreMatch 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.2.2 NAME ( 'brEntranceDate' 'bren
+ tr') DESC 'Data de inicio do vinculo com a instituicao' SYNTAX 1.3.6.1.4.1.1466
+ .115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.2.3 NAME ( 'brExitDate' 'brexit')
+  DESC 'Data de fim do vinculo com a instituicao' SYNTAX 1.3.6.1.4.1.1466.115.12
+ 1.1.36 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.2.4 NAME ( 'brEduAffiliation' 'br
+ aff') DESC 'Identificador unico de um vinculo com a instituicao' EQUALITY Integ
+ erMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.3.1 NAME ( 'brCaptureDate' 'brcap
+ t') DESC 'Data de captura do dado biometrico da pessoa' SYNTAX 1.3.6.1.4.1.1466
+ .115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.3.2 NAME ( 'brBiometricSource' 'b
+ rbiosrc') DESC 'Fonte biometrica da pessoa' EQUALITY caseIgnoreMatch SYNTAX 1.3
+ .6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.3.3 NAME ( 'brBiometricData' 'brb
+ iodata') DESC 'Dado capturado de uma fonte biometrica da pessoa' SYNTAX 1.3.6.1
+ .4.1.1466.115.121.1.5 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.1 NAME ( 'brEduVoIPalias' 'brvo
+ ipalias') DESC 'Numero do telefone IP' EQUALITY numericStringMatch SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.2 NAME ( 'brEduVoIPtype' 'brvoi
+ ptype') DESC 'Tipo do telefone IP' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.
+ 1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.3 NAME ( 'brEduVoIPadmin' 'brvo
+ ipadmin') DESC 'Administrador responsavel por telefone VoIP' EQUALITY distingui
+ shedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.4 NAME ( 'brEduVoIPcallforward'
+  'brvoipfwr') DESC 'Numero do telefone comum para redirecao de chamada' SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.50 )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.5 NAME ( 'brEduVoIPaddress' 'br
+ voipaddr') DESC 'Endereco IP do telefone' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{
+ 128} )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.6 NAME ( 'brEduVoIPexpiryDate' 
+ 'brvoipexpiry') DESC 'Data de expiracao do telefone IP' SYNTAX 1.3.6.1.4.1.1466
+ .115.121.1.36 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.7 NAME ( 'brEduVoIPbalance' 'br
+ voipbalance') DESC 'Creditos restantes em um telefone IP (em segundos)' SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.8 NAME ( 'brEduVoIPcredit' 'brv
+ oipcredit') DESC 'Total de creditos do usuario (em segundos)' SYNTAX 1.3.6.1.4.
+ 1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.15996.100.1.1.4.9 NAME ( 'brEduVoIPPhone' 'brvo
+ ipphone') DESC 'Identificador unico de telefone' EQUALITY IntegerMatch SYNTAX 1
+ .3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcObjectClasses: ( 1.3.6.1.4.1.15996.100.1.2.1 NAME 'brPerson' DESC 'Atributos 
+ sobre pessoas nascidas ou residentes no Brasil, nao se restringe somente ao amb
+ ito educacional' SUP 'top' AUXILIARY MAY ( brcpf $ brpassport ) )
+olcObjectClasses: ( 1.3.6.1.4.1.15996.100.1.2.2 NAME 'brEduPerson' DESC 'Atribut
+ os referentes a uma pessoa com insercao em instituicao brasileira de ensino ou 
+ pesquisa' SUP 'top' STRUCTURAL MUST ( braff $ brafftype ) MAY ( brentr $ brexit
+  ) )
+olcObjectClasses: ( 1.3.6.1.4.1.15996.100.1.2.3 NAME 'brBiometricData' DESC 'Atr
+ ibutos sobre dados biometricos das pessoas' SUP 'top' STRUCTURAL MUST ( brbiosr
+ c $ brbiodata ) MAY ( brcapt ) )
+olcObjectClasses: ( 1.3.6.1.4.1.15996.100.1.2.4 NAME 'brEduVoIP' DESC 'Atributos
+ com dados relativos a um telefone IP' SUP 'top' STRUCTURAL MUST ( brvoipphone $
+  brvoipalias $ brvoiptype $ brvoipadmin ) MAY ( brvoipfwr $ brvoipaddr $ brvoip
+ expiry $ brvoipbalance $ brvoipcredit ) )
