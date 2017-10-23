@@ -1,0 +1,115 @@
+#----------------------------------------------------------------------
+#
+# SciFi schema definition
+# Version: 20171020- 1.0
+# Date: October, 2017
+# Based on ....
+#
+# More information: https://tools.ietf.org/html/draft-chu-ldap-xordered-00
+#----------------------------------------------------------------------
+#
+# Changelog
+# 
+# 20171020 - Initial version
+#
+#----------------------------------------------------------------------
+
+#----------------------------------------------------------------------
+# Atributes
+#----------------------------------------------------------------------
+
+# SciFiLogo
+# Descrip: Used to store one or more images of a company logo using formats
+# such as the JPEG File Interchange Format [JFIF].
+# Format: Jpeg image.
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.1 
+    NAME ( 'SciFiLogo' )
+    DESC 'SciFi Logo' 
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    SINGLE-VALUE )
+   
+# SciFiMap
+# Descrip: Map image
+# Format: Jpeg image.
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.2 
+    NAME ( 'SciFiMap' )
+    DESC 'SciFi Map' 
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    SINGLE-VALUE
+	X-ORDERED 'VALUES' )
+
+
+# SciFiLatLong
+# Descrip: Geopositioning
+# Format: The attribute consists of the latitude in decimal degrees (positive
+#   representing north), a semi colon, and then the longitude in decimal
+#   degrees (positive representing east). The location may be followed by
+#   an optional additional semicolon and then height in decimal meters
+#   above sea level (of the reference geoid). This format is not checked
+#   by the directory.
+#   Example: "-33.92;151.28;300" 
+#   Example: "-22.9054116;-43.1316735;30;-22.9033605,-43.1319907;30"
+
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.3 
+		NAME ( 'SciFiLatLong' )
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+		X-ORDERED 'VALUES' )
+
+
+# SciFiCertificates
+# Descrip: SciFi Private end public certificates
+#   Because the Certificate is being carried in binary, values in this
+#   syntax MUST only be transferred using a binary encoding, by
+#   requesting or returning the attribute description
+#   "crossCertificatePair;binary". The BNF notation in RFC 1778 for
+#   "Certificate Pair" is not recommended to be used.
+# Format: ?.
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.4
+    NAME ( 'SciFiCertificates' )
+    DESC 'SciFi Private end public certificates' 
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.10
+    SINGLE-VALUE )
+
+
+#----------------------------------------------------------------------
+# ObjectClasses
+#----------------------------------------------------------------------
+
+
+# SciFiDomain
+objectclass ( 1.3.6.1.4.1.47119.100.1.2.1
+    NAME 'SciFiDomain'
+    DESC 'Atributos de domínios do tipo SciFi'
+    SUP 'top'
+    AUXILIARY
+    MUST ( SciFiLogo ))
+
+# SciFiSite
+objectclass ( 1.3.6.1.4.1.47119.100.1.2.2
+    NAME 'SciFiSite'
+    DESC 'Atributos de sites do tipo SciFi'
+    SUP 'top'
+    AUXILIARY
+	MUST ( SciFiLatLong $ SciFiMap )
+    MAY ( SciFiLogo ) )
+
+# SciFiAccount
+objectclass ( 1.3.6.1.4.1.47119.100.1.2.3
+    NAME 'SciFiAccount'
+    DESC 'Atributos de conta do tipo SciFi'
+    SUP 'top'
+    AUXILIARY
+	MUST ( SciFiCertificates ))
+	
+# SciFiDevice
+objectclass ( 1.3.6.1.4.1.47119.100.1.2.4
+    NAME 'SciFiDevice'
+    DESC 'Atributos de dispositivo do tipo SciFi'
+    SUP 'top'
+    AUXILIARY
+	MUST ( SciFiLatLong $ SciFiCertificates )
+    MAY ( SciFiMap ) )
