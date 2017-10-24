@@ -1,21 +1,26 @@
-#-------------------------------------------------------------------------
+#----------------------------------------------------------------------
 #
 # SciFi schema definition
-# Version: 20171020- 1.0
+# Version: 20171020 - 1.1
 # Date: October, 2017
-# Based on ....
-#
-# More information: https://tools.ietf.org/html/draft-chu-ldap-xordered-00
-#-------------------------------------------------------------------------
+# Cosme Faria Corrêa
+# cosmefc at gmail dot com
 #
 # Changelog
 # 
 # 20171020 - Initial version
-#
-#--------------------------------------------------------------------------
-dn: cn=scifi
+# 20171024 - 1.1
+#          - Attributes included:
+#              - SciFiDeviceTags
+#              - SciFiDeviceType
+#              - SciFiLegacyDeviceAccount
+#              - SciFiLegacyDevicePassword
+#          - Class changed:
+#              - SciFiDevice
+#----------------------------------------------------------------------
+dn: cn={0}scifi
 objectClass: olcSchemaConfig
-cn: scifi
+cn: {0}scifi
 olcAttributeTypes: {0}( 1.3.6.1.4.1.47119.100.1.1.1.1 NAME 'SciFiLogo' DESC 
  'SciFi Logo' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
  SINGLE-VALUE )
@@ -28,6 +33,12 @@ olcAttributeTypes: {2}( 1.3.6.1.4.1.47119.100.1.1.1.3 NAME 'SciFiLatLong' EQ
 olcAttributeTypes: {3}( 1.3.6.1.4.1.47119.100.1.1.1.4 NAME 'SciFiCertificate
  s' DESC 'SciFi Private end public certificates' SYNTAX 1.3.6.1.4.1.1466.115
  .121.1.10 SINGLE-VALUE )
+olcAttributeTypes: {4}( 1.3.6.1.4.1.47119.100.1.1.1.5 NAME ( 'SciFiDeviceTag
+ s' 'SciFiDevTags' ) DESC 'SciFi Device Tags' EQUALITY caseIgnoreMatch SYNTA
+ X 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: {5}( 1.3.6.1.4.1.47119.100.1.1.1.6 NAME ( 'SciFiDeviceTyp
+ e' 'SciFiDevType' ) DESC 'SciFi Device Type' EQUALITY caseIgnoreMatch SYNTA
+ X 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
 olcObjectClasses:: ezB9KCAxLjMuNi4xLjQuMS40NzExOS4xMDAuMS4yLjEgTkFNRSAnU2NpR
  mlEb21haW4nIERFU0MgJ0F0cmlidXRvcyBkZSBkb23DrW5pb3MgZG8gdGlwbyBTY2lGaScgU1VQ
  IHRvcCBBVVhJTElBUlkgTVVTVCBTY2lGaUxvZ28gKQ==
@@ -35,8 +46,15 @@ olcObjectClasses: {1}( 1.3.6.1.4.1.47119.100.1.2.2 NAME 'SciFiSite' DESC 'At
  ributos de sites do tipo SciFi' SUP top AUXILIARY MUST ( SciFiLatLong $ Sci
  FiMap ) MAY SciFiLogo )
 olcObjectClasses: {2}( 1.3.6.1.4.1.47119.100.1.2.3 NAME 'SciFiAccount' DESC 
- 'Atributos de conta do tipo SciFi' SUP top AUXILIARY MUST SciFiCertificates
-  )
+ 'Atributos de conta do tipo SciFi' SUP top AUXILIARY MAY SciFiCertificates 
+ )
 olcObjectClasses: {3}( 1.3.6.1.4.1.47119.100.1.2.4 NAME 'SciFiDevice' DESC '
- Atributos de dispositivo do tipo SciFi' SUP top AUXILIARY MUST ( SciFiLatLo
- ng $ SciFiCertificates ) MAY SciFiMap )
+ Atributos de dispositivo do tipo SciFi' SUP top AUXILIARY MUST SciFiLatLong
+  MAY ( SciFiCertificates $ SciFiMap $ SciFiDeviceTags $ SciFiDeviceType ) )
+structuralObjectClass: olcSchemaConfig
+entryUUID: 971d251a-4d0f-1037-8d49-4fd141f9a686
+creatorsName: cn=config
+createTimestamp: 20171024140134Z
+entryCSN: 20171024140134.919159Z#000000#000#000000
+modifiersName: cn=config
+modifyTimestamp: 20171024140134Z
