@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------
 #
 # SciFi schema definition
-# Version: 20171024 - 1.1
+# Version: 20171025 - 1.2
 # Date: October, 2017
 # Cosme Faria Corrêa
 # cosmefc at gmail dot com
@@ -17,6 +17,12 @@
 #              - SciFiLegacyDevicePassword
 #          - Class changed:
 #              - SciFiDevice
+# 20171025 - 1.2
+#          - Attributes included:
+#              - SciFiDeviceExternalID
+#          - Class changed:
+#              - SciFiDevice
+#
 #----------------------------------------------------------------------
 
 #----------------------------------------------------------------------
@@ -122,7 +128,19 @@ attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.8
     DESC 'SciFi Legacy Device Password'
     EQUALITY caseIgnoreMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
-    SINGLE-VALUE )    
+    SINGLE-VALUE )
+    
+# SciFiDeviceExternalID
+# Descrip: Link for an external data source
+# Format: Free string.
+# Common values: 4534, urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66
+# Example: SciFiDeviceExternalID: urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.9
+    NAME ( 'SciFiDeviceExternalID' 'SciFiDevExternalID')
+    DESC 'SciFi Legacy Device Password'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    SINGLE-VALUE )
 
 #----------------------------------------------------------------------
 # ObjectClasses
@@ -131,7 +149,7 @@ attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.8
 # SciFiDomain
 objectclass ( 1.3.6.1.4.1.47119.100.1.2.1
     NAME 'SciFiDomain'
-    DESC 'Atributos de domínios do tipo SciFi'
+    DESC 'Atributos de dominios do tipo SciFi'
     SUP 'top'
     AUXILIARY
     MUST ( SciFiLogo ))
@@ -142,8 +160,8 @@ objectclass ( 1.3.6.1.4.1.47119.100.1.2.2
     DESC 'Atributos de sites do tipo SciFi'
     SUP 'top'
     AUXILIARY
-	MUST ( SciFiLatLong $ SciFiMap )
-    MAY ( SciFiLogo ) )
+	MUST ( SciFiLatLong )
+    MAY ( SciFiLogo $ SciFiMap ) )
 
 # SciFiAccount
 objectclass ( 1.3.6.1.4.1.47119.100.1.2.3
@@ -160,4 +178,4 @@ objectclass ( 1.3.6.1.4.1.47119.100.1.2.4
     SUP 'top'
     AUXILIARY
 	MUST ( SciFiLatLong )
-    MAY ( SciFiCertificates $ SciFiMap $ SciFiDeviceTags $ SciFiDeviceType $ SciFiLegacyDeviceAccount $ SciFiLegacyDevicePassword ) )
+    MAY ( SciFiCertificates $ SciFiMap $ SciFiDeviceTags $ SciFiDeviceType $ SciFiLegacyDeviceAccount $ SciFiLegacyDevicePassword $ SciFiDeviceExternalID ) )
