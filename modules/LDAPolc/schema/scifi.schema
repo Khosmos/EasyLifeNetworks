@@ -1,14 +1,30 @@
 #----------------------------------------------------------------------
-#
 # SciFi schema definition
-# Version: 20171025 - 1.2
-# Date: October, 2017
+# Version: 20171106 - 1.4
+# Date: November, 2017
 # Cosme Faria Corrêa
 # cosmefc at gmail dot com
 #
 # Changelog
 # 
-# 20171020 - Initial version
+# 20171106 - 1.4
+#          - Attributes included:
+#              - SciFiDeviceModelVersion
+#          - Class changed:
+#              - SciFiDevice
+# 20171101 - 1.3
+#          - Attributes included:
+#              - SciFiDeviceVendor
+#              - SciFiDeviceModel
+#              - SciFiVersion
+#              - SciFiDevicePhotos
+#          - Class changed:
+#              - SciFiDevice
+# 20171025 - 1.2
+#          - Attributes included:
+#              - SciFiDeviceExternalID
+#          - Class changed:
+#              - SciFiDevice
 # 20171024 - 1.1
 #          - Attributes included:
 #              - SciFiDeviceTags
@@ -17,11 +33,7 @@
 #              - SciFiLegacyDevicePassword
 #          - Class changed:
 #              - SciFiDevice
-# 20171025 - 1.2
-#          - Attributes included:
-#              - SciFiDeviceExternalID
-#          - Class changed:
-#              - SciFiDevice
+# 20171020 - Initial version
 #
 #----------------------------------------------------------------------
 
@@ -142,6 +154,64 @@ attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.9
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
     SINGLE-VALUE )
 
+# SciFiDeviceVendor
+# Descrip: Vendor name
+# Format: Free string.
+# Common values: Cisco, TP-Link
+# Example: Cisco
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.10
+    NAME ( 'SciFiDeviceVendor' 'SciFiDevVendor')
+    DESC 'Hardware vendor name'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    SINGLE-VALUE )
+
+# SciFiDeviceModel
+# Descrip: Device model
+# Format: Free string.
+# Common values: TL-WR843ND, Archer C20i
+# Example: TL-WR843ND
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.11
+    NAME ( 'SciFiDeviceModel' 'SciFiDevModel')
+    DESC 'Hardware Vendor name'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    SINGLE-VALUE )
+   
+# SciFiDeviceModelVersion
+# Descrip: Device model version
+# Format: Free string.
+# Common values: 1, 2.1
+# Example: 2.1
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.12
+    NAME ( 'SciFiDeviceModelVersion' 'SciFiDevModelVersion')
+    DESC 'Hardware Vendor Version'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    SINGLE-VALUE )
+
+# SciFiVersion
+# Descrip: SciFi version
+# Format: Free string.
+# Common values: 13.1, 14.3
+# Example: 14.3
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.13
+    NAME ( 'SciFiVersion')
+    DESC 'SciFi API version'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    SINGLE-VALUE )
+
+# SciFiDevicePhotos
+# Descrip: Used to store one or more images of a installed device
+# such as the JPEG File Interchange Format [JFIF].
+# Format: Jpeg image.
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.14 
+    NAME ( 'SciFiDevicePhotos' 'SciFiDevPhotos' )
+    DESC 'SciFi Device Photos' 
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
 #----------------------------------------------------------------------
 # ObjectClasses
 #----------------------------------------------------------------------
@@ -152,7 +222,7 @@ objectclass ( 1.3.6.1.4.1.47119.100.1.2.1
     DESC 'Atributos de dominios do tipo SciFi'
     SUP 'top'
     AUXILIARY
-    MUST ( SciFiLogo ))
+    MAY ( SciFiLogo ))
 
 # SciFiSite
 objectclass ( 1.3.6.1.4.1.47119.100.1.2.2
@@ -160,8 +230,7 @@ objectclass ( 1.3.6.1.4.1.47119.100.1.2.2
     DESC 'Atributos de sites do tipo SciFi'
     SUP 'top'
     AUXILIARY
-	MUST ( SciFiLatLong )
-    MAY ( SciFiLogo $ SciFiMap ) )
+	MAY ( SciFiLatLong $ SciFiLogo $ SciFiMap ) )
 
 # SciFiAccount
 objectclass ( 1.3.6.1.4.1.47119.100.1.2.3
@@ -177,5 +246,4 @@ objectclass ( 1.3.6.1.4.1.47119.100.1.2.4
     DESC 'Atributos de dispositivo do tipo SciFi'
     SUP 'top'
     AUXILIARY
-	MUST ( SciFiLatLong )
-    MAY ( SciFiCertificates $ SciFiMap $ SciFiDeviceTags $ SciFiDeviceType $ SciFiLegacyDeviceAccount $ SciFiLegacyDevicePassword $ SciFiDeviceExternalID ) )
+	MUST ( SciFiLatLong $ SciFiCertificates $ SciFiMap $ SciFiDeviceTags $ SciFiDeviceType $ SciFiLegacyDeviceAccount $ SciFiLegacyDevicePassword $ SciFiDeviceExternalID $ SciFiDeviceVendor $ SciFiDeviceModel $ SciFiVersion $ SciFiDevicePhotos $ SciFiDeviceModelVersion ) )
