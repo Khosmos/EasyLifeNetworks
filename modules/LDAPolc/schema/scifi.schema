@@ -1,12 +1,18 @@
 #----------------------------------------------------------------------
 # SciFi schema definition
-# Version: 20171106 - 1.4
-# Date: November, 2017
+# Version: 20180130 - 1.5
+# Date: January, 2018
 # Cosme Faria Corrêa
 # cosmefc at gmail dot com
 #
 # Changelog
 # 
+# 20180130 - 1.5
+#          - Attributes included:
+#              - SciFiSSID
+#          - Class changed:
+#              - SciFiDomain
+#
 # 20171106 - 1.4
 #          - Attributes included:
 #              - SciFiDeviceModelVersion
@@ -212,6 +218,18 @@ attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.14
     EQUALITY caseIgnoreMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
+# SciFiSSID
+# Descrip: SciFi SSID
+# Format: Free string.
+# Common values: REDE, Bakery, Waffle Shop
+# Example: REDE
+attributetype ( 1.3.6.1.4.1.47119.100.1.1.1.15
+    NAME ( 'SciFiSSID')
+    DESC 'SciFi SSID'
+    EQUALITY caseIgnoreMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    SINGLE-VALUE )
+
 #----------------------------------------------------------------------
 # ObjectClasses
 #----------------------------------------------------------------------
@@ -222,7 +240,7 @@ objectclass ( 1.3.6.1.4.1.47119.100.1.2.1
     DESC 'Atributos de dominios do tipo SciFi'
     SUP 'top'
     AUXILIARY
-    MAY ( SciFiLogo ))
+    MAY ( SciFiLogo $ SciFiSSID ))
 
 # SciFiSite
 objectclass ( 1.3.6.1.4.1.47119.100.1.2.2
@@ -246,4 +264,5 @@ objectclass ( 1.3.6.1.4.1.47119.100.1.2.4
     DESC 'Atributos de dispositivo do tipo SciFi'
     SUP 'top'
     AUXILIARY
-	MUST ( SciFiLatLong $ SciFiCertificates $ SciFiMap $ SciFiDeviceTags $ SciFiDeviceType $ SciFiLegacyDeviceAccount $ SciFiLegacyDevicePassword $ SciFiDeviceExternalID $ SciFiDeviceVendor $ SciFiDeviceModel $ SciFiVersion $ SciFiDevicePhotos $ SciFiDeviceModelVersion ) )
+	MAY ( SciFiLatLong $ SciFiCertificates $ SciFiMap $ SciFiDeviceTags $ SciFiDeviceType $ SciFiLegacyDeviceAccount $ SciFiLegacyDevicePassword $ SciFiDeviceExternalID $ SciFiDeviceVendor $ SciFiDeviceModel $ SciFiVersion $ SciFiDevicePhotos $ SciFiDeviceModelVersion ) )
+	
